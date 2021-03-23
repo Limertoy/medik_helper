@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <TextField layoutX="438.0" layoutY="403.0" prefHeight="30.0" prefWidth="305.0" promptText="login" />
       <TextField layoutX="438.0" layoutY="449.0" prefHeight="30.0" prefWidth="305.0" promptText="hasło" />
@@ -39,8 +39,8 @@
                   <Font name="Corbel" size="18.0" />
                </font>
             </Text>
-            <Button cancelButton="true" layoutX="1122.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" text="Button" />
-            <Button layoutX="1057.0" layoutY="2.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="exit_button" cancelButton="true" layoutX="1122.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" text="off" />
+            <Button fx:id="minimalize_button" layoutX="1057.0" layoutY="2.0" mnemonicParsing="false" text="border" />
          </children>
       </Pane>
    </children>
