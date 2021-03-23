@@ -20,9 +20,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("sample.fxml"));
+        loader.setLocation(getClass().getResource("wizyty.fxml"));
         Parent root = loader.load();
-        ( (Controller) loader.getController()).setPrimaryStage(primaryStage);
+        ( (ControllerWizyty) loader.getController()).setPrimaryStage(primaryStage);
 
         //grab your root here
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
