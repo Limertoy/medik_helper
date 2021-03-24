@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import java.awt.*;
 import java.io.IOException;
 
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 public class ControllerWizyty {
@@ -28,6 +30,24 @@ public class ControllerWizyty {
     public void minimize(ActionEvent actionEvent) {
         primaryStage.setIconified(true);
     }
+
+    @FXML
+    private TableView<?> table;
+
+    @FXML
+    private TableColumn<?, ?> nazwisko_table;
+
+    @FXML
+    private TableColumn<?, ?> imie_table;
+
+    @FXML
+    private TableColumn<?, ?> pesel_table;
+
+    @FXML
+    private TableColumn<?, ?> data_table;
+
+    @FXML
+    private TableColumn<?, ?> godzina_table;
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void back(ActionEvent actionEvent) throws IOException {

@@ -3,7 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -98,6 +99,14 @@
                 <Insets />
             </opaqueInsets>
         </Button>
-      <ListView layoutX="489.0" layoutY="172.0" prefHeight="614.0" prefWidth="620.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #5CA3E5; -fx-border-radius: 8; -fx-background-radius: 8;" />
+      <TableView fx:id="table" layoutX="337.0" layoutY="169.0" prefHeight="602.0" prefWidth="772.0" style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5;">
+        <columns>
+          <TableColumn fx:id="nazwisko_table" prefWidth="117.0" style="-fx-background-color: #5CA3E5; -fx-text-fill: white;" text="Nazwisko" />
+          <TableColumn fx:id="imie_table" prefWidth="131.0" style="-fx-background-color: #5CA3E5;" text="Imię" />
+            <TableColumn fx:id="pesel_table" prefWidth="215.0" style="-fx-background-color: #5CA3E5;" text="Pesel" />
+            <TableColumn fx:id="data_table" prefWidth="164.0" style="-fx-background-color: #5CA3E5;" text="Data" />
+            <TableColumn fx:id="godzina_table" prefWidth="143.0" style="-fx-background-color: #5CA3E5;" text="Godzina" />
+        </columns>
+      </TableView>
     </children>
 </AnchorPane>
