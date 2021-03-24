@@ -31,13 +31,13 @@ public class ControllerWizyty {
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void back(ActionEvent actionEvent) throws IOException {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
+        Parent wizytyParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Scene wizytyScene = new Scene(wizytyParent);
 
         //this line gets stage info
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(tableViewScene);
+        window.setScene(wizytyScene);
         window.show();
     }
 }
