@@ -23,4 +23,5 @@ public class Controller {
     public void minimize(ActionEvent actionEvent) {
         primaryStage.setIconified(true);
     }
+
 }
