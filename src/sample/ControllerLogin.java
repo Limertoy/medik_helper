@@ -52,4 +52,5 @@ public class ControllerLogin {
         window.setScene(wizytyScene);
         window.show();
     }
+
 }

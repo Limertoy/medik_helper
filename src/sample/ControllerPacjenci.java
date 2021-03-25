@@ -41,7 +41,17 @@ public class ControllerPacjenci {
         Scene wizytyScene = new Scene(wizytyParent);
 
         //this line gets stage info
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(wizytyScene);
+        window.show();
+    }
+
+    public void wizyty(ActionEvent actionEvent) throws IOException {
+        Parent wizytyParent = FXMLLoader.load(getClass().getResource("wizyty.fxml"));
+        Scene wizytyScene = new Scene(wizytyParent);
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
         window.setScene(wizytyScene);
         window.show();
