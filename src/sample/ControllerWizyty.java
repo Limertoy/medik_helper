@@ -18,6 +18,10 @@ public class ControllerWizyty {
     Stage primaryStage;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
+    @FXML
+    private TableView<?> table;
+    @FXML
+    private TableColumn<?, ?> nazwisko_table, imie_table, pesel_table, data_table, godzina_table;
 
     public void setPrimaryStage(Stage stage) {
         this.primaryStage = stage;
@@ -30,24 +34,6 @@ public class ControllerWizyty {
     public void minimize(ActionEvent actionEvent) {
         primaryStage.setIconified(true);
     }
-
-    @FXML
-    private TableView<?> table;
-
-    @FXML
-    private TableColumn<?, ?> nazwisko_table;
-
-    @FXML
-    private TableColumn<?, ?> imie_table;
-
-    @FXML
-    private TableColumn<?, ?> pesel_table;
-
-    @FXML
-    private TableColumn<?, ?> data_table;
-
-    @FXML
-    private TableColumn<?, ?> godzina_table;
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void back(ActionEvent actionEvent) throws IOException {
