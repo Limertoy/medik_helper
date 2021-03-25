@@ -125,7 +125,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="buttonLogin31" layoutX="62.0" layoutY="716.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Karta pacjenta" textFill="#5ca3e5">
+      <Button fx:id="buttonLogin31" layoutX="62.0" layoutY="716.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Zoabcz kartę pacjenta" textFill="#5ca3e5">
          <font>
             <Font name="Tahoma" size="16.0" />
          </font>
