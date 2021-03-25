@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import java.awt.*;
 import java.io.IOException;
 
 import javafx.scene.control.TableColumn;
