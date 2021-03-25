@@ -47,6 +47,24 @@ public class ControllerKartaPacjenta {
         window.setScene(loginScene);
         window.show();
     }
+    public void wizyty(ActionEvent actionEvent) throws IOException {
+        Parent loginParent = FXMLLoader.load(getClass().getResource("wizyty.fxml"));
+        Scene loginScene = new Scene(loginParent);
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(loginScene);
+        window.show();
+    }
+    public void kalendarz(ActionEvent actionEvent) throws IOException {
+        Parent loginParent = FXMLLoader.load(getClass().getResource("kalendarz.fxml"));
+        Scene loginScene = new Scene(loginParent);
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(loginScene);
+        window.show();
+    }
     public void pacjenci(ActionEvent actionEvent) throws IOException {
         Parent loginParent = FXMLLoader.load(getClass().getResource("pacjenci.fxml"));
         Scene loginScene = new Scene(loginParent);
@@ -56,13 +74,5 @@ public class ControllerKartaPacjenta {
         window.setScene(loginScene);
         window.show();
     }
-    public void wizyty(ActionEvent actionEvent) throws IOException {
-        Parent wizytyParent = FXMLLoader.load(getClass().getResource("wizyty.fxml"));
-        Scene wizytyScene = new Scene(wizytyParent);
 
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(wizytyScene);
-        window.show();
-    }
 }
