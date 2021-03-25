@@ -47,4 +47,13 @@ public class ControllerWizyty {
         window.setScene(loginScene);
         window.show();
     }
+    public void pacjenci(ActionEvent actionEvent) throws IOException {
+        Parent loginParent = FXMLLoader.load(getClass().getResource("pacjenci.fxml"));
+        Scene loginScene = new Scene(loginParent);
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(loginScene);
+        window.show();
+    }
 }
