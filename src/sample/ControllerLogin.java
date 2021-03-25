@@ -7,7 +7,7 @@ import java.awt.*;
 
 import javafx.stage.Stage;
 
-public class Controller {
+public class ControllerLogin {
     Stage primaryStage;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;

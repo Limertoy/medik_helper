@@ -22,7 +22,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("wizyty.fxml"));
         Parent root = loader.load();
-        ( (ControllerWizyty) loader.getController()).setPrimaryStage(primaryStage);
+        ((ControllerWizyty)loader.getController()).setPrimaryStage(primaryStage);
 
         //grab your root here
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
