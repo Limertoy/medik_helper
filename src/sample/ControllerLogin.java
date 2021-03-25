@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import java.awt.*;
 import java.io.IOException;
-
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
