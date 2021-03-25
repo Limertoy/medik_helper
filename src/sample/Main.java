@@ -3,6 +3,7 @@ package sample;
 import java.awt.Color;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
@@ -19,13 +20,24 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("wizyty.fxml"));
-        Parent root = loader.load();
-        ((ControllerWizyty)loader.getController()).setPrimaryStage(primaryStage);
+        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        Parent loginRoot = loginLoader.load();
+        Scene loginScene = new Scene(loginRoot, 1180, 820);
+
+        FXMLLoader wizytyLoader = new FXMLLoader(getClass().getResource("wizyty.fxml"));
+        Parent wizytyRoot = wizytyLoader.load();
+        Scene wizytyScene = new Scene(wizytyRoot, 1180, 820);
+
+        ControllerLogin controllerLogin = (ControllerLogin) loginLoader.getController();
+        controllerLogin.setWizytyScene(wizytyScene);
+
+        ControllerWizyty controllerWizyty = (ControllerWizyty) wizytyLoader.getController();
+        controllerWizyty.setLoginScene(loginScene);
+
+
 
         //grab your root here
-        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+        loginRoot.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 xOffset = event.getSceneX();
@@ -34,7 +46,7 @@ public class Main extends Application {
         });
 
         //move around here
-        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+        loginRoot.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 primaryStage.setX(event.getScreenX() - xOffset);
@@ -42,9 +54,8 @@ public class Main extends Application {
             }
         });
 
-        primaryStage.setScene(new Scene(root, 1180, 820));
+        primaryStage.setScene(wizytyScene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.setTitle("MedikHelper");
         primaryStage.show();
     }
 
