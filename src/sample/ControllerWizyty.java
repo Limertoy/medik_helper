@@ -16,14 +16,12 @@ import javafx.stage.Stage;
 
 public class ControllerWizyty {
     Stage primaryStage;
-    Scene loginScene;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
     @FXML
     private TableView<?> table;
-
     @FXML
-    private TableColumn<?, ?> nazwisko_table,imie_table,pesel_table,data_table,godzina_table;
+    private TableColumn<?, ?> nazwisko_table, imie_table, pesel_table, data_table,godzina_table;
 
     public void setPrimaryStage(Stage stage) {
         this.primaryStage = stage;
@@ -39,13 +37,15 @@ public class ControllerWizyty {
         stage.setIconified(true);
     }
 
-    public void setLoginScene(Scene scene) {
-        loginScene = scene;
-    }
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(loginScene);
+        Parent loginParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Scene loginScene = new Scene(loginParent);
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(loginScene);
+        window.show();
     }
 }
