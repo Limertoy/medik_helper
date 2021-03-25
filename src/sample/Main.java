@@ -19,11 +19,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("wizyty.fxml"));
-        Parent root = loader.load();
-        ((ControllerWizyty)loader.getController()).setPrimaryStage(primaryStage);
 
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Scene scene = new Scene(root);
         //grab your root here
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -42,9 +40,8 @@ public class Main extends Application {
             }
         });
 
-        primaryStage.setScene(new Scene(root, 1180, 820));
+        primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.setTitle("MedikHelper");
         primaryStage.show();
     }
 
@@ -53,3 +50,20 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+
+/*
+FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        Parent loginRoot = loginLoader.load();
+        Scene loginScene = new Scene(loginRoot, 1180, 820);
+
+        FXMLLoader wizytyLoader = new FXMLLoader(getClass().getResource("wizyty.fxml"));
+        Parent wizytyRoot = wizytyLoader.load();
+        Scene wizytyScene = new Scene(wizytyRoot, 1180, 820);
+
+        ControllerLogin controllerLogin = (ControllerLogin) loginLoader.getController();
+        controllerLogin.setWizytyScene(wizytyScene);
+
+        ControllerWizyty controllerWizyty = (ControllerWizyty) wizytyLoader.getController();
+        controllerWizyty.setLoginScene(loginScene);
+ */
