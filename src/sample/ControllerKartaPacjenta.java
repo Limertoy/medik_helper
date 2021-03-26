@@ -17,10 +17,6 @@ public class ControllerKartaPacjenta {
     Stage primaryStage;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
-    @FXML
-    private TableView<?> table;
-    @FXML
-    private TableColumn<?, ?> nazwisko_table, imie_table, pesel_table, data_table,godzina_table;
 
 
     public void exit(ActionEvent actionEvent) {
@@ -29,7 +25,7 @@ public class ControllerKartaPacjenta {
     }
 
     public void minimize(ActionEvent actionEvent) {
-        Stage stage = (Stage) exit_button.getScene().getWindow();
+        Stage stage = (Stage) minimalize_button.getScene().getWindow();
         stage.setIconified(true);
     }
 
@@ -44,31 +40,34 @@ public class ControllerKartaPacjenta {
         window.setScene(loginScene);
         window.show();
     }
+
     public void wizyty(ActionEvent actionEvent) throws IOException {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("wizyty.fxml"));
-        Scene loginScene = new Scene(loginParent);
+        Parent wizytyParent = FXMLLoader.load(getClass().getResource("wizyty.fxml"));
+        Scene wizytyScene = new Scene(wizytyParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(loginScene);
+        window.setScene(wizytyScene);
         window.show();
     }
+
     public void kalendarz(ActionEvent actionEvent) throws IOException {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("kalendarz.fxml"));
-        Scene loginScene = new Scene(loginParent);
+        Parent kalendarzParent = FXMLLoader.load(getClass().getResource("kalendarz.fxml"));
+        Scene kalendarzScene = new Scene(kalendarzParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(loginScene);
+        window.setScene(kalendarzScene);
         window.show();
     }
+
     public void pacjenci(ActionEvent actionEvent) throws IOException {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("pacjenci.fxml"));
-        Scene loginScene = new Scene(loginParent);
+        Parent pacjenciParent = FXMLLoader.load(getClass().getResource("pacjenci.fxml"));
+        Scene pacjenciScene = new Scene(pacjenciParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(loginScene);
+        window.setScene(pacjenciScene);
         window.show();
     }
 
