@@ -62,12 +62,12 @@ public class ControllerWizyty {
         window.show();
     }
     public void kartaPacjenta(ActionEvent actionEvent) throws IOException {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
-        Scene loginScene = new Scene(loginParent);
+        Parent kartaPacjentaParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
+        Scene kartaPacjentaScene = new Scene(kartaPacjentaParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(loginScene);
+        window.setScene(kartaPacjentaScene);
         window.show();
     }
 }
