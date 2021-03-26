@@ -22,10 +22,6 @@ public class ControllerKalendarz {
     @FXML
     private TableColumn<?, ?> nazwisko_table, imie_table, pesel_table, data_table,godzina_table;
 
-    public void setPrimaryStage(Stage stage) {
-        this.primaryStage = stage;
-    }
-
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
         stage.close();
