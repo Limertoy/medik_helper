@@ -105,8 +105,8 @@
                 <TableColumn fx:id="nazwisko_table" editable="false" prefWidth="117.0" style="-fx-background-color: #5CA3E5; -fx-text-fill: white;" text="Nazwisko" />
                 <TableColumn fx:id="imie_table" editable="false" prefWidth="131.0" style="-fx-background-color: #5CA3E5;" text="Imię" />
                 <TableColumn fx:id="pesel_table" editable="false" prefWidth="215.0" style="-fx-background-color: #5CA3E5;" text="Pesel" />
-                <TableColumn fx:id="data_table" editable="false" prefWidth="164.0" style="-fx-background-color: #5CA3E5;" text="Ulica" />
-                <TableColumn fx:id="godzina_table" editable="false" prefWidth="143.0" style="-fx-background-color: #5CA3E5;" text="Miejscowość" />
+                <TableColumn fx:id="ulica_table" editable="false" prefWidth="164.0" style="-fx-background-color: #5CA3E5;" text="Ulica" />
+                <TableColumn fx:id="miejscowosc_table" editable="false" prefWidth="143.0" style="-fx-background-color: #5CA3E5;" text="Miejscowość" />
             </columns>
         </TableView>
       <TextField fx:id="szukaj" layoutX="62.0" layoutY="198.0" prefHeight="25.0" prefWidth="210.0" promptText="PESEL, nazwisko lub imię" />
@@ -125,7 +125,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="buttonLogin31" layoutX="62.0" layoutY="716.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Zoabcz kartę pacjenta" textFill="#5ca3e5">
+      <Button fx:id="buttonLogin31" layoutX="62.0" layoutY="716.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Zobacz kartę pacjenta" textFill="#5ca3e5">
          <font>
             <Font name="Tahoma" size="16.0" />
          </font>

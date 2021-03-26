@@ -21,9 +21,6 @@ public class ControllerLogin {
 
     public ControllerLogin(){}
 
-    public void setPrimaryStage(Stage stage) {
-        this.primaryStage = stage;
-    }
 
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();

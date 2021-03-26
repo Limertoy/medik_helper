@@ -21,11 +21,7 @@ public class ControllerPacjenci {
     @FXML
     private TableView<?> table;
     @FXML
-    private TableColumn<?, ?> nazwisko_table, imie_table, pesel_table, data_table, godzina_table;
-
-    public void setPrimaryStage(Stage stage) {
-        this.primaryStage = stage;
-    }
+    private TableColumn<?, ?> nazwisko_table, imie_table, pesel_table, ulica_table, miejscowosc_table;
 
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
@@ -50,30 +46,30 @@ public class ControllerPacjenci {
     }
 
     public void wizyty(ActionEvent actionEvent) throws IOException {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("wizyty.fxml"));
-        Scene loginScene = new Scene(loginParent);
+        Parent wizytyParent = FXMLLoader.load(getClass().getResource("wizyty.fxml"));
+        Scene wizytyScene = new Scene(wizytyParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(loginScene);
+        window.setScene(wizytyScene);
         window.show();
     }
     public void kalendarz(ActionEvent actionEvent) throws IOException {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("kalendarz.fxml"));
-        Scene loginScene = new Scene(loginParent);
+        Parent kalendarzParent = FXMLLoader.load(getClass().getResource("kalendarz.fxml"));
+        Scene kalendarzScene = new Scene(kalendarzParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(loginScene);
+        window.setScene(kalendarzScene);
         window.show();
     }
     public void kartaPacjenta(ActionEvent actionEvent) throws IOException {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
-        Scene loginScene = new Scene(loginParent);
+        Parent kartaPacjentaParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
+        Scene kartaPacjentaScene = new Scene(kartaPacjentaParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(loginScene);
+        window.setScene(kartaPacjentaScene);
         window.show();
     }
 }
