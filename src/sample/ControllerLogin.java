@@ -46,10 +46,8 @@ public class ControllerLogin {
         String login;
         login = textFieldLogin.getText();
         System.out.println(login);
-        String lekarz;
-        lekarz = "lekarz";
 
-        if (login == lekarz)
+        if (login.equals("lekarz"))
         {
             Parent wizytyParent = FXMLLoader.load(getClass().getResource("../lekarz/wizyty.fxml"));
             Scene wizytyScene = new Scene(wizytyParent);
