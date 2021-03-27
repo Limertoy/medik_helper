@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import java.io.IOException;
+
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -15,9 +17,11 @@ public class ControllerLogin {
     public Stage primaryStage;
     @FXML
     public Button buttonLogin, exit_button, minimalize_button;
+    public TextField textFieldLogin;
 
     @FXML
     public AnchorPane dynamicPane;
+
 
     public ControllerLogin(){}
 
@@ -38,13 +42,33 @@ public class ControllerLogin {
     }
 
     public void zaloguj(ActionEvent actionEvent) throws IOException {
-        Parent wizytyParent = FXMLLoader.load(getClass().getResource("wizyty.fxml"));
-        Scene wizytyScene = new Scene(wizytyParent);
 
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        String login;
+        login = textFieldLogin.getText();
+        System.out.println(login);
+        String lekarz;
+        lekarz = "lekarz";
 
-        window.setScene(wizytyScene);
-        window.show();
+        if (login == lekarz)
+        {
+            Parent wizytyParent = FXMLLoader.load(getClass().getResource("../lekarz/wizyty.fxml"));
+            Scene wizytyScene = new Scene(wizytyParent);
+
+            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+            window.setScene(wizytyScene);
+            window.show();
+        }
+
+        else {
+            Parent wizytyParent = FXMLLoader.load(getClass().getResource("../rejestracja/kartaPacjentaRejestracja.fxml"));
+            Scene wizytyScene = new Scene(wizytyParent);
+
+            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            window.setScene(wizytyScene);
+            window.show();
+        }
     }
 
 }

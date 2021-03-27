@@ -1,4 +1,4 @@
-package sample;
+package rejestracja;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,21 +7,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import java.awt.*;
-import java.io.IOException;
-
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-public class ControllerPacjenci {
+import java.io.IOException;
+
+public class ControllerRejestracja {
     Stage primaryStage;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
-    @FXML
-    private TableView<?> table;
-    @FXML
-    private TableColumn<?, ?> nazwisko_table, imie_table, pesel_table, ulica_table, miejscowosc_table;
+
 
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
@@ -29,17 +23,17 @@ public class ControllerPacjenci {
     }
 
     public void minimize(ActionEvent actionEvent) {
-        Stage stage = (Stage) exit_button.getScene().getWindow();
+        Stage stage = (Stage) minimalize_button.getScene().getWindow();
         stage.setIconified(true);
     }
+
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         Parent loginParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene loginScene = new Scene(loginParent);
 
-        //this line gets stage info
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
         window.setScene(loginScene);
         window.show();
@@ -54,6 +48,7 @@ public class ControllerPacjenci {
         window.setScene(wizytyScene);
         window.show();
     }
+
     public void kalendarz(ActionEvent actionEvent) throws IOException {
         Parent kalendarzParent = FXMLLoader.load(getClass().getResource("kalendarz.fxml"));
         Scene kalendarzScene = new Scene(kalendarzParent);
@@ -63,13 +58,16 @@ public class ControllerPacjenci {
         window.setScene(kalendarzScene);
         window.show();
     }
-    public void kartaPacjenta(ActionEvent actionEvent) throws IOException {
-        Parent kartaPacjentaParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
-        Scene kartaPacjentaScene = new Scene(kartaPacjentaParent);
+
+    public void pacjenci(ActionEvent actionEvent) throws IOException {
+        Parent pacjenciParent = FXMLLoader.load(getClass().getResource("pacjenci.fxml"));
+        Scene pacjenciScene = new Scene(pacjenciParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(kartaPacjentaScene);
+        window.setScene(pacjenciScene);
         window.show();
     }
+
 }
+

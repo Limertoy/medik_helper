@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="sample.ControllerKartaPacjenta">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="lekarz.ControllerWizyty">
     <children>
         <Pane prefHeight="30.0" prefWidth="1180.0" style="-fx-background-color: #5CA3E5;">
             <children>
@@ -37,7 +39,7 @@
                 <Button fx:id="wyloguj" layoutX="978.0" layoutY="2.0" mnemonicParsing="false" onAction="#wyloguj" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #5CA3E5; -fx-border-color: #FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8;" text="wyloguj" textFill="WHITE" />
             </children>
         </Pane>
-        <Button fx:id="buttonLogin3" layoutX="899.0" layoutY="73.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #5CA3E5; -fx-border-radius: 8; -fx-background-radius: 8;" text="Karta pacjenta" textFill="WHITE">
+        <Button fx:id="buttonLogin" layoutX="62.0" layoutY="73.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #5CA3E5; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wizyty" textFill="WHITE">
             <font>
                 <Font name="Tahoma" size="16.0" />
             </font>
@@ -82,7 +84,7 @@
                 <Insets />
             </opaqueInsets>
         </Button>
-        <Button fx:id="buttonLogin" layoutX="62.0" layoutY="73.0" mnemonicParsing="false" onAction="#wizyty" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wizyty" textFill="#5ca3e5">
+        <Button fx:id="buttonLogin3" layoutX="899.0" layoutY="73.0" mnemonicParsing="false" onAction="#kartaPacjenta" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Karta pacjenta" textFill="#5ca3e5">
             <font>
                 <Font name="Tahoma" size="16.0" />
             </font>
@@ -97,6 +99,14 @@
                 <Insets />
             </opaqueInsets>
         </Button>
-      <Pane layoutX="337.0" layoutY="169.0" prefHeight="602.0" prefWidth="772.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #5CA3E5;" />
+      <TableView fx:id="table" layoutX="337.0" layoutY="169.0" prefHeight="602.0" prefWidth="772.0" style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5; -fx-background-radius: 8; -fx-border-radius: 8;">
+        <columns>
+          <TableColumn fx:id="nazwisko_table" editable="false" prefWidth="117.0" style="-fx-background-color: #5CA3E5; -fx-text-fill: white;" text="Nazwisko" />
+          <TableColumn fx:id="imie_table" editable="false" prefWidth="131.0" style="-fx-background-color: #5CA3E5;" text="Imię" />
+            <TableColumn fx:id="pesel_table" editable="false" prefWidth="215.0" style="-fx-background-color: #5CA3E5;" text="Pesel" />
+            <TableColumn fx:id="data_table" editable="false" prefWidth="164.0" style="-fx-background-color: #5CA3E5;" text="Data" />
+            <TableColumn fx:id="godzina_table" editable="false" prefWidth="143.0" style="-fx-background-color: #5CA3E5;" text="Godzina" />
+        </columns>
+      </TableView>
     </children>
 </AnchorPane>
