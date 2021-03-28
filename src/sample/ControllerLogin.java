@@ -59,7 +59,7 @@ public class ControllerLogin {
         }
 
         else {
-            Parent wizytyParent = FXMLLoader.load(getClass().getResource("../rejestracja/kartaPacjentaRejestracja.fxml"));
+            Parent wizytyParent = FXMLLoader.load(getClass().getResource("../rejestracja/rejestracja.fxml"));
             Scene wizytyScene = new Scene(wizytyParent);
 
             Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

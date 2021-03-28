@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ControllerRejestracja {
+public class ControllerZarzadzaj {
     Stage primaryStage;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
