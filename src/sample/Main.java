@@ -3,11 +3,9 @@ package sample;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -49,20 +47,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-
-
-/*
-FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("sample.fxml"));
-        Parent loginRoot = loginLoader.load();
-        Scene loginScene = new Scene(loginRoot, 1180, 820);
-
-        FXMLLoader wizytyLoader = new FXMLLoader(getClass().getResource("wizyty.fxml"));
-        Parent wizytyRoot = wizytyLoader.load();
-        Scene wizytyScene = new Scene(wizytyRoot, 1180, 820);
-
-        ControllerLogin controllerLogin = (ControllerLogin) loginLoader.getController();
-        controllerLogin.setWizytyScene(wizytyScene);
-
-        ControllerWizyty controllerWizyty = (ControllerWizyty) wizytyLoader.getController();
-        controllerWizyty.setLoginScene(loginScene);
- */
