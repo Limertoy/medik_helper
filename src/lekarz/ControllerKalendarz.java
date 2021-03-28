@@ -8,10 +8,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 
+
+
 public class ControllerKalendarz {
+    public TableColumn dataTable, godzinaTable, nazwiskotable, imieTable;
     Stage primaryStage;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
@@ -27,6 +33,9 @@ public class ControllerKalendarz {
     }
 
 
+
+
+    //PRZYCISKI GÓRNE
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         Parent loginParent = FXMLLoader.load(getClass().getResource("../sample/sample.fxml"));
@@ -37,6 +46,7 @@ public class ControllerKalendarz {
         window.setScene(loginScene);
         window.show();
     }
+
     public void wizyty(ActionEvent actionEvent) throws IOException {
         Parent wizytyParent = FXMLLoader.load(getClass().getResource("wizyty.fxml"));
         Scene wizytyScene = new Scene(wizytyParent);
