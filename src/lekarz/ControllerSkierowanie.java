@@ -11,7 +11,7 @@ import java.io.IOException;
 
 import javafx.stage.Stage;
 
-public class ControllerKartaPacjenta {
+public class ControllerSkierowanie {
     Stage primaryStage;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
@@ -68,13 +68,13 @@ public class ControllerKartaPacjenta {
         window.setScene(pacjenciScene);
         window.show();
     }
-    public void skierowanie(ActionEvent actionEvent) throws IOException {
-        Parent skierowanieParent = FXMLLoader.load(getClass().getResource("skierowanie.fxml"));
-        Scene skierowanieScene = new Scene(skierowanieParent);
+    public void kartaPacjenta(ActionEvent actionEvent) throws IOException {
+        Parent kartaPacjentaParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
+        Scene kartaPacjentaScene = new Scene(kartaPacjentaParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(skierowanieScene);
+        window.setScene(kartaPacjentaScene);
         window.show();
     }
 
