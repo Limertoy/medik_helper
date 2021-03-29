@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.cell.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lekarz.ControllerKalendarz">
     <children>
@@ -24,14 +26,16 @@
                     </font>
                     <cursor>
                         <Cursor fx:constant="HAND" />
-                    </cursor></Button>
+                    </cursor>
+                </Button>
                 <Button fx:id="minimalize_button" layoutX="1092.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" style="-fx-background-color: transparent;" text="—" textFill="WHITE">
                     <font>
                         <Font name="Candara" size="14.0" />
                     </font>
                     <cursor>
                         <Cursor fx:constant="HAND" />
-                    </cursor></Button>
+                    </cursor>
+                </Button>
                 <Button fx:id="wyloguj" layoutX="978.0" layoutY="2.0" mnemonicParsing="false" onAction="#wyloguj" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #5CA3E5; -fx-border-color: #FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8;" text="wyloguj" textFill="WHITE" />
             </children>
         </Pane>
@@ -95,13 +99,58 @@
                 <Insets />
             </opaqueInsets>
         </Button>
-      <TableView fx:id="table" layoutX="337.0" layoutY="169.0" prefHeight="602.0" prefWidth="772.0" style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5; -fx-background-radius: 8; -fx-border-radius: 8;">
-         <columns>
-            <TableColumn fx:id="dataTable" editable="false" prefWidth="150.0" style="-fx-background-color: #5CA3E5;" text="Data" />
-            <TableColumn fx:id="godzinaTable" editable="false" prefWidth="156.0" style="-fx-background-color: #5CA3E5;" text="Godzina" />
-            <TableColumn fx:id="nazwiskoTable" editable="false" prefWidth="269.0" style="-fx-background-color: #5CA3E5; -fx-text-fill: white;" text="Nazwisko" />
-            <TableColumn fx:id="imieTable" editable="false" prefWidth="195.0" style="-fx-background-color: #5CA3E5;" text="Imię" />
-         </columns>
-      </TableView>
+        <DatePicker fx:id="datePicker" layoutX="80.0" layoutY="249.0" showWeekNumbers="true" />
+        <Text fill="#5ca3e5" layoutX="115.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wybierz datę:" textAlignment="CENTER">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+        </Text>
+        <TableView fx:id="kalendarz" editable="true" layoutX="337.0" layoutY="174.0" onMouseClicked="#selectOne" prefHeight="596.0" prefWidth="816.0" style="-fx-fixed-cell-size: 40px; -fx-border-color: #5ca3e5; -fx-background-radius: 8;">
+            <columns>
+                <TableColumn fx:id="godzinaTable" prefWidth="81.0" sortable="false" text="Godzina">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="godzina" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="ponTable" prefWidth="107.0" sortable="false" text="PON">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="pon" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="wtoTable" prefWidth="102.0" sortable="false" text="WTO">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="wto" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="sroTable" editable="true" prefWidth="103.0" sortable="false" text="ŚRO">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="sro" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="czwTable" prefWidth="102.0" sortable="false" text="CZW">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="czw" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="piaTable" prefWidth="105.0" sortable="false" text="PIĄ">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="pia" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="sobTable" minWidth="0.0" prefWidth="116.0" sortable="false" text="SOB">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="sob" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="niedTable" prefWidth="101.0" sortable="false" text="NIED">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="nied" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
     </children>
 </AnchorPane>

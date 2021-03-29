@@ -1,26 +1,37 @@
 package lekarz;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
+
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 
 
-public class ControllerKalendarz {
-    public TableColumn dataTable, godzinaTable, nazwiskotable, imieTable;
-    Stage primaryStage;
+public class ControllerKalendarz implements Initializable {
+    public TableColumn godzinaTable, ponTable, wtoTable, sroTable, czwTable, piaTable, sobTable, niedTable;
+    public TableView<Kalen> kalendarz = new TableView<Kalen>();
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
+    @FXML
+    DatePicker datePicker = new DatePicker(LocalDate.now());
 
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
@@ -32,48 +43,162 @@ public class ControllerKalendarz {
         stage.setIconified(true);
     }
 
+    public void selectOne(MouseEvent mouseEvent) {
+
+    }
+
+    public class Kalen {
+        public String getGodzina() {
+            return godzina.get();
+        }
+
+        public SimpleStringProperty godzinaProperty() {
+            return godzina;
+        }
+
+        public void setGodzina(String godzina) {
+            this.godzina.set(godzina);
+        }
+
+
+        public String getPon() {
+            return pon.get();
+        }
+
+
+        public void setPon(String pon) {
+            this.pon.set(pon);
+        }
+
+        public String getWto() {
+            return wto.get();
+        }
+
+        public SimpleStringProperty wtoProperty() {
+            return wto;
+        }
+
+        public void setWto(String wto) {
+            this.wto.set(wto);
+        }
+
+        public String getSro() {
+            return sro.get();
+        }
+
+        public SimpleStringProperty sroProperty() {
+            return sro;
+        }
+
+        public void setSro(String sro) {
+            this.sro.set(sro);
+        }
+
+        public String getCzw() {
+            return czw.get();
+        }
+
+        public SimpleStringProperty czwProperty() {
+            return czw;
+        }
+
+        public void setCzw(String czw) {
+            this.czw.set(czw);
+        }
+
+        public String getPia() {
+            return pia.get();
+        }
+
+        public SimpleStringProperty piaProperty() {
+            return pia;
+        }
+
+        public void setPia(String pia) {
+            this.pia.set(pia);
+        }
+
+        public String getSob() {
+            return sob.get();
+        }
+
+        public SimpleStringProperty sobProperty() {
+            return sob;
+        }
+
+        public void setSob(String sob) {
+            this.sob.set(sob);
+        }
+
+        public String getNied() {
+            return nied.get();
+        }
+
+        public SimpleStringProperty niedProperty() {
+            return nied;
+        }
+
+        public void setNied(String nied) {
+            this.nied.set(nied);
+        }
+
+        public SimpleStringProperty godzina;
+        public SimpleStringProperty pon;
+        public SimpleStringProperty wto;
+        public SimpleStringProperty sro;
+        public SimpleStringProperty czw;
+        public SimpleStringProperty pia;
+        public SimpleStringProperty sob;
+        public SimpleStringProperty nied;
+
+        public Kalen(String godzina, String pon, String wto, String sro, String czw, String pia, String sob, String nied) {
+            this.godzina = new SimpleStringProperty(godzina);
+            this.pon = new SimpleStringProperty(pon);
+            this.wto = new SimpleStringProperty(wto);
+            this.sro = new SimpleStringProperty(sro);
+            this.czw = new SimpleStringProperty(czw);
+            this.pia = new SimpleStringProperty(pia);
+            this.sob = new SimpleStringProperty(sob);
+            this.nied = new SimpleStringProperty(nied);
+        }
+    }
+
+    public final ObservableList<Kalen> data = FXCollections.observableArrayList(
+            new Kalen("8:00", " ", "Andriy Adamovych", " ", "Paweł Kulpiński", " ", " ", " "),
+            new Kalen("8:30", " ", "", "Dominik Filip", "", " ", " ", " "),
+            new Kalen("9:00", "Maciej Dukacz", "", "", "", " ", " ", "Agata Szkup")
+    );
 
 
 
-    //PRZYCISKI GÓRNE
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        kalendarz.getItems().setAll(this.data);
+
+        kalendarz.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        kalendarz.getSelectionModel().setCellSelectionEnabled(true);
+    }
+
+
+    //PRZYCISKI PRZEŁĄCZENIA NA INNY EKRAN
+
+    public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource(s1));
+        Scene scene = new Scene(parent);
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(scene);
+        window.show();
+    }
+
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
-    public void wyloguj(ActionEvent actionEvent) throws IOException {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("../sample/sample.fxml"));
-        Scene loginScene = new Scene(loginParent);
+    public void wyloguj(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"../sample/sample.fxml"); }
 
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+    public void wizyty(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "wizyty.fxml"); }
 
-        window.setScene(loginScene);
-        window.show();
-    }
+    public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"pacjenci.fxml"); }
 
-    public void wizyty(ActionEvent actionEvent) throws IOException {
-        Parent wizytyParent = FXMLLoader.load(getClass().getResource("wizyty.fxml"));
-        Scene wizytyScene = new Scene(wizytyParent);
-
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(wizytyScene);
-        window.show();
-    }
-
-    public void pacjenci(ActionEvent actionEvent) throws IOException {
-        Parent pacjenciParent = FXMLLoader.load(getClass().getResource("pacjenci.fxml"));
-        Scene pacjenciScene = new Scene(pacjenciParent);
-
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(pacjenciScene);
-        window.show();
-    }
-
-    public void kartaPacjenta(ActionEvent actionEvent) throws IOException {
-        Parent kartaPacjentaParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
-        Scene kartaPacjentaScene = new Scene(kartaPacjentaParent);
-
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(kartaPacjentaScene);
-        window.show();
-    }
+    public void kartaPacjenta(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"kartaPacjenta.fxml"); }
 }
