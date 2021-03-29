@@ -125,35 +125,21 @@
         <TableView fx:id="table" layoutX="337.0" layoutY="169.0" prefHeight="602.0" prefWidth="772.0"
                    style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5; -fx-background-radius: 8; -fx-border-radius: 8;">
             <columns>
-                <TableColumn fx:id="nazwisko_table" editable="false" prefWidth="117.0"
+                <TableColumn fx:id="nazwiskoTable" editable="false" prefWidth="117.0"
                              style="-fx-background-color: #5CA3E5; -fx-text-fill: white;" text="Nazwisko">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="nazwisko"/>
-                    </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="imie_table" editable="false" prefWidth="131.0"
+                <TableColumn fx:id="imieTable" editable="false" prefWidth="131.0"
                              style="-fx-background-color: #5CA3E5;" text="Imię">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="imie"/>
-                    </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="pesel_table" editable="false" prefWidth="215.0"
+                <TableColumn fx:id="peselTable" editable="false" prefWidth="215.0"
                              style="-fx-background-color: #5CA3E5;" text="Pesel">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="pesel"/>
-                    </cellValueFactory>
+
                 </TableColumn>
-                <TableColumn fx:id="data_table" editable="false" prefWidth="164.0"
+                <TableColumn fx:id="dataTable" editable="false" prefWidth="164.0"
                              style="-fx-background-color: #5CA3E5;" text="Data">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="data"/>
-                    </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="godzina_table" editable="false" prefWidth="143.0"
+                <TableColumn fx:id="godzinaTable" editable="false" prefWidth="143.0"
                              style="-fx-background-color: #5CA3E5;" text="Godzina">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="godzinatable"/>
-                    </cellValueFactory>
                 </TableColumn>
             </columns>
         </TableView>

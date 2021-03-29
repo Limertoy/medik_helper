@@ -1,6 +1,5 @@
 package lekarz;
 
-import javafx.beans.Observable;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,7 +29,7 @@ public class ControllerWizyty implements Initializable {
     private TableView<ListaWizyt> table;
 
     @FXML
-    private TableColumn nazwisko_table, imie_table, pesel_table, data_table,godzina_table;
+    private TableColumn nazwiskoTable, imieTable, peselTable, dataTable, godzinaTable;
 
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
@@ -44,11 +43,11 @@ public class ControllerWizyty implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        nazwisko_table.setCellValueFactory(new PropertyValueFactory("nazwisko"));
-        imie_table.setCellValueFactory(new PropertyValueFactory("imie"));
-        pesel_table.setCellValueFactory(new PropertyValueFactory("pesel"));
-        data_table.setCellValueFactory(new PropertyValueFactory("data"));
-        godzina_table.setCellValueFactory(new PropertyValueFactory("godzinatable"));
+        nazwiskoTable.setCellValueFactory(new PropertyValueFactory("nazwiskoTable"));
+        imieTable.setCellValueFactory(new PropertyValueFactory("imieTable"));
+        peselTable.setCellValueFactory(new PropertyValueFactory("peselTable"));
+        dataTable.setCellValueFactory(new PropertyValueFactory("dataTable"));
+        godzinaTable.setCellValueFactory(new PropertyValueFactory("godzinaTable"));
         table.getItems().setAll(this.dane);
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         table.getSelectionModel().setCellSelectionEnabled(true);
@@ -65,75 +64,75 @@ public class ControllerWizyty implements Initializable {
             this.id = id;
         }
 
-        public String getNazwisko_table() {
-            return nazwisko_table.get();
+        public String getNazwiskoTable() {
+            return nazwiskoTable.get();
         }
 
-        public SimpleStringProperty nazwisko_tableProperty() {
-            return nazwisko_table;
+        public SimpleStringProperty nazwiskoTableProperty() {
+            return nazwiskoTable;
         }
 
-        public void setNazwisko_table(String nazwisko_table) {
-            this.nazwisko_table.set(nazwisko_table);
+        public void setNazwiskoTable(String nazwisko_table) {
+            this.nazwiskoTable.set(nazwisko_table);
         }
 
-        public String getImie_table() {
-            return imie_table.get();
+        public String getImieTable() {
+            return imieTable.get();
         }
 
-        public SimpleStringProperty imie_tableProperty() {
-            return imie_table;
+        public SimpleStringProperty imieTableProperty() {
+            return imieTable;
         }
 
-        public void setImie_table(String imie_table) {
-            this.imie_table.set(imie_table);
+        public void setImieTable(String imie_table) {
+            this.imieTable.set(imie_table);
         }
 
-        public String getPesel_table() {
-            return pesel_table.get();
+        public String getPeselTable() {
+            return peselTable.get();
         }
 
-        public SimpleStringProperty pesel_tableProperty() {
-            return pesel_table;
+        public SimpleStringProperty peselTableProperty() {
+            return peselTable;
         }
 
-        public void setPesel_table(String pesel_table) {
-            this.pesel_table.set(pesel_table);
+        public void setPeselTable(String pesel_table) {
+            this.peselTable.set(pesel_table);
         }
 
-        public String getData_table() {
-            return data_table.get();
+        public String getDataTable() {
+            return dataTable.get();
         }
 
-        public SimpleStringProperty data_tableProperty() {
-            return data_table;
+        public SimpleStringProperty dataTableProperty() {
+            return dataTable;
         }
 
-        public void setData_table(String data_table) {
-            this.data_table.set(data_table);
+        public void setDataTable(String data_table) {
+            this.dataTable.set(data_table);
         }
 
-        public String getGodzina_table() {
-            return godzina_table.get();
+        public String getGodzinaTable() {
+            return godzinaTable.get();
         }
 
-        public SimpleStringProperty godzina_tableProperty() {
-            return godzina_table;
+        public SimpleStringProperty godzinaTableProperty() {
+            return godzinaTable;
         }
 
-        public void setGodzina_table(String godzina_table) {
-            this.godzina_table.set(godzina_table);
+        public void setGodzinaTable(String godzina_table) {
+            this.godzinaTable.set(godzina_table);
         }
 
-        public SimpleStringProperty nazwisko_table, imie_table, pesel_table, data_table,godzina_table;
+        public SimpleStringProperty nazwiskoTable, imieTable, peselTable, dataTable,godzinaTable;
 
-        public ListaWizyt(int id, String nazwisko_table, String imie_table, String pesel_table, String data_table, String godzina_table) {
+        public ListaWizyt(int id, String nazwiskoTable, String imieTable, String peselTable, String dataTable, String godzinaTable) {
             this.id = id;
-            this.nazwisko_table = new SimpleStringProperty(nazwisko_table);
-            this.imie_table = new SimpleStringProperty(imie_table);
-            this.pesel_table = new SimpleStringProperty(pesel_table);
-            this.data_table = new SimpleStringProperty(data_table);
-            this.godzina_table = new SimpleStringProperty(godzina_table);
+            this.nazwiskoTable = new SimpleStringProperty(nazwiskoTable);
+            this.imieTable = new SimpleStringProperty(imieTable);
+            this.peselTable = new SimpleStringProperty(peselTable);
+            this.dataTable = new SimpleStringProperty(dataTable);
+            this.godzinaTable = new SimpleStringProperty(godzinaTable);
         }
     }
 
