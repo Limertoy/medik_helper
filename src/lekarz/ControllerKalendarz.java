@@ -29,7 +29,7 @@ public class ControllerKalendarz implements Initializable {
     public TableColumn godzinaTable, ponTable, wtoTable, sroTable, czwTable, piaTable, sobTable, niedTable;
     public TableView<Kalen> kalendarz = new TableView<Kalen>();
     @FXML
-    Button buttonLogin, exit_button, minimalize_button;
+    Button buttonLogin, exit_button, minimalize_button, edytujButton;
     @FXML
     DatePicker datePicker = new DatePicker(LocalDate.now());
 
@@ -44,8 +44,10 @@ public class ControllerKalendarz implements Initializable {
     }
 
     public void selectOne(MouseEvent mouseEvent) {
-
+        edytujButton.setVisible(true);
     }
+
+
 
     public class Kalen {
         public String getGodzina() {
@@ -142,6 +144,19 @@ public class ControllerKalendarz implements Initializable {
             this.nied.set(nied);
         }
 
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public SimpleStringProperty ponProperty() {
+            return pon;
+        }
+
+        public int id;
         public SimpleStringProperty godzina;
         public SimpleStringProperty pon;
         public SimpleStringProperty wto;
@@ -151,7 +166,8 @@ public class ControllerKalendarz implements Initializable {
         public SimpleStringProperty sob;
         public SimpleStringProperty nied;
 
-        public Kalen(String godzina, String pon, String wto, String sro, String czw, String pia, String sob, String nied) {
+        public Kalen(int id, String godzina, String pon, String wto, String sro, String czw, String pia, String sob, String nied) {
+            this.id = id;
             this.godzina = new SimpleStringProperty(godzina);
             this.pon = new SimpleStringProperty(pon);
             this.wto = new SimpleStringProperty(wto);
@@ -164,9 +180,9 @@ public class ControllerKalendarz implements Initializable {
     }
 
     public final ObservableList<Kalen> data = FXCollections.observableArrayList(
-            new Kalen("8:00", " ", "Andriy Adamovych", " ", "Paweł Kulpiński", " ", " ", " "),
-            new Kalen("8:30", " ", "", "Dominik Filip", "", " ", " ", " "),
-            new Kalen("9:00", "Maciej Dukacz", "", "", "", " ", " ", "Agata Szkup")
+            new Kalen(1,"8:00", " ", "Andriy Adamovych", " ", "Paweł Kulpiński", " ", " ", " "),
+            new Kalen(2,"8:30", " ", "", "Dominik Filip", "", " ", " ", " "),
+            new Kalen(3,"9:00", "Maciej Dukacz", "", "", "", " ", " ", "Agata Szkup")
     );
 
 
@@ -201,4 +217,6 @@ public class ControllerKalendarz implements Initializable {
     public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"pacjenci.fxml"); }
 
     public void kartaPacjenta(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"kartaPacjenta.fxml"); }
+
+    public void edytujKalendarz(ActionEvent actionEvent)  { }
 }
