@@ -78,4 +78,13 @@ public class ControllerKartaPacjenta {
         window.show();
     }
 
+    public void choroby(ActionEvent actionEvent) throws IOException {
+        Parent chorobyParent = FXMLLoader.load(getClass().getResource("choroby.fxml"));
+        Scene chorobyScene = new Scene(chorobyParent);
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(chorobyScene);
+        window.show();
+    }
 }
