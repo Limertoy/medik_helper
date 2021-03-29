@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.cell.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
@@ -18,6 +19,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rejestracja.ControllerZarzadzaj">
     <children>
@@ -94,11 +96,50 @@
       <Pane layoutX="920.0" layoutY="200.0" prefHeight="550.0" prefWidth="200.0" style="-fx-border-color: #5ca3e5;" />
       <Pane layoutX="280.0" layoutY="200.0" prefHeight="550.0" prefWidth="620.0" style="-fx-border-color: #5ca3e5;">
          <children>
-            <Text layoutX="168.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JAVA SCHEDULER">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Text>
+            <TableView fx:id="kalendarz" prefHeight="550.0" prefWidth="620.0">
+              <columns>
+                <TableColumn fx:id="godzinaTable" prefWidth="75.0" text="Godzina">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="godzina" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="ponTable" prefWidth="77.5" text="PON">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="pon" />
+                  </cellValueFactory>
+                </TableColumn>
+                  <TableColumn fx:id="wtoTable" prefWidth="77.5" text="WTO">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="wto" />
+                  </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="sroTable" prefWidth="77.5" text="ŚRO">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="sro" />
+                  </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="czwTable" prefWidth="77.5" text="CZW">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="czw" />
+                  </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="piaTable" prefWidth="77.5" text="PIĄ">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="pia" />
+                  </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="sobTable" prefWidth="77.5" text="SOB">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="sob" />
+                  </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="niedTable" prefWidth="77.5" text="NIED">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="nied" />
+                  </cellValueFactory>
+                  </TableColumn>
+              </columns>
+            </TableView>
          </children>
       </Pane>
       <Text layoutX="120.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista lekarzy" />

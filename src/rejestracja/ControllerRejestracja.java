@@ -30,7 +30,7 @@ public class ControllerRejestracja {
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent loginParent = FXMLLoader.load(getClass().getResource("../sample/sample.fxml"));
         Scene loginScene = new Scene(loginParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
