@@ -1,9 +1,7 @@
 package lekarz;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,13 +11,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -29,7 +24,7 @@ public class ControllerKalendarz implements Initializable {
     public TableColumn godzinaTable, ponTable, wtoTable, sroTable, czwTable, piaTable, sobTable, niedTable;
     public TableView<Kalen> kalendarz = new TableView<Kalen>();
     @FXML
-    Button buttonLogin, exit_button, minimalize_button, edytujButton;
+    Button buttonLogin, exit_button, minimalize_button, edytujButton, pracaDzienButton;
     @FXML
     DatePicker datePicker = new DatePicker(LocalDate.now());
 
@@ -47,6 +42,15 @@ public class ControllerKalendarz implements Initializable {
         edytujButton.setVisible(true);
     }
 
+    public void pracaGodzina(ActionEvent actionEvent) {
+    }
+
+    public void pracaDzien(ActionEvent actionEvent) {
+    }
+
+    public void zmianaDaty(ActionEvent actionEvent) {
+        pracaDzienButton.setVisible(true);
+    }
 
 
     public class Kalen {
@@ -217,6 +221,4 @@ public class ControllerKalendarz implements Initializable {
     public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"pacjenci.fxml"); }
 
     public void kartaPacjenta(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"kartaPacjenta.fxml"); }
-
-    public void edytujKalendarz(ActionEvent actionEvent)  { }
 }

@@ -99,7 +99,7 @@
                 <Insets />
             </opaqueInsets>
         </Button>
-        <DatePicker fx:id="datePicker" layoutX="80.0" layoutY="249.0" showWeekNumbers="true" />
+        <DatePicker fx:id="datePicker" layoutX="80.0" layoutY="249.0" onAction="#zmianaDaty" showWeekNumbers="true" />
         <Text fill="#5ca3e5" layoutX="115.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wybierz datę:" textAlignment="CENTER">
             <font>
                 <Font name="Corbel" size="18.0" />
@@ -152,7 +152,22 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-      <Button fx:id="edytujButton" layoutX="62.0" layoutY="680.0" mnemonicParsing="false" onAction="#edytujKalendarz" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Edytuj" textFill="#5ca3e5" visible="false">
+      <Button fx:id="edytujButton" layoutX="62.0" layoutY="680.0" mnemonicParsing="false" onAction="#pracaGodzina" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Nie pracuję w tą godzinę" textFill="#e35d72" visible="false">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+               <color>
+                  <Color opacity="0.12826086580753326" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="pracaDzienButton" layoutX="62.0" layoutY="307.0" mnemonicParsing="false" onAction="#pracaDzien" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Nie pracuję w ten dzień" textFill="#e35d72" visible="false">
          <effect>
             <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
                <color>
