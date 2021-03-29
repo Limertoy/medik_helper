@@ -19,12 +19,13 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ControllerWizyty implements Initializable {
     Stage primaryStage;
     @FXML
-    Button buttonLogin, exit_button, minimalize_button;
+    Button buttonLogin, exit_button, minimalize_button, zobaczKarte;
     @FXML
     private TableView<ListaWizyt> table;
 
@@ -49,8 +50,6 @@ public class ControllerWizyty implements Initializable {
         dataTable.setCellValueFactory(new PropertyValueFactory("dataTable"));
         godzinaTable.setCellValueFactory(new PropertyValueFactory("godzinaTable"));
         table.getItems().setAll(this.dane);
-        table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        table.getSelectionModel().setCellSelectionEnabled(true);
     }
 
     public class ListaWizyt{
@@ -146,6 +145,18 @@ public class ControllerWizyty implements Initializable {
     );
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
+    public void wybierz(MouseEvent mouseEvent) { zobaczKarte.setVisible(true); }
+
+    public void pokaz(ActionEvent actionEvent) throws IOException{
+        Parent pokazParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
+        Scene pokazScene = new Scene(pokazParent);
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(pokazScene);
+        window.show();
+    }
+
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         Parent loginParent = FXMLLoader.load(getClass().getResource("../sample/sample.fxml"));
         Scene loginScene = new Scene(loginParent);

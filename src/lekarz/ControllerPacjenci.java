@@ -12,16 +12,29 @@ import java.io.IOException;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ControllerPacjenci {
     Stage primaryStage;
     @FXML
-    Button buttonLogin, exit_button, minimalize_button;
+    Button buttonLogin, exit_button, minimalize_button, zobaczKarte;
     @FXML
     private TableView<?> table;
     @FXML
     private TableColumn<?, ?> nazwisko_table, imie_table, pesel_table, ulica_table, miejscowosc_table;
+
+    public void wybierz(MouseEvent mouseEvent) { zobaczKarte.setVisible(true); }
+
+    public void pokaz(ActionEvent actionEvent) throws IOException{
+        Parent pokazParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
+        Scene pokazScene = new Scene(pokazParent);
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(pokazScene);
+        window.show();
+    }
 
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
