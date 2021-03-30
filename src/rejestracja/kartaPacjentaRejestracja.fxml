@@ -8,7 +8,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rejestracja.ControllerRejestracja">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rejestracja.ControllerKartaPacjentaRejestracja">
     <children>
         <Pane prefHeight="30.0" prefWidth="1180.0" style="-fx-background-color: #5CA3E5;">
             <children>
@@ -34,7 +34,7 @@
                 <Button fx:id="wyloguj" layoutX="977.0" mnemonicParsing="false" onAction="#wyloguj" prefHeight="18.0" prefWidth="85.0" style="-fx-background-color: #5CA3E5; -fx-border-color: #FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8;" text="wyloguj" textFill="WHITE" />
             </children>
         </Pane>
-        <Button fx:id="buttonLogin1" layoutX="337.0" layoutY="73.0" mnemonicParsing="false" onAction="#kartaPacjenta" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #5CA3E5; -fx-border-radius: 8; -fx-background-radius: 8;" text="Edycja karty" textFill="WHITE">
+        <Button fx:id="buttonLogin1" layoutX="337.0" layoutY="73.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #5CA3E5; -fx-border-radius: 8; -fx-background-radius: 8;" text="Edycja karty" textFill="WHITE">
             <font>
                 <Font name="Tahoma" size="16.0" />
             </font>
@@ -49,7 +49,7 @@
                 <Insets />
             </opaqueInsets>
         </Button>
-        <Button fx:id="buttonPacjenci" layoutX="622.0" layoutY="73.0" mnemonicParsing="false" onAction="#pacjenci" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Powrót do karty" textFill="#5ca3e5">
+        <Button fx:id="button420" layoutX="622.0" layoutY="73.0" mnemonicParsing="false" onAction="#kartaPacjenta" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Powrót do karty" textFill="#5ca3e5">
             <font>
                 <Font name="Tahoma" size="16.0" />
             </font>
