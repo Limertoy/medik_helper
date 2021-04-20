@@ -51,7 +51,7 @@ public class ControllerDyrektorZarzadzanie {
     }
 
     public void wydruki(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/dyrektor/wydruki.fxml").toUri().toURL();
+        URL url = Paths.get("./src/main/java/dyrektor/raporty.fxml").toUri().toURL();
         Parent kalendarzParent = FXMLLoader.load(url);
         Scene kalendarzScene = new Scene(kalendarzParent);
 
