@@ -29,7 +29,8 @@ public class ControllerRejestracjaPacjenci {
     public void wybierz(MouseEvent mouseEvent) { zobaczKarte.setVisible(true); }
 
     public void pokaz(ActionEvent actionEvent) throws IOException{
-        Parent pokazParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
+        URL url = Paths.get("./src/main/java/rejestracja/kartaPacjentaRejestracja.fxml").toUri().toURL();
+        Parent pokazParent = FXMLLoader.load(url);
         Scene pokazScene = new Scene(pokazParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();

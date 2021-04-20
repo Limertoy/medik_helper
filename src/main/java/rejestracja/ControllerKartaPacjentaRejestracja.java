@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Paths;
 
 public class ControllerKartaPacjentaRejestracja {
     Stage primaryStage;
@@ -28,7 +30,8 @@ public class ControllerKartaPacjentaRejestracja {
     }
 
     public void wyloguj(ActionEvent actionEvent) throws IOException {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("../sample/sample.fxml"));
+        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -38,12 +41,13 @@ public class ControllerKartaPacjentaRejestracja {
     }
 
     public void kartaPacjenta(ActionEvent actionEvent) throws IOException {
-        Parent kartaPacjentaParent = FXMLLoader.load(getClass().getResource("../lekarz/kartaPacjenta.fxml"));
-        Scene kartaPacjentaScene = new Scene(kartaPacjentaParent);
+        URL url = Paths.get("./src/main/java/rejestracja/rejestracjaPacjenci.fxml").toUri().toURL();
+        Parent pacjenciParent = FXMLLoader.load(url);
+        Scene pacjenciScene = new Scene(pacjenciParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(kartaPacjentaScene);
+        window.setScene(pacjenciScene);
         window.show();
     }
 
