@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Paths;
 
 public class ControllerChoroby {
     @FXML
@@ -28,7 +30,8 @@ public class ControllerChoroby {
     //PRZYCISKI PRZEŁĄCZENIA NA INNY EKRAN
 
     public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource(s1));
+        URL url = Paths.get(s1).toUri().toURL();
+        Parent parent = FXMLLoader.load(url);
         Scene scene = new Scene(parent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -38,13 +41,13 @@ public class ControllerChoroby {
     }
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
-    public void wyloguj(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"../sample/sample.fxml"); }
+    public void wyloguj(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"./src/main/java/sample/sample.fxml"); }
 
-    public void wizyty(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "wizyty.fxml"); }
+    public void wizyty(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "./src/main/java/lekarz/wizyty.fxml"); }
 
-    public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"pacjenci.fxml"); }
+    public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"./src/main/java/lekarz/pacjenci.fxml"); }
 
-    public void kartaPacjenta(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"kartaPacjenta.fxml"); }
+    public void kartaPacjenta(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"./src/main/java/lekarz/kartaPacjenta.fxml"); }
 
-    public void kalendarz(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "kalendarz.fxml");}
+    public void kalendarz(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "./src/main/java/lekarz/kalendarz.fxml");}
 }

@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Paths;
 
 import javafx.stage.Stage;
 
@@ -30,7 +32,8 @@ public class ControllerSkierowanie {
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("../sample/sample.fxml"));
+        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -40,7 +43,8 @@ public class ControllerSkierowanie {
     }
 
     public void wizyty(ActionEvent actionEvent) throws IOException {
-        Parent wizytyParent = FXMLLoader.load(getClass().getResource("wizyty.fxml"));
+        URL url = Paths.get("./src/main/java/lekarz/wizyty.fxml").toUri().toURL();
+        Parent wizytyParent = FXMLLoader.load(url);
         Scene wizytyScene = new Scene(wizytyParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -50,7 +54,8 @@ public class ControllerSkierowanie {
     }
 
     public void kalendarz(ActionEvent actionEvent) throws IOException {
-        Parent kalendarzParent = FXMLLoader.load(getClass().getResource("kalendarz.fxml"));
+        URL url = Paths.get("./src/main/java/lekarz/kalendarz.fxml").toUri().toURL();
+        Parent kalendarzParent = FXMLLoader.load(url);
         Scene kalendarzScene = new Scene(kalendarzParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -60,7 +65,8 @@ public class ControllerSkierowanie {
     }
 
     public void pacjenci(ActionEvent actionEvent) throws IOException {
-        Parent pacjenciParent = FXMLLoader.load(getClass().getResource("pacjenci.fxml"));
+        URL url = Paths.get("./src/main/java/lekarz/pacjenci.fxml").toUri().toURL();
+        Parent pacjenciParent = FXMLLoader.load(url);
         Scene pacjenciScene = new Scene(pacjenciParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -69,7 +75,8 @@ public class ControllerSkierowanie {
         window.show();
     }
     public void kartaPacjenta(ActionEvent actionEvent) throws IOException {
-        Parent kartaPacjentaParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
+        URL url = Paths.get("./src/main/java/lekarz/kartaPacjenta.fxml").toUri().toURL();
+        Parent kartaPacjentaParent = FXMLLoader.load(url);
         Scene kartaPacjentaScene = new Scene(kartaPacjentaParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();

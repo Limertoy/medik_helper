@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 public class ControllerZarzadzaj implements Initializable {
@@ -185,7 +186,8 @@ public class ControllerZarzadzaj implements Initializable {
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("../sample/sample.fxml"));
+        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -195,7 +197,8 @@ public class ControllerZarzadzaj implements Initializable {
     }
 
     public void pacjenci(ActionEvent actionEvent) throws IOException {
-        Parent pacjenciParent = FXMLLoader.load(getClass().getResource("pacjenci.fxml"));
+        URL url = Paths.get("./src/main/java/rejestracja/pacjenci.fxml").toUri().toURL();
+        Parent pacjenciParent = FXMLLoader.load(url);
         Scene pacjenciScene = new Scene(pacjenciParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -204,18 +207,10 @@ public class ControllerZarzadzaj implements Initializable {
         window.show();
     }
 
-    public void zarzadzaj(ActionEvent actionEvent) throws IOException {
-        Parent zarzadzajParent = FXMLLoader.load(getClass().getResource("zarzadzaj.fxml"));
-        Scene zarzadzajScene = new Scene(zarzadzajParent);
-
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(zarzadzajScene);
-        window.show();
-    }
 
     public void rejestracja(ActionEvent actionEvent) throws IOException {
-        Parent rejestracjaParent = FXMLLoader.load(getClass().getResource("rejestracja.fxml"));
+        URL url = Paths.get("./src/main/java/rejestracja/rejestracja.fxml").toUri().toURL();
+        Parent rejestracjaParent = FXMLLoader.load(url);
         Scene rejestracjaScene = new Scene(rejestracjaParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();

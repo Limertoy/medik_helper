@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Paths;
 
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -49,22 +51,24 @@ public class ControllerLogin {
 
         if (login.equals("lekarz"))
         {
-            Parent wizytyParent = FXMLLoader.load(getClass().getResource("../lekarz/wizyty.fxml"));
-            Scene wizytyScene = new Scene(wizytyParent);
+            URL url = Paths.get("./src/main/java/lekarz/wizyty.fxml").toUri().toURL();
+            Parent Parent = FXMLLoader.load(url);
+            Scene Scene = new Scene(Parent);
 
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
-            window.setScene(wizytyScene);
+            window.setScene(Scene);
             window.show();
         }
 
         else {
-            Parent wizytyParent = FXMLLoader.load(getClass().getResource("../rejestracja/rejestracja.fxml"));
-            Scene wizytyScene = new Scene(wizytyParent);
+            URL url = Paths.get("./src/main/java/rejestracja/rejestracja.fxml").toUri().toURL();
+            Parent Parent = FXMLLoader.load(url);
+            Scene Scene = new Scene(Parent);
 
             Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-            window.setScene(wizytyScene);
+            window.setScene(Scene);
             window.show();
         }
     }
