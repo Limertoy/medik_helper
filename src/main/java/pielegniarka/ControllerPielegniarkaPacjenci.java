@@ -63,23 +63,13 @@ public class ControllerPielegniarkaPacjenci {
     }
 
     public void rejestracja(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/rejestracja/rejestracja.fxml").toUri().toURL();
+        URL url = Paths.get("./src/main/java/rejestracja/wydawanieLekow.fxml").toUri().toURL();
         Parent rejestracjaParent = FXMLLoader.load(url);
         Scene rejestracjaScene = new Scene(rejestracjaParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
         window.setScene(rejestracjaScene);
-        window.show();
-    }
-    public void zarzadzaj(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/rejestracja/zarzadzaj.fxml").toUri().toURL();
-        Parent zarzadzajParent = FXMLLoader.load(url);
-        Scene zarzadzajScene = new Scene(zarzadzajParent);
-
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(zarzadzajScene);
         window.show();
     }
 }
