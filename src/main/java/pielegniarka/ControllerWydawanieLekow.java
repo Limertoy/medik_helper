@@ -59,7 +59,5 @@ public class ControllerWydawanieLekow {
 
     public void kartaPacjentaEdycja(ActionEvent actionEvent) {
     }
-
-    public void rejestracja(ActionEvent actionEvent) {
-    }
+    
 }

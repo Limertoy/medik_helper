@@ -63,7 +63,7 @@ public class ControllerPielegniarkaPacjenci {
     }
 
     public void rejestracja(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/rejestracja/wydawanieLekow.fxml").toUri().toURL();
+        URL url = Paths.get("./src/main/java/pielegniarka/wydawanieLekow.fxml").toUri().toURL();
         Parent rejestracjaParent = FXMLLoader.load(url);
         Scene rejestracjaScene = new Scene(rejestracjaParent);
 
