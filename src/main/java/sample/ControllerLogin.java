@@ -60,7 +60,17 @@ public class ControllerLogin {
             window.setScene(Scene);
             window.show();
         }
+        else if (login.equals("p"))
+        {
+            URL url = Paths.get("./src/main/java/pielegniarka/wydawanieLekow.fxml").toUri().toURL();
+            Parent Parent = FXMLLoader.load(url);
+            Scene Scene = new Scene(Parent);
 
+            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+            window.setScene(Scene);
+            window.show();
+        }
         else {
             URL url = Paths.get("./src/main/java/rejestracja/rejestracja.fxml").toUri().toURL();
             Parent Parent = FXMLLoader.load(url);
