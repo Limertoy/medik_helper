@@ -68,7 +68,7 @@ public class ControllerLogin {
         }
         else if (login.equals("p"))
         {
-            przejdz(actionEvent, "./src/main/java/pielegniarka/wydawanieLekow.fxml");
+            przejdz(actionEvent, "./src/main/java/pielegniarka/pielegniarkaPacjenci.fxml");
         }
         else if (login.equals("d"))
         {
