@@ -197,7 +197,7 @@ public class ControllerZarzadzaj implements Initializable {
     }
 
     public void pacjenci(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/rejestracja/pacjenci.fxml").toUri().toURL();
+        URL url = Paths.get("./src/main/java/rejestracja/rejestracjaPacjenci.fxml").toUri().toURL();
         Parent pacjenciParent = FXMLLoader.load(url);
         Scene pacjenciScene = new Scene(pacjenciParent);
 

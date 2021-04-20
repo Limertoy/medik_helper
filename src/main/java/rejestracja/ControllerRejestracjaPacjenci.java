@@ -7,17 +7,36 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
 
-public class ControllerRejestracja {
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+public class ControllerRejestracjaPacjenci {
     Stage primaryStage;
     @FXML
-    Button buttonLogin, exit_button, minimalize_button;
+    Button buttonLogin, exit_button, minimalize_button, zobaczKarte;
+    @FXML
+    private TableView<?> table;
+    @FXML
+    private TableColumn<?, ?> nazwisko_table, imie_table, pesel_table, ulica_table, miejscowosc_table;
 
+    public void wybierz(MouseEvent mouseEvent) { zobaczKarte.setVisible(true); }
+
+    public void pokaz(ActionEvent actionEvent) throws IOException{
+        Parent pokazParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
+        Scene pokazScene = new Scene(pokazParent);
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(pokazScene);
+        window.show();
+    }
 
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
@@ -25,10 +44,9 @@ public class ControllerRejestracja {
     }
 
     public void minimize(ActionEvent actionEvent) {
-        Stage stage = (Stage) minimalize_button.getScene().getWindow();
+        Stage stage = (Stage) exit_button.getScene().getWindow();
         stage.setIconified(true);
     }
-
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
@@ -36,23 +54,23 @@ public class ControllerRejestracja {
         Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
 
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        //this line gets stage info
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
         window.setScene(loginScene);
         window.show();
     }
 
-    public void pacjenci(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/rejestracja/rejestracjaPacjenci.fxml").toUri().toURL();
-        Parent pacjenciParent = FXMLLoader.load(url);
-        Scene pacjenciScene = new Scene(pacjenciParent);
+    public void rejestracja(ActionEvent actionEvent) throws IOException {
+        URL url = Paths.get("./src/main/java/rejestracja/rejestracja.fxml").toUri().toURL();
+        Parent rejestracjaParent = FXMLLoader.load(url);
+        Scene rejestracjaScene = new Scene(rejestracjaParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(pacjenciScene);
+        window.setScene(rejestracjaScene);
         window.show();
     }
-
     public void zarzadzaj(ActionEvent actionEvent) throws IOException {
         URL url = Paths.get("./src/main/java/rejestracja/zarzadzaj.fxml").toUri().toURL();
         Parent zarzadzajParent = FXMLLoader.load(url);
@@ -63,7 +81,4 @@ public class ControllerRejestracja {
         window.setScene(zarzadzajScene);
         window.show();
     }
-
-
 }
-
