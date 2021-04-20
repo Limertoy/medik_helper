@@ -9,6 +9,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.net.URL;
+import java.nio.file.Paths;
+
 public class Main extends Application {
 
     private double xOffset = 0;
@@ -17,7 +20,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        Parent root = FXMLLoader.load(url);
         Scene scene = new Scene(root);
         //grab your root here
         root.setOnMousePressed(new EventHandler<MouseEvent>() {

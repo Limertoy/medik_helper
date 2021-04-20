@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Paths;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -48,7 +50,8 @@ public class ControllerPacjenci {
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
-        Parent loginParent = FXMLLoader.load(getClass().getResource("../sample/sample.fxml"));
+        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
 
         //this line gets stage info
@@ -59,7 +62,8 @@ public class ControllerPacjenci {
     }
 
     public void wizyty(ActionEvent actionEvent) throws IOException {
-        Parent wizytyParent = FXMLLoader.load(getClass().getResource("wizyty.fxml"));
+        URL url = Paths.get("./src/main/java/lekarz/wizyty.fxml").toUri().toURL();
+        Parent wizytyParent = FXMLLoader.load(url);
         Scene wizytyScene = new Scene(wizytyParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -68,7 +72,8 @@ public class ControllerPacjenci {
         window.show();
     }
     public void kalendarz(ActionEvent actionEvent) throws IOException {
-        Parent kalendarzParent = FXMLLoader.load(getClass().getResource("kalendarz.fxml"));
+        URL url = Paths.get("./src/main/java/lekarz/kalendarz.fxml").toUri().toURL();
+        Parent kalendarzParent = FXMLLoader.load(url);
         Scene kalendarzScene = new Scene(kalendarzParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -77,7 +82,8 @@ public class ControllerPacjenci {
         window.show();
     }
     public void kartaPacjenta(ActionEvent actionEvent) throws IOException {
-        Parent kartaPacjentaParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
+        URL url = Paths.get("./src/main/java/lekarz/kartaPacjenta.fxml").toUri().toURL();
+        Parent kartaPacjentaParent = FXMLLoader.load(url);
         Scene kartaPacjentaScene = new Scene(kartaPacjentaParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();

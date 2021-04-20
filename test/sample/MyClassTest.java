@@ -14,6 +14,7 @@ class MyClassTest {
         int input_data2 = 2;
         int return_value = myInstance.dodaj(input_data1, input_data2);
         int expected = 3;
-        Assertions.assertEquals(return_value, expected);
+        Assertions.assertEquals(return_value, expected
+        );
     }
 }
