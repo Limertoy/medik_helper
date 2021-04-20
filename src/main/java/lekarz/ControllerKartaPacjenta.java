@@ -14,7 +14,6 @@ import java.nio.file.Paths;
 import javafx.stage.Stage;
 
 public class ControllerKartaPacjenta {
-    Stage primaryStage;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
 
