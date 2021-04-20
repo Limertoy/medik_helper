@@ -39,16 +39,6 @@ public class ControllerDyrektorZamawianie {
         window.show();
     }
 
-    public void wizyty(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/lekarz/raporty.fxml").toUri().toURL();
-        Parent wizytyParent = FXMLLoader.load(url);
-        Scene wizytyScene = new Scene(wizytyParent);
-
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(wizytyScene);
-        window.show();
-    }
 
     public void personel(ActionEvent actionEvent) throws IOException {
         URL url = Paths.get("./src/main/java/dyrektor/personel.fxml").toUri().toURL();
@@ -62,7 +52,7 @@ public class ControllerDyrektorZamawianie {
     }
 
     public void wydruki(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/dyrektor/wydruki.fxml").toUri().toURL();
+        URL url = Paths.get("./src/main/java/dyrektor/raporty.fxml").toUri().toURL();
         Parent pacjenciParent = FXMLLoader.load(url);
         Scene pacjenciScene = new Scene(pacjenciParent);
 
