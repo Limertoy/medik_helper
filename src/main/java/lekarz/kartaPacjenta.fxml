@@ -148,7 +148,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="buttonLogin211" layoutX="62.0" layoutY="631.0" mnemonicParsing="false" onAction="#kartaPacjentaRejestracja" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Edycja karty" textFill="#5ca3e5">
+      <Button fx:id="buttonLogin211" layoutX="62.0" layoutY="631.0" mnemonicParsing="false" onAction="#kartaPacjentaEdycja" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Edycja karty" textFill="#5ca3e5">
          <font>
             <Font name="Tahoma" size="16.0" />
          </font>

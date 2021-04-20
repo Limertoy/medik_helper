@@ -94,13 +94,14 @@ public class ControllerKartaPacjenta {
         window.setScene(chorobyScene);
         window.show();
     }
-    public void kartaPacjentaRejestracja(ActionEvent actionEvent) throws IOException {
-        Parent kartaPacjentaRejestracjaParent = FXMLLoader.load(getClass().getResource("../rejestracja/kartaPacjentaRejestracja.fxml"));
-        Scene kartaPacjentaRejestracjaScene = new Scene(kartaPacjentaRejestracjaParent);
+    public void kartaPacjentaEdycja(ActionEvent actionEvent) throws IOException {
+        URL url = Paths.get("./src/main/java/lekarz/kartaPacjentaEdycja.fxml").toUri().toURL();
+        Parent kartaPacjentaEdycjaParent = FXMLLoader.load(url);
+        Scene kartaPacjentaEdycjaScene = new Scene(kartaPacjentaEdycjaParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(kartaPacjentaRejestracjaScene);
+        window.setScene(kartaPacjentaEdycjaScene);
         window.show();
     }
 }
