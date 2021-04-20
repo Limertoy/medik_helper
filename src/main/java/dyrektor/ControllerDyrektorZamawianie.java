@@ -40,7 +40,7 @@ public class ControllerDyrektorZamawianie {
     }
 
     public void wizyty(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/lekarz/wizyty.fxml").toUri().toURL();
+        URL url = Paths.get("./src/main/java/lekarz/raporty.fxml").toUri().toURL();
         Parent wizytyParent = FXMLLoader.load(url);
         Scene wizytyScene = new Scene(wizytyParent);
 
