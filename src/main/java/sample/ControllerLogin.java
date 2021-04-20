@@ -74,7 +74,7 @@ public class ControllerLogin {
         {
             przejdz(actionEvent, "./src/main/java/dyrektor/dyrektorZamawianie.fxml");
         }
-        else {
+        else if (login.equals("r")) {
 
             przejdz(actionEvent, "./src/main/java/rejestracja/rejestracja.fxml");
         }
