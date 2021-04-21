@@ -7,16 +7,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
 
-public class ControllerRaporty {
+public class ControllerPracownicy {
+    public Button buttonLogin4, buttonLogin6;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
-    
+
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
         stage.close();
@@ -26,7 +28,7 @@ public class ControllerRaporty {
         Stage stage = (Stage) exit_button.getScene().getWindow();
         stage.setIconified(true);
     }
-    
+
     public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
         URL url = Paths.get(s1).toUri().toURL();
         Parent parent = FXMLLoader.load(url);
@@ -47,11 +49,26 @@ public class ControllerRaporty {
         przejdz(actionEvent,"./src/main/java/dyrektor/dyrektorZamawianie.fxml");
     }
 
-    public void personel(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/dyrektor/pracownicy.fxml");
+    public void wydruki(ActionEvent actionEvent) throws IOException {
+        przejdz(actionEvent,"./src/main/java/dyrektor/raporty.fxml");
     }
 
     public void wyposazenie(ActionEvent actionEvent) throws IOException {
         przejdz(actionEvent,"./src/main/java/dyrektor/dyrektorZarzadzanie.fxml");
+    }
+
+    public void pokazButtony(MouseEvent mouseEvent) {
+        buttonLogin4.setVisible(true);
+        buttonLogin6.setVisible(true);
+    }
+
+    public void edytuj(ActionEvent actionEvent) {
+    }
+
+    public void usun(ActionEvent actionEvent) {
+    }
+
+    public void dodaj(ActionEvent actionEvent) throws IOException {
+        przejdz(actionEvent,"./src/main/java/dyrektor/dodaj.fxml");
     }
 }

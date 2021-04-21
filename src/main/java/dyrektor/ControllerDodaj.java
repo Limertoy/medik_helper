@@ -13,10 +13,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
 
-public class ControllerRaporty {
+public class ControllerDodaj {
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
-    
+
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
         stage.close();
@@ -26,7 +26,7 @@ public class ControllerRaporty {
         Stage stage = (Stage) exit_button.getScene().getWindow();
         stage.setIconified(true);
     }
-    
+
     public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
         URL url = Paths.get(s1).toUri().toURL();
         Parent parent = FXMLLoader.load(url);
@@ -43,15 +43,8 @@ public class ControllerRaporty {
         przejdz(actionEvent,"./src/main/java/sample/sample.fxml");
     }
 
-    public void zamowienie(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/dyrektor/dyrektorZamawianie.fxml");
-    }
 
-    public void personel(ActionEvent actionEvent) throws IOException {
+    public void wroc(ActionEvent actionEvent) throws IOException {
         przejdz(actionEvent,"./src/main/java/dyrektor/pracownicy.fxml");
-    }
-
-    public void wyposazenie(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/dyrektor/dyrektorZarzadzanie.fxml");
     }
 }

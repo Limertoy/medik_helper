@@ -40,7 +40,7 @@ public class ControllerDyrektorZarzadzanie {
     }
 
     public void personel(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/dyrektor/wizyty.fxml").toUri().toURL();
+        URL url = Paths.get("./src/main/java/dyrektor/pracownicy.fxml").toUri().toURL();
         Parent wizytyParent = FXMLLoader.load(url);
         Scene wizytyScene = new Scene(wizytyParent);
 
