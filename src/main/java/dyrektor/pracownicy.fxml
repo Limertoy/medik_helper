@@ -91,7 +91,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="buttonLogin4" layoutX="62.0" layoutY="539.0" mnemonicParsing="false" onAction="#edytuj" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Edytuj pacjenta" textAlignment="CENTER" textFill="#5ca3e5" visible="false">
+      <Button fx:id="buttonLogin4" layoutX="62.0" layoutY="539.0" mnemonicParsing="false" onAction="#edytuj" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Edytuj pracownika" textAlignment="CENTER" textFill="#5ca3e5" visible="false">
          <effect>
             <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
                <color>

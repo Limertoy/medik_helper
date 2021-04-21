@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dyrektor.ControllerDyrektorZamawianie">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dyrektor.ControllerDyrektorZamawianie">
     <children>
         <Pane prefHeight="30.0" prefWidth="1180.0" style="-fx-background-color: #5CA3E5;">
             <children>
@@ -64,7 +65,7 @@
                 <Insets />
             </opaqueInsets>
         </Button>
-        <Button fx:id="buttonLogin2" layoutX="909.0" layoutY="73.0" mnemonicParsing="false" onAction="#wyposazenie" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wyposażenie" textFill="#5ca3e5">
+        <Button fx:id="buttonLogin2" layoutX="899.0" layoutY="73.0" mnemonicParsing="false" onAction="#wyposazenie" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wyposażenie" textFill="#5ca3e5">
             <font>
                 <Font name="Tahoma" size="16.0" />
             </font>
