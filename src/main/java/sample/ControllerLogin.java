@@ -66,7 +66,6 @@ public class ControllerLogin {
         textNiepoprawny.setVisible(false);
         textLadowanie.setVisible(true);
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
 
         String login, haslo;
         login = textFieldLogin.getText();
