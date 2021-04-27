@@ -22,6 +22,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.hibernate.Session;
+import sample.HibernateUtil;
 
 public class ControllerWizyty implements Initializable {
     Stage primaryStage;
@@ -160,6 +162,8 @@ public class ControllerWizyty implements Initializable {
     }
 
     public void wyloguj(ActionEvent actionEvent) throws IOException {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.close();
         URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
         Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);

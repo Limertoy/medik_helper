@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -9,10 +10,10 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLogin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLogin">
    <children>
       <TextField fx:id="textFieldLogin" layoutX="439.0" layoutY="462.0" prefHeight="30.0" prefWidth="305.0" promptText="login" />
-      <TextField layoutX="439.0" layoutY="508.0" prefHeight="30.0" prefWidth="305.0" promptText="hasło" />
+      <TextField fx:id="textFieldPassword" layoutX="439.0" layoutY="508.0" prefHeight="30.0" prefWidth="305.0" promptText="hasło" />
       <Button fx:id="buttonLogin" layoutX="509.0" layoutY="593.0" mnemonicParsing="false" onAction="#zaloguj" prefHeight="55.0" prefWidth="165.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Zaloguj się" textFill="#5ca3e5">
          <font>
             <Font name="Tahoma" size="16.0" />
@@ -56,5 +57,7 @@
                </cursor></Button>
          </children>
       </Pane>
+      <Text fx:id="textNiepoprawny" fill="#f50303" layoutX="514.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Niepoprawny login lub hasło!" visible="false" />
+      <Text fx:id="textLadowanie" fill="#5ca3e5" layoutX="558.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ładowanie..." visible="false" />
    </children>
 </AnchorPane>
