@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.hibernate.Session;
+import sample.HibernateUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,6 +42,8 @@ public class ControllerRaporty {
 
 
     public void wyloguj(ActionEvent actionEvent) throws IOException {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.close();
         przejdz(actionEvent,"./src/main/java/sample/sample.fxml");
     }
 

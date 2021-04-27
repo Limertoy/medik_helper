@@ -12,6 +12,8 @@ import java.net.URL;
 import java.nio.file.Paths;
 
 import javafx.stage.Stage;
+import org.hibernate.Session;
+import sample.HibernateUtil;
 
 public class ControllerSkierowanie {
     Stage primaryStage;
@@ -32,6 +34,8 @@ public class ControllerSkierowanie {
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.close();
         URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
         Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);

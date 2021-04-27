@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.hibernate.Session;
+import sample.HibernateUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,7 +43,11 @@ public class ControllerChoroby {
     }
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
-    public void wyloguj(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"./src/main/java/sample/sample.fxml"); }
+    public void wyloguj(ActionEvent actionEvent) throws IOException {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.close();
+        przejdz(actionEvent,"./src/main/java/sample/sample.fxml");
+    }
 
     public void wizyty(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "./src/main/java/lekarz/wizyty.fxml"); }
 

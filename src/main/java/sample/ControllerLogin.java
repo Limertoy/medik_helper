@@ -14,6 +14,7 @@ import java.util.List;
 
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import obiekty.Pracownik;
 import org.hibernate.Session;
@@ -28,6 +29,8 @@ public class ControllerLogin {
     @FXML
     public AnchorPane dynamicPane;
     public TextField textFieldPassword;
+    public Text textNiepoprawny;
+    public Text textLadowanie;
 
 
     public ControllerLogin(){}
@@ -60,6 +63,8 @@ public class ControllerLogin {
     }
 
     public void zaloguj(ActionEvent actionEvent) throws IOException {
+        textNiepoprawny.setVisible(false);
+        textLadowanie.setVisible(true);
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
@@ -82,10 +87,11 @@ public class ControllerLogin {
                 przejdz(actionEvent, "./src/main/java/dyrektor/dyrektorZamawianie.fxml");
             } else if (s.getRola().getId_rola() == 4) {
                 przejdz(actionEvent, "./src/main/java/rejestracja/rejestracja.fxml");
-            } else {
-                System.out.println("Popraw dane");
             }
         }
+        textLadowanie.setVisible(false);
+        textNiepoprawny.setVisible(true);
+
     }
 
 }

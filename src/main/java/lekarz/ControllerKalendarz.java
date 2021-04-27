@@ -18,7 +18,8 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
+import org.hibernate.Session;
+import sample.HibernateUtil;
 
 
 public class ControllerKalendarz implements Initializable {
@@ -216,7 +217,11 @@ public class ControllerKalendarz implements Initializable {
     }
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
-    public void wyloguj(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"./src/main/java/sample/sample.fxml"); }
+    public void wyloguj(ActionEvent actionEvent) throws IOException {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.close();
+        przejdz(actionEvent,"./src/main/java/sample/sample.fxml");
+    }
 
     public void wizyty(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "./src/main/java/lekarz/wizyty.fxml"); }
 

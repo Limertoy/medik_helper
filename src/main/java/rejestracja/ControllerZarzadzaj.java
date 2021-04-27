@@ -15,6 +15,8 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import org.hibernate.Session;
+import sample.HibernateUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -186,6 +188,8 @@ public class ControllerZarzadzaj implements Initializable {
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.close();
         URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
         Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
