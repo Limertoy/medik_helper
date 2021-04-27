@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 
 public class ControllerDodaj {
     @FXML
-    Button buttonLogin, exit_button, minimalize_button;
+    Button exit_button, minimalize_button;
 
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
