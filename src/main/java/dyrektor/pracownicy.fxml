@@ -67,12 +67,12 @@
         </Button>
       <Pane layoutX="337.0" layoutY="169.0" prefHeight="602.0" prefWidth="772.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #5CA3E5;">
          <children>
-            <TableView layoutX="1.0" onMouseClicked="#pokazButtony" prefHeight="602.0" prefWidth="772.0">
+            <TableView fx:id="pracownicy" onMouseClicked="#pokazButtony" prefHeight="602.0" prefWidth="772.0">
               <columns>
-                <TableColumn prefWidth="140.0" text="Imię" />
-                <TableColumn prefWidth="182.0" text="Nazwisko" />
-                  <TableColumn prefWidth="193.0" text="Rola" />
-                  <TableColumn prefWidth="256.0" text="email" />
+                <TableColumn fx:id="imie_table" prefWidth="140.0" text="Imię" />
+                <TableColumn fx:id="nazwisko_table" prefWidth="182.0" text="Nazwisko" />
+                  <TableColumn fx:id="rola_table" prefWidth="193.0" text="Rola" />
+                  <TableColumn fx:id="email_table" prefWidth="256.0" text="email" />
               </columns>
             </TableView>
          </children></Pane>
