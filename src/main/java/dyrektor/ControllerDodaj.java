@@ -19,6 +19,8 @@ public class ControllerDodaj {
     @FXML
     Button exit_button, minimalize_button;
 
+    Session session = HibernateUtil.getSessionFactory().openSession();
+
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
         stage.close();
@@ -28,6 +30,8 @@ public class ControllerDodaj {
         Stage stage = (Stage) exit_button.getScene().getWindow();
         stage.setIconified(true);
     }
+
+    
 
     public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
         URL url = Paths.get(s1).toUri().toURL();
@@ -42,7 +46,6 @@ public class ControllerDodaj {
 
 
     public void wyloguj(ActionEvent actionEvent) throws IOException {
-        Session session = HibernateUtil.getSessionFactory().openSession();
         session.close();
         przejdz(actionEvent,"./src/main/java/sample/sample.fxml");
     }
@@ -50,5 +53,9 @@ public class ControllerDodaj {
 
     public void wroc(ActionEvent actionEvent) throws IOException {
         przejdz(actionEvent,"./src/main/java/dyrektor/pracownicy.fxml");
+    }
+
+    public void dodaj(ActionEvent actionEvent) {
+
     }
 }
