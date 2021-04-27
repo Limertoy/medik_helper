@@ -1,10 +1,8 @@
 package sample;
 
 import java.util.List;
-import java.util.Properties;
 
 import org.hibernate.Session;
-import org.hibernate.cfg.Environment;
 import org.hibernate.query.Query;
 
 
