@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import obiekty.Pracownik;
+import obiekty.Rola;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import sample.HibernateUtil;
@@ -33,6 +34,7 @@ public class ControllerPracownicy implements Initializable {
     public TableColumn imie_table, nazwisko_table, email_table, rola_table;
     public TableView<ListaPracownikow> pracownicy;
     public Stage stage;
+    public static int id_zmien;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
 
@@ -41,15 +43,15 @@ public class ControllerPracownicy implements Initializable {
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         Query<Pracownik> q = session.createQuery("from Pracownik");
         List<Pracownik> list = q.list();
 
         ObservableList<ListaPracownikow> data = FXCollections.observableArrayList();
 
-
+        int i = 0;
         for(Pracownik s : list){
-            data.add(s.getId_pracownika()-1, new ListaPracownikow(s.getImie_pracownika(), s.getNazwisko_pracownika(),s.getEmail(), s.getRola().getNazwa()));
+            data.add(i, new ListaPracownikow(s.getId_pracownika(), s.getImie_pracownika(), s.getNazwisko_pracownika(),s.getEmail(), s.getRola().getNazwa()));
+            i++;
         }
 
 
@@ -121,7 +123,8 @@ public class ControllerPracownicy implements Initializable {
             this.rola_table.set(rola_table);
         }
 
-        public ListaPracownikow(String imie_table, String nazwisko_table, String email_table, String rola_table) {
+        public ListaPracownikow(int id, String imie_table, String nazwisko_table, String email_table, String rola_table) {
+            this.id = id;
             this.imie_table = new SimpleStringProperty(imie_table);
             this.nazwisko_table = new SimpleStringProperty(nazwisko_table);
             this.email_table = new SimpleStringProperty(email_table);
@@ -176,10 +179,21 @@ public class ControllerPracownicy implements Initializable {
         buttonLogin6.setVisible(true);
     }
 
-    public void edytuj(ActionEvent actionEvent) {
+    public void edytuj(ActionEvent actionEvent) throws IOException {
+        ListaPracownikow selected = pracownicy.getSelectionModel().getSelectedItem();
+        id_zmien = selected.id;
+        System.out.println(id_zmien);
+        przejdz(actionEvent,"./src/main/java/dyrektor/edytuj.fxml");
     }
 
-    public void usun(ActionEvent actionEvent) {
+    public void usun(ActionEvent actionEvent) throws IOException {
+        session.beginTransaction();
+        ListaPracownikow selected = pracownicy.getSelectionModel().getSelectedItem();
+        System.out.println(selected.id);
+        Pracownik pracownik = session.get(Pracownik.class, selected.id);
+        session.delete(pracownik);
+        session.getTransaction().commit();
+        przejdz(actionEvent,"./src/main/java/dyrektor/pracownicy.fxml");
     }
 
     public void dodaj(ActionEvent actionEvent) throws IOException {
