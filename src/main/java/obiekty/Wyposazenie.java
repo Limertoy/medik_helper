@@ -19,4 +19,66 @@ public class Wyposazenie {
     private String typ_wyposazenia;
     private Date data_waznosci;
     private int ilosc_pozostalych;
+
+    public int getId_wyposazenia() {
+        return id_wyposazenia;
+    }
+
+    public void setId_wyposazenia(int id_wyposazenia) {
+        this.id_wyposazenia = id_wyposazenia;
+    }
+
+    public String getNazwa_wyposazenia() {
+        return nazwa_wyposazenia;
+    }
+
+    public void setNazwa_wyposazenia(String nazwa_wyposazenia) {
+        this.nazwa_wyposazenia = nazwa_wyposazenia;
+    }
+
+    public String getTyp_wyposazenia() {
+        return typ_wyposazenia;
+    }
+
+    public void setTyp_wyposazenia(String typ_wyposazenia) {
+        this.typ_wyposazenia = typ_wyposazenia;
+    }
+
+    public Date getData_waznosci() {
+        return data_waznosci;
+    }
+
+    public void setData_waznosci(Date data_waznosci) {
+        this.data_waznosci = data_waznosci;
+    }
+
+    public int getIlosc_pozostalych() {
+        return ilosc_pozostalych;
+    }
+
+    public void setIlosc_pozostalych(int ilosc_pozostalych) {
+        this.ilosc_pozostalych = ilosc_pozostalych;
+    }
+
+    public Wyposazenie(String nazwa_wyposazenia, String typ_wyposazenia, Date data_waznosci, int ilosc_pozostalych) {
+        this.nazwa_wyposazenia = nazwa_wyposazenia;
+        this.typ_wyposazenia = typ_wyposazenia;
+        this.data_waznosci = data_waznosci;
+        this.ilosc_pozostalych = ilosc_pozostalych;
+    }
+
+    @Override
+    public String toString() {
+        return "Wyposazenie{" +
+                "id_wyposazenia=" + id_wyposazenia +
+                ", nazwa_wyposazenia='" + nazwa_wyposazenia + '\'' +
+                ", typ_wyposazenia='" + typ_wyposazenia + '\'' +
+                ", data_waznosci=" + data_waznosci +
+                ", ilosc_pozostalych=" + ilosc_pozostalych +
+                '}';
+    }
+
+    public Wyposazenie() {
+    }
+
 }

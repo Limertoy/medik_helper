@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dyrektor.ControllerDyrektorZarzadzanie">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dyrektor.ControllerDyrektorZarzadzanie">
     <children>
         <Pane prefHeight="30.0" prefWidth="1180.0" style="-fx-background-color: #5CA3E5;">
             <children>
@@ -96,13 +97,13 @@
         </Button>
       <Pane layoutX="337.0" layoutY="169.0" prefHeight="602.0" prefWidth="772.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #5CA3E5;">
          <children>
-            <TableView prefHeight="602.0" prefWidth="772.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #5CA3E5;">
+            <TableView fx:id="wyposazenia" prefHeight="602.0" prefWidth="772.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #5CA3E5;">
               <columns>
-                <TableColumn prefWidth="139.0" text="ID" />
-                <TableColumn prefWidth="211.0" text="Nazwa" />
-                  <TableColumn prefWidth="106.0" text="Typ" />
-                  <TableColumn prefWidth="187.0" text="Data ważności" />
-                  <TableColumn minWidth="0.0" prefWidth="121.0" text="Ilość pozostałych" />
+                <TableColumn fx:id="idWyposazenie" minWidth="0.0" prefWidth="0.0" text="ID" />
+                <TableColumn fx:id="nazwaWyposazenie" prefWidth="218.0" text="Nazwa" />
+                  <TableColumn fx:id="typWyposazenie" prefWidth="219.0" text="Typ" />
+                  <TableColumn fx:id="dataWyposazenie" prefWidth="206.0" text="Data ważności" />
+                  <TableColumn fx:id="iloscWyposazenie" minWidth="0.0" prefWidth="127.0" text="Ilość pozostałych" />
               </columns>
             </TableView>
          </children></Pane>
