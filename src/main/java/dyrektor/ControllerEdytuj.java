@@ -1,6 +1,5 @@
 package dyrektor;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import obiekty.Pracownik;
@@ -25,11 +23,31 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ControllerDodaj implements Initializable {
-    public TextField nazwiskoDodaj, imieDodaj, emailDodaj, hasloDodaj;
+public class ControllerEdytuj extends ControllerPracownicy implements Initializable {
+    public TextField imieZmien, nazwiskoZmien, emailZmien, hasloZmien;
     public ChoiceBox rolaDodaj;
     @FXML
     Button exit_button, minimalize_button;
+    int id = id_zmien; //z poprzedniego ekranu
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        Query pr = session.createQuery("from Pracownik");
+        List<Pracownik> prac = pr.list();
+        for(Pracownik r : prac){
+            rolaDodaj.getItems().add(r.getRola().getNazwa());
+        }
+
+        Query<Pracownik> q = session.createQuery("from Pracownik where id=:id")
+                .setParameter("id", id);
+        List<Pracownik> list = q.list();
+        imieZmien.setText(list.get(0).getImie_pracownika());
+        nazwiskoZmien.setText(list.get(0).getNazwisko_pracownika());
+        emailZmien.setText(list.get(0).getEmail());
+        hasloZmien.setText(list.get(0).getHaslo());
+        rolaDodaj.setValue(list.get(0).getRola().getNazwa());
+    }
 
     Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -43,15 +61,6 @@ public class ControllerDodaj implements Initializable {
         stage.setIconified(true);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Query rola = session.createQuery("from Pracownik");
-        List<Pracownik> listRola = rola.list();
-        for(Pracownik r : listRola){
-            rolaDodaj.getItems().add(r.getRola().getNazwa());
-        }
-    }
-
     public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
         URL url = Paths.get(s1).toUri().toURL();
         Parent parent = FXMLLoader.load(url);
@@ -63,33 +72,35 @@ public class ControllerDodaj implements Initializable {
         window.show();
     }
 
-
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         session.close();
         przejdz(actionEvent,"./src/main/java/sample/sample.fxml");
     }
 
-
     public void wroc(ActionEvent actionEvent) throws IOException {
         przejdz(actionEvent,"./src/main/java/dyrektor/pracownicy.fxml");
     }
 
-    public void dodaj(ActionEvent actionEvent) throws IOException {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+    public void zmien(ActionEvent actionEvent) throws IOException {
         session.beginTransaction();
         String imie, nazwisko, email, haslo;
         Object rola;
-        imie = imieDodaj.getText();
-        nazwisko = nazwiskoDodaj.getText();
-        email = emailDodaj.getText();
-        haslo = hasloDodaj.getText();
+        imie = imieZmien.getText();
+        nazwisko = nazwiskoZmien.getText();
+        email = emailZmien.getText();
+        haslo = hasloZmien.getText();
         rola =  rolaDodaj.getValue();
         Query query = session.createQuery("from Rola where nazwa=:nazwa")
                 .setParameter("nazwa", rola);
         List<Rola> list = query.list();
         System.out.println(list.get(0));
 
-        Pracownik pracownik = new Pracownik(email, haslo, list.get(0), imie, nazwisko);
+        Pracownik pracownik = session.get(Pracownik.class, id);
+        pracownik.setImie_pracownika(imie);
+        pracownik.setNazwisko_pracownika(nazwisko);
+        pracownik.setEmail(email);
+        pracownik.setHaslo(haslo);
+        pracownik.setRola(list.get(0));
 
         session.save(pracownik);
         session.getTransaction().commit();
