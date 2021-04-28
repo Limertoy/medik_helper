@@ -10,10 +10,13 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import obiekty.Pracownik;
 import obiekty.Rola;
+import obiekty.Wyposazenie;
 import org.hibernate.Session;
 
 import java.net.URL;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Main extends Application {
 
@@ -41,7 +44,13 @@ public class Main extends Application {
         Pracownik pracownik3 = new Pracownik("pielegniarka@email.com", "12345", pielegniarka, "Paweł", "Kulpiński");
         Pracownik pracownik4 = new Pracownik("rejestracja@email.com", "12345", rejestracja, "Dominik", "Filip");
 
+        Date date = new SimpleDateFormat("y-M-d").parse("2021-12-30");
 
+        Wyposazenie wyposazenie = new Wyposazenie("Spirytus 10ml", "Antyseptyk", date, 52);
+        Wyposazenie wyposazenie1 = new Wyposazenie("Szafraceum", "Lek", date, 25);
+
+        session.save(wyposazenie);
+        session.save(wyposazenie1);
         session.save(lekarz);
         session.save(pracownik3);
         session.save(pracownik4);
