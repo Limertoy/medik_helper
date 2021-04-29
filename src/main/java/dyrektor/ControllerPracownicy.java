@@ -1,5 +1,6 @@
 package dyrektor;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,8 +16,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import obiekty.ListaPracownikow;
 import obiekty.Pracownik;
+import obiekty.Rola;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import sample.HibernateUtil;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.ListResourceBundle;
 import java.util.ResourceBundle;
 
 public class ControllerPracownicy implements Initializable {
@@ -32,6 +34,7 @@ public class ControllerPracownicy implements Initializable {
     public TableColumn imie_table, nazwisko_table, email_table, rola_table;
     public TableView<ListaPracownikow> pracownicy;
     public Stage stage;
+    public static int id_zmien;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
 
@@ -40,15 +43,15 @@ public class ControllerPracownicy implements Initializable {
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         Query<Pracownik> q = session.createQuery("from Pracownik");
         List<Pracownik> list = q.list();
 
         ObservableList<ListaPracownikow> data = FXCollections.observableArrayList();
 
-
+        int i = 0;
         for(Pracownik s : list){
-            data.add(s.getId_pracownika()-1, new ListaPracownikow(s.getImie_pracownika(), s.getNazwisko_pracownika(),s.getEmail(), s.getRola().getNazwa()));
+            data.add(i, new ListaPracownikow(s.getId_pracownika(), s.getImie_pracownika(), s.getNazwisko_pracownika(),s.getEmail(), s.getRola().getNazwa()));
+            i++;
         }
 
 
@@ -57,6 +60,76 @@ public class ControllerPracownicy implements Initializable {
         email_table.setCellValueFactory(new PropertyValueFactory("email_table"));
         rola_table.setCellValueFactory(new PropertyValueFactory("rola_table"));
         pracownicy.getItems().setAll(data);
+    }
+
+
+    public class ListaPracownikow{
+        public int id;
+        public SimpleStringProperty imie_table, nazwisko_table, email_table, rola_table;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getImie_table() {
+            return imie_table.get();
+        }
+
+        public SimpleStringProperty imie_tableProperty() {
+            return imie_table;
+        }
+
+        public void setImie_table(String imie_table) {
+            this.imie_table.set(imie_table);
+        }
+
+        public String getNazwisko_table() {
+            return nazwisko_table.get();
+        }
+
+        public SimpleStringProperty nazwisko_tableProperty() {
+            return nazwisko_table;
+        }
+
+        public void setNazwisko_table(String nazwisko_table) {
+            this.nazwisko_table.set(nazwisko_table);
+        }
+
+        public String getEmail_table() {
+            return email_table.get();
+        }
+
+        public SimpleStringProperty email_tableProperty() {
+            return email_table;
+        }
+
+        public void setEmail_table(String email_table) {
+            this.email_table.set(email_table);
+        }
+
+        public String getRola_table() {
+            return rola_table.get();
+        }
+
+        public SimpleStringProperty rola_tableProperty() {
+            return rola_table;
+        }
+
+        public void setRola_table(String rola_table) {
+            this.rola_table.set(rola_table);
+        }
+
+        public ListaPracownikow(int id, String imie_table, String nazwisko_table, String email_table, String rola_table) {
+            this.id = id;
+            this.imie_table = new SimpleStringProperty(imie_table);
+            this.nazwisko_table = new SimpleStringProperty(nazwisko_table);
+            this.email_table = new SimpleStringProperty(email_table);
+            this.rola_table = new SimpleStringProperty(rola_table);
+        }
     }
 
 
@@ -106,10 +179,21 @@ public class ControllerPracownicy implements Initializable {
         buttonLogin6.setVisible(true);
     }
 
-    public void edytuj(ActionEvent actionEvent) {
+    public void edytuj(ActionEvent actionEvent) throws IOException {
+        ListaPracownikow selected = pracownicy.getSelectionModel().getSelectedItem();
+        id_zmien = selected.id;
+        System.out.println(id_zmien);
+        przejdz(actionEvent,"./src/main/java/dyrektor/edytuj.fxml");
     }
 
-    public void usun(ActionEvent actionEvent) {
+    public void usun(ActionEvent actionEvent) throws IOException {
+        session.beginTransaction();
+        ListaPracownikow selected = pracownicy.getSelectionModel().getSelectedItem();
+        System.out.println(selected.id);
+        Pracownik pracownik = session.get(Pracownik.class, selected.id);
+        session.delete(pracownik);
+        session.getTransaction().commit();
+        przejdz(actionEvent,"./src/main/java/dyrektor/pracownicy.fxml");
     }
 
     public void dodaj(ActionEvent actionEvent) throws IOException {
