@@ -132,19 +132,7 @@ public class Pacjent {
         this.email = email;
     }
 
-    public Pacjent(
-                   String nazwisko_pacjenta,
-                   String imie_pacjenta,
-                   String drugie_imie,
-                   String pesel,
-                   String plec,
-                   Date data_urodzenia,
-                   String wojewodztwo,
-                   String miejscowosc,
-                   String adres,
-                   String kod_pocztowy,
-                   String telefon,
-                   String email) {
+    public Pacjent(String nazwisko_pacjenta, String imie_pacjenta, String drugie_imie, String pesel, String plec, Date data_urodzenia, String wojewodztwo, String miejscowosc, String adres, String kod_pocztowy, String telefon, String email) {
         this.nazwisko_pacjenta = nazwisko_pacjenta;
         this.imie_pacjenta = imie_pacjenta;
         this.drugie_imie = drugie_imie;
@@ -159,7 +147,8 @@ public class Pacjent {
         this.email = email;
     }
 
-    public Pacjent() {}
+    public Pacjent() {
+    }
 
     @Override
     public String toString() {
