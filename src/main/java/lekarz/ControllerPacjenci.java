@@ -34,7 +34,7 @@ public class ControllerPacjenci implements Initializable {
     @FXML
     Button buttonLogin, exit_button, minimalize_button, zobaczKarte;
     @FXML
-    private TableView<ListaPacjentow> table;
+    private TableView<Pacjent> table;
     @FXML
     private TableColumn nazwisko_table, imie_table, pesel_table, ulica_table, miejscowosc_table;
 
@@ -113,102 +113,20 @@ public class ControllerPacjenci implements Initializable {
         Query<Pacjent> q = session.createQuery("from Pacjent");
         List<Pacjent> list = q.list();
 
-        ObservableList<ListaPacjentow> data1 = FXCollections.observableArrayList();
+        ObservableList<Pacjent> data1 = FXCollections.observableArrayList();
 
         int i = 0;
         for(Pacjent s : list){
-            data1.add(i, new ListaPacjentow(s.getId_pacjenta(), s.getNazwisko_pacjenta(), s.getImie_pacjenta(), s.getPesel(), s.getAdres(), s.getMiejscowosc()));
+            data1.add(i, s);
             i++;
         }
-        nazwisko_table.setCellValueFactory(new PropertyValueFactory("nazwisko_table"));
-        imie_table.setCellValueFactory(new PropertyValueFactory("imie_table"));
-        pesel_table.setCellValueFactory(new PropertyValueFactory("pesel_table"));
-        ulica_table.setCellValueFactory(new PropertyValueFactory("ulica_table"));
-        miejscowosc_table.setCellValueFactory(new PropertyValueFactory("miejscowosc_table"));
+        nazwisko_table.setCellValueFactory(new PropertyValueFactory("nazwisko_pacjenta"));
+        imie_table.setCellValueFactory(new PropertyValueFactory("imie_pacjenta"));
+        pesel_table.setCellValueFactory(new PropertyValueFactory("pesel"));
+        ulica_table.setCellValueFactory(new PropertyValueFactory("adres"));
+        miejscowosc_table.setCellValueFactory(new PropertyValueFactory("miejscowosc"));
 
         table.getItems().setAll(data1);
-    }
-
-    public class ListaPacjentow{
-        public int id;
-        public SimpleStringProperty nazwisko_table, imie_table, pesel_table, ulica_table, miejscowosc_table;
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getNazwisko_table() {
-            return nazwisko_table.get();
-        }
-
-        public SimpleStringProperty nazwisko_tableProperty() {
-            return nazwisko_table;
-        }
-
-        public void setNazwisko_table(String nazwisko_table) {
-            this.nazwisko_table.set(nazwisko_table);
-        }
-
-        public String getImie_table() {
-            return imie_table.get();
-        }
-
-        public SimpleStringProperty imie_tableProperty() {
-            return imie_table;
-        }
-
-        public void setImie_table(String imie_table) {
-            this.imie_table.set(imie_table);
-        }
-
-        public String getPesel_table() {
-            return pesel_table.get();
-        }
-
-        public SimpleStringProperty pesel_tableProperty() {
-            return pesel_table;
-        }
-
-        public void setPesel_table(String pesel_table) {
-            this.pesel_table.set(pesel_table);
-        }
-
-        public String getUlica_table() {
-            return ulica_table.get();
-        }
-
-        public SimpleStringProperty ulica_tableProperty() {
-            return ulica_table;
-        }
-
-        public void setUlica_table(String ulica_table) {
-            this.ulica_table.set(ulica_table);
-        }
-
-        public String getMiejscowosc_table() {
-            return miejscowosc_table.get();
-        }
-
-        public SimpleStringProperty miejscowosc_tableProperty() {
-            return miejscowosc_table;
-        }
-
-        public void setMiejscowosc_table(String miejscowosc_table) {
-            this.miejscowosc_table.set(miejscowosc_table);
-        }
-
-        public ListaPacjentow(int id, String nazwisko_table, String imie_table, String pesel_table, String ulica_table, String miejscowosc_table) {
-            this.id = id;
-            this.nazwisko_table = new SimpleStringProperty(nazwisko_table);
-            this.imie_table = new SimpleStringProperty(imie_table);
-            this.pesel_table = new SimpleStringProperty(pesel_table);
-            this.ulica_table = new SimpleStringProperty(ulica_table);
-            this.miejscowosc_table = new SimpleStringProperty(miejscowosc_table);
-        }
     }
 
 }
