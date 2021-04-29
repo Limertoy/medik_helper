@@ -18,4 +18,27 @@ public class Wizyty {
     @JoinColumn(name="id_pacjenta")
     private Pacjent pacjent;
 
+    public Wizyty() {
+    }
+
+    public Wizyty(Kalendarz kalendarz, Pacjent pacjent) {
+        this.kalendarz = kalendarz;
+        this.pacjent = pacjent;
+    }
+
+    public Kalendarz getKalendarz() {
+        return kalendarz;
+    }
+
+    public void setKalendarz(Kalendarz kalendarz) {
+        this.kalendarz = kalendarz;
+    }
+
+    public Pacjent getPacjent() {
+        return pacjent;
+    }
+
+    public void setPacjent(Pacjent pacjent) {
+        this.pacjent = pacjent;
+    }
 }
