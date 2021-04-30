@@ -6,10 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity(name = "Wyposazenie")
-public class Wyposazenie {
+public class Wyposazenie implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -77,6 +78,7 @@ public class Wyposazenie {
                 ", ilosc_pozostalych=" + ilosc_pozostalych +
                 '}';
     }
+
 
     public Wyposazenie() {
     }
