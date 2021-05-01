@@ -31,6 +31,7 @@ public class ControllerLogin {
     public TextField textFieldPassword;
     public Text textNiepoprawny;
     public Text textLadowanie;
+    public static int id_sesji;
 
 
     public ControllerLogin(){}
@@ -79,12 +80,16 @@ public class ControllerLogin {
 
         for (Pracownik s : resultList) {
             if (s.getRola().getId_rola() == 1) {
+                id_sesji = s.getId_pracownika();
                 przejdz(actionEvent, "./src/main/java/lekarz/wizyty.fxml");
             } else if (s.getRola().getId_rola() == 2) {
+                id_sesji = s.getId_pracownika();
                 przejdz(actionEvent, "./src/main/java/pielegniarka/pielegniarkaPacjenci.fxml");
             } else if (s.getRola().getId_rola() == 3) {
+                id_sesji = s.getId_pracownika();
                 przejdz(actionEvent, "./src/main/java/dyrektor/dyrektorZamawianie.fxml");
             } else if (s.getRola().getId_rola() == 4) {
+                id_sesji = s.getId_pracownika();
                 przejdz(actionEvent, "./src/main/java/rejestracja/rejestracja.fxml");
             }
         }

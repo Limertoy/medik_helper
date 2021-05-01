@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import obiekty.Pacjent;
 import obiekty.Pracownik;
 import obiekty.Rola;
 import obiekty.Wyposazenie;
@@ -16,6 +17,7 @@ import org.hibernate.Session;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Main extends Application {
@@ -44,7 +46,12 @@ public class Main extends Application {
         Pracownik pracownik3 = new Pracownik("pielegniarka@email.com", "12345", pielegniarka, "Paweł", "Kulpiński");
         Pracownik pracownik4 = new Pracownik("rejestracja@email.com", "12345", rejestracja, "Dominik", "Filip");
 
+        Date date1 = new SimpleDateFormat("y-M-d").parse("1998-10-10");
+        Pacjent pacjent1 = new Pacjent("Nowak", "Janusz", "Jan", "98101013413", "mezczyzna", date1, "Podkarpackie", "Rzeszów", "Pigonia 12", "35-600", "123123123", "janusz@gmail.com");
+        Pacjent pacjent2 = new Pacjent("Nowakowski", "Jan", "Janusz", "98101013414", "mezczyzna", date1, "Podkarpackie", "Rzeszów", "Pigonia 12", "35-600", "999999999", "jan@gmail.com");
+
         Date date = new SimpleDateFormat("y-M-d").parse("2021-12-30");
+
 
         Wyposazenie wyposazenie = new Wyposazenie("Spirytus 10ml", "Antyseptyk", date, 52);
         Wyposazenie wyposazenie1 = new Wyposazenie("Szafraceum", "Lek", date, 25);
@@ -59,6 +66,8 @@ public class Main extends Application {
         session.save(rejestracja);
         session.save(pracownik1);
         session.save(pracownik2);
+        session.save(pacjent1);
+        session.save(pacjent2);
         session.getTransaction().commit();
 
 

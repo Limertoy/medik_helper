@@ -20,8 +20,13 @@ public class Pacjent {
     private String drugie_imie;
     private String pesel;
     private String plec;
-    private Date data_urodzeniaa;
+    private Date data_urodzenia;
     private String wojewodztwo;
+    private String miejscowosc;
+    private String adres;
+    private String kod_pocztowy;
+    private String telefon;
+    private String email;
 
     public int getId_pacjenta() {
         return id_pacjenta;
@@ -71,12 +76,12 @@ public class Pacjent {
         this.plec = plec;
     }
 
-    public Date getData_urodzeniaa() {
-        return data_urodzeniaa;
+    public Date getData_urodzenia() {
+        return data_urodzenia;
     }
 
-    public void setData_urodzeniaa(Date data_urodzeniaa) {
-        this.data_urodzeniaa = data_urodzeniaa;
+    public void setData_urodzenia(Date data_urodzenia) {
+        this.data_urodzenia = data_urodzenia;
     }
 
     public String getWojewodztwo() {
@@ -87,12 +92,12 @@ public class Pacjent {
         this.wojewodztwo = wojewodztwo;
     }
 
-    public String getMejscowosc() {
-        return mejscowosc;
+    public String getMiejscowosc() {
+        return miejscowosc;
     }
 
-    public void setMejscowosc(String mejscowosc) {
-        this.mejscowosc = mejscowosc;
+    public void setMiejscowosc(String miejscowosc) {
+        this.miejscowosc = miejscowosc;
     }
 
     public String getAdres() {
@@ -127,10 +132,40 @@ public class Pacjent {
         this.email = email;
     }
 
-    private String mejscowosc;
-    private String adres;
-    private String kod_pocztowy;
-    private String telefon;
-    private String email;
+    public Pacjent(String nazwisko_pacjenta, String imie_pacjenta, String drugie_imie, String pesel, String plec, Date data_urodzenia, String wojewodztwo, String miejscowosc, String adres, String kod_pocztowy, String telefon, String email) {
+        this.nazwisko_pacjenta = nazwisko_pacjenta;
+        this.imie_pacjenta = imie_pacjenta;
+        this.drugie_imie = drugie_imie;
+        this.pesel = pesel;
+        this.plec = plec;
+        this.data_urodzenia = data_urodzenia;
+        this.wojewodztwo = wojewodztwo;
+        this.miejscowosc = miejscowosc;
+        this.adres = adres;
+        this.kod_pocztowy = kod_pocztowy;
+        this.telefon = telefon;
+        this.email = email;
+    }
 
+    public Pacjent() {
+    }
+
+    @Override
+    public String toString() {
+        return "Pacjent{" +
+                "id_pacjenta=" + id_pacjenta +
+                ", nazwisko_pacjenta='" + nazwisko_pacjenta + '\'' +
+                ", imie_pacjenta='" + imie_pacjenta + '\'' +
+                ", drugie_imie='" + drugie_imie + '\'' +
+                ", pesel='" + pesel + '\'' +
+                ", plec='" + plec + '\'' +
+                ", data_urodzenia=" + data_urodzenia +
+                ", wojewodztwo='" + wojewodztwo + '\'' +
+                ", miejscowosc='" + miejscowosc + '\'' +
+                ", adres='" + adres + '\'' +
+                ", kod_pocztowy='" + kod_pocztowy + '\'' +
+                ", telefon='" + telefon + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

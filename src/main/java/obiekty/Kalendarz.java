@@ -10,19 +10,20 @@ public class Kalendarz {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private int id_kalendarza ;
+    private int id_kalendarza;
     private int nr_tygodnia;
     private int rok;
     @OneToOne
     @JoinColumn(name="id_pracownika")
     private Pracownik pracownik;
 
-    public int getId_kalendarza() {
-        return id_kalendarza;
+    public Kalendarz(int nr_tygodnia, int rok, Pracownik pracownik) {
+        this.nr_tygodnia = nr_tygodnia;
+        this.rok = rok;
+        this.pracownik = pracownik;
     }
 
-    public void setId_kalendarza(int id_kalendarza) {
-        this.id_kalendarza = id_kalendarza;
+    public Kalendarz() {
     }
 
     public int getNr_tygodnia() {
