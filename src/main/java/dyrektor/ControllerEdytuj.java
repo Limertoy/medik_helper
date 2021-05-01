@@ -33,10 +33,10 @@ public class ControllerEdytuj extends ControllerPracownicy implements Initializa
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        Query pr = session.createQuery("from Pracownik");
-        List<Pracownik> prac = pr.list();
-        for(Pracownik r : prac){
-            rolaDodaj.getItems().add(r.getRola().getNazwa());
+        Query pr = session.createQuery("from Rola");
+        List<Rola> prac = pr.list();
+        for(Rola r : prac){
+            rolaDodaj.getItems().add(r.getNazwa());
         }
 
         Query<Pracownik> q = session.createQuery("from Pracownik where id=:id")

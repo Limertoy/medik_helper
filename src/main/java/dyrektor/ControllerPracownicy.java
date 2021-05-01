@@ -182,14 +182,12 @@ public class ControllerPracownicy implements Initializable {
     public void edytuj(ActionEvent actionEvent) throws IOException {
         ListaPracownikow selected = pracownicy.getSelectionModel().getSelectedItem();
         id_zmien = selected.id;
-        System.out.println(id_zmien);
         przejdz(actionEvent,"./src/main/java/dyrektor/edytuj.fxml");
     }
 
     public void usun(ActionEvent actionEvent) throws IOException {
         session.beginTransaction();
         ListaPracownikow selected = pracownicy.getSelectionModel().getSelectedItem();
-        System.out.println(selected.id);
         Pracownik pracownik = session.get(Pracownik.class, selected.id);
         session.delete(pracownik);
         session.getTransaction().commit();

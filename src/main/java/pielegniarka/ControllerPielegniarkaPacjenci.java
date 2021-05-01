@@ -1,8 +1,11 @@
 package pielegniarka;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,22 +14,29 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.ResourceBundle;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import obiekty.Pacjent;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import sample.HibernateUtil;
 
-public class ControllerPielegniarkaPacjenci {
+public class ControllerPielegniarkaPacjenci implements Initializable {
     Stage primaryStage;
     @FXML
     Button buttonLogin, exit_button, minimalize_button, buttonGenerujRecepte;
     @FXML
-    private TableView<?> table;
+    private TableView<Pacjent> table;
     @FXML
-    private TableColumn<?, ?> nazwisko_table, imie_table, pesel_table, ulica_table, miejscowosc_table;
+    private TableColumn nazwisko_table, imie_table, pesel_table, ulica_table, miejscowosc_table;
+
+    Session session = HibernateUtil.getSessionFactory().openSession();
 
     public void wybierz(MouseEvent mouseEvent) { buttonGenerujRecepte.setVisible(true); }
 
@@ -75,5 +85,26 @@ public class ControllerPielegniarkaPacjenci {
 
         window.setScene(rejestracjaScene);
         window.show();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Query<Pacjent> q = session.createQuery("from Pacjent");
+        List<Pacjent> list = q.list();
+
+        ObservableList<Pacjent> data1 = FXCollections.observableArrayList();
+
+        int i = 0;
+        for(Pacjent s : list){
+            data1.add(i, s);
+            i++;
+        }
+        nazwisko_table.setCellValueFactory(new PropertyValueFactory("nazwisko_pacjenta"));
+        imie_table.setCellValueFactory(new PropertyValueFactory("imie_pacjenta"));
+        pesel_table.setCellValueFactory(new PropertyValueFactory("pesel"));
+        ulica_table.setCellValueFactory(new PropertyValueFactory("adres"));
+        miejscowosc_table.setCellValueFactory(new PropertyValueFactory("miejscowosc"));
+
+        table.getItems().setAll(data1);
     }
 }
