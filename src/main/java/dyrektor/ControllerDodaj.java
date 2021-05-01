@@ -45,10 +45,10 @@ public class ControllerDodaj implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Query rola = session.createQuery("from Pracownik");
-        List<Pracownik> listRola = rola.list();
-        for(Pracownik r : listRola){
-            rolaDodaj.getItems().add(r.getRola().getNazwa());
+        Query rola = session.createQuery("from Rola");
+        List<Rola> listRola = rola.list();
+        for(Rola r : listRola){
+            rolaDodaj.getItems().add(r.getNazwa());
         }
     }
 
