@@ -19,7 +19,7 @@
         <module name="Medik_helper" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="15">
       <module name="Medik_helper" target="15" />
     </bytecodeTargetLevel>
   </component>

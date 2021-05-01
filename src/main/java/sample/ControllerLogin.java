@@ -7,11 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import java.io.IOException;
-import java.net.URL;
-import java.nio.file.Paths;
-import java.util.List;
-
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -19,6 +14,11 @@ import javafx.stage.Stage;
 import obiekty.Pracownik;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+
+import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class ControllerLogin {
     public Stage primaryStage;

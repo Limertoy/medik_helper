@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -9,7 +8,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dyrektor.ControllerDyrektorZamawianie">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dyrektor.ControllerDyrektorZamawianie">
     <children>
         <Pane prefHeight="30.0" prefWidth="1180.0" style="-fx-background-color: #5CA3E5;">
             <children>
@@ -103,10 +102,10 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView prefHeight="602.0" prefWidth="772.0" AnchorPane.bottomAnchor="-31.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
+                              <TableView fx:id="wyposazenia" prefHeight="602.0" prefWidth="772.0" AnchorPane.bottomAnchor="-31.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
                                 <columns>
-                                  <TableColumn prefWidth="311.0" text="Nazwa" />
-                                  <TableColumn prefWidth="261.0" text="Ilość na stanie" />
+                                  <TableColumn fx:id="nazwaWyposazenie" prefWidth="311.0" text="Nazwa" />
+                                  <TableColumn fx:id="iloscWyposazenie" prefWidth="261.0" text="Ilość na stanie" />
                                     <TableColumn prefWidth="199.0" text="Cena" />
                                 </columns>
                               </TableView>
@@ -129,11 +128,11 @@
                 </Tab>
               </tabs>
             </TabPane>
-            <Button layoutX="627.0" layoutY="548.0" mnemonicParsing="false" text="Zamów" />
-            <TextField layoutX="372.0" layoutY="545.0" prefHeight="30.0" prefWidth="149.0" />
+            <Button layoutX="627.0" layoutY="548.0" mnemonicParsing="false" onAction="#zamow" text="Zamów" />
+            <TextField fx:id="how_many" layoutX="372.0" layoutY="545.0" prefHeight="30.0" prefWidth="149.0" />
             <Label layoutX="141.0" layoutY="525.0" text="Nazwa" />
-            <ChoiceBox layoutX="31.0" layoutY="545.0" prefHeight="30.0" prefWidth="268.0" />
-            <Label layoutX="433.0" layoutY="525.0" text="Label" />
+            <ChoiceBox fx:id="selectList" layoutX="31.0" layoutY="545.0" prefHeight="30.0" prefWidth="268.0" />
+            <Label layoutX="433.0" layoutY="525.0" text="Ile" />
          </children></Pane>
     </children>
 </AnchorPane>
