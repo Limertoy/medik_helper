@@ -80,7 +80,10 @@ public class ControllerKalendarz extends ControllerLogin implements Initializabl
         Sloty all;
         all = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
         String info = all.getInformacja();
-        if(info == "x") {
+        if(all.getPacjent() != null){
+            edytujButton.setVisible(false);
+            edytujButton1.setVisible(false);
+        } else if(info.equals("x")) {
             edytujButton.setVisible(false);
             edytujButton1.setVisible(true);
         } else {
@@ -95,7 +98,8 @@ public class ControllerKalendarz extends ControllerLogin implements Initializabl
         all = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
         String godzina = all.getGodzina();
         LocalDate localDate = datePicker.getValue();
-        Query q = session.createQuery("from Sloty where data=:data and godzina=:godzina");
+        Query q = session.createQuery("from Sloty where data=:data and godzina=:godzina and pracownik.id_pracownika=:pracownik");
+        q.setParameter("pracownik", id_sesji);
         q.setParameter("data", localDate);
         q.setParameter("godzina", godzina);
         List<Sloty> list = q.list();
@@ -115,7 +119,8 @@ public class ControllerKalendarz extends ControllerLogin implements Initializabl
         all = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
         String godzina = all.getGodzina();
         LocalDate localDate = datePicker.getValue();
-        Query q = session.createQuery("from Sloty where data=:data and godzina=:godzina");
+        Query q = session.createQuery("from Sloty where data=:data and godzina=:godzina and pracownik.id_pracownika=:pracownik");
+        q.setParameter("pracownik", id_sesji);
         q.setParameter("data", localDate);
         q.setParameter("godzina", godzina);
         List<Sloty> list = q.list();
@@ -132,11 +137,14 @@ public class ControllerKalendarz extends ControllerLogin implements Initializabl
     public void pracaDzien(ActionEvent actionEvent) {
         session.beginTransaction();
         LocalDate localDate = datePicker.getValue();
-        Query q = session.createQuery("from Sloty where data=:data");
+        Query q = session.createQuery("from Sloty where data=:data and pracownik.id_pracownika=:pracownik");
+        q.setParameter("pracownik", id_sesji);
         q.setParameter("data", localDate);
         List<Sloty> list = q.list();
         for (Sloty s : list){
-            s.setInformacja("x");
+            if(s.getPacjent() == null) {
+                s.setInformacja("x");
+            }
         }
         session.save(list.get(0));
         session.getTransaction().commit();
@@ -146,11 +154,13 @@ public class ControllerKalendarz extends ControllerLogin implements Initializabl
     public void pracaDzien1(ActionEvent actionEvent) {
         session.beginTransaction();
         LocalDate localDate = datePicker.getValue();
-        Query q = session.createQuery("from Sloty where data=:data");
+        Query q = session.createQuery("from Sloty where data=:data and pracownik.id_pracownika=:pracownik");
+        q.setParameter("pracownik", id_sesji);
         q.setParameter("data", localDate);
         List<Sloty> list = q.list();
         for (Sloty s : list){
-            s.setInformacja(" ");
+            if(s.getPacjent() == null)
+                s.setInformacja(" ");
         }
         session.save(list.get(0));
         session.getTransaction().commit();
