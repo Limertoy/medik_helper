@@ -81,7 +81,6 @@ public class ControllerKalendarz extends ControllerLogin implements Initializabl
         all = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
         String info = all.getInformacja();
         if(all.getPacjent() != null){
-            System.out.println(1);
             edytujButton.setVisible(false);
             edytujButton1.setVisible(false);
         } else if(info.equals("x")) {
