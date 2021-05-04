@@ -239,7 +239,7 @@ public class ControllerZarzadzaj implements Initializable {
     public void zmianaGodziny(MouseEvent mouseEvent) {
         Sloty slot = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
         String info = slot.getInformacja();
-        if(info == "x" || slot.getPacjent()!=null){
+        if(info.equals("x") || slot.getPacjent()!=null){
             dodajButton.setVisible(false);
         }else dodajButton.setVisible(true);
     }
