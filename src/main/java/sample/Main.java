@@ -44,7 +44,7 @@ public class Main extends Application {
         Pracownik pracownik3 = new Pracownik("pielegniarka@email.com", "12345", pielegniarka, "Paweł", "Kulpiński");
         Pracownik pracownik4 = new Pracownik("rejestracja@email.com", "12345", rejestracja, "Dominik", "Filip");
 
-        Date date1 = new SimpleDateFormat("y-M-d").parse("1998-10-10");
+        LocalDate date1 = LocalDate.parse("1998-10-10");
         Pacjent pacjent1 = new Pacjent("Nowak", "Janusz", "Jan", "98101013413", "mezczyzna", date1, "Podkarpackie", "Rzeszów", "Pigonia 12", "35-600", "123123123", "janusz@gmail.com");
         Pacjent pacjent2 = new Pacjent("Nowakowski", "Jan", "Janusz", "98101013414", "mezczyzna", date1, "Podkarpackie", "Rzeszów", "Pigonia 12", "35-600", "999999999", "jan@gmail.com");
 
@@ -64,6 +64,8 @@ public class Main extends Application {
         Sloty slot5 = new Sloty(date2, "10:00", " ", pracownik1);
         Sloty slot6 = new Sloty(date2, "10:30", " ", pracownik1);
         Sloty slot7 = new Sloty(date3, "10:30", " ", pracownik5);
+
+        slot1.setPacjent(pacjent1);
 
         session.save(slot1);
         session.save(slot2);
