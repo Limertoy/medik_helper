@@ -95,7 +95,6 @@ public class ControllerLogin {
         }
         textLadowanie.setVisible(false);
         textNiepoprawny.setVisible(true);
-
     }
 
 }

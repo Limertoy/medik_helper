@@ -12,8 +12,8 @@ public class Wizyty {
     @GenericGenerator(name = "native", strategy = "native")
     private int id_wizyty;
     @OneToOne
-    @JoinColumn(name="id_kalendarza")
-    private Kalendarz kalendarz;
+    @JoinColumn(name="id_slota")
+    private Sloty slot;
     @OneToOne
     @JoinColumn(name="id_pacjenta")
     private Pacjent pacjent;
@@ -21,17 +21,25 @@ public class Wizyty {
     public Wizyty() {
     }
 
-    public Wizyty(Kalendarz kalendarz, Pacjent pacjent) {
-        this.kalendarz = kalendarz;
+    public Wizyty(Sloty slot, Pacjent pacjent) {
+        this.slot = slot;
         this.pacjent = pacjent;
     }
 
-    public Kalendarz getKalendarz() {
-        return kalendarz;
+    public int getId_wizyty() {
+        return id_wizyty;
     }
 
-    public void setKalendarz(Kalendarz kalendarz) {
-        this.kalendarz = kalendarz;
+    public void setId_wizyty(int id_wizyty) {
+        this.id_wizyty = id_wizyty;
+    }
+
+    public Sloty getSlot() {
+        return slot;
+    }
+
+    public void setSlot(Sloty slot) {
+        this.slot = slot;
     }
 
     public Pacjent getPacjent() {
