@@ -80,11 +80,11 @@ public class ControllerKalendarz extends ControllerLogin implements Initializabl
         Sloty all;
         all = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
         String info = all.getInformacja();
-        if(info.equals("wizyta")){
+        if(all.getPacjent() != null){
+            System.out.println(1);
             edytujButton.setVisible(false);
             edytujButton1.setVisible(false);
-        }
-        if(info.equals("x")) {
+        } else if(info.equals("x")) {
             edytujButton.setVisible(false);
             edytujButton1.setVisible(true);
         } else {
