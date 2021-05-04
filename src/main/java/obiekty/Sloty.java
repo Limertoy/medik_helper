@@ -14,8 +14,8 @@ public class Sloty {
     @GenericGenerator(name = "native", strategy = "native")
     private int id_slota;
     @OneToOne
-    @JoinColumn(name="id_wizyty")
-    private Wizyty wizyta;
+    @JoinColumn(name="id_pacjenta")
+    private Pacjent pacjent;
     private LocalDate data;
     private String godzina;
     private String informacja;
@@ -49,12 +49,12 @@ public class Sloty {
     public Sloty() {
     }
 
-    public Wizyty getWizyta() {
-        return wizyta;
+    public Pacjent getPacjent() {
+        return pacjent;
     }
 
-    public void setWizyta(Wizyty wizyta) {
-        this.wizyta = wizyta;
+    public void setPacjent(Pacjent pacjent) {
+        this.pacjent = pacjent;
     }
 
     public LocalDate getData() {
@@ -85,7 +85,7 @@ public class Sloty {
     public String toString() {
         return "Sloty{" +
                 "id_slota=" + id_slota +
-                ", wizyta=" + wizyta +
+                ", wizyta=" + pacjent +
                 ", data=" + data +
                 ", godzina=" + godzina +
                 ", informacja='" + informacja + '\'' +
