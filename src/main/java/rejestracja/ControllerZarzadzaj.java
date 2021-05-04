@@ -80,10 +80,7 @@ public class ControllerZarzadzaj implements Initializable {
                         String lowerCaseFilter = newValue.toLowerCase();
                 if (pracownik.getImie_pracownika().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (pracownik.getNazwisko_pracownika().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-                return false;
+                } else return pracownik.getNazwisko_pracownika().toLowerCase().contains(lowerCaseFilter);
             });
             });
             SortedList<Pracownik> sortedData = new SortedList<>(filteredData1);
@@ -114,10 +111,7 @@ public class ControllerZarzadzaj implements Initializable {
                     return true;
                 } else if (pacjent.getNazwisko_pacjenta().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                }else if (pacjent.getPesel().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-                return false;
+                }else return pacjent.getPesel().toLowerCase().contains(lowerCaseFilter);
             });
         });
         SortedList<Pacjent> sortedData1 = new SortedList<>(filteredData2);
@@ -208,7 +202,8 @@ public class ControllerZarzadzaj implements Initializable {
         if(godzina!=null && pacjent!=null){
             session.beginTransaction();
             LocalDate localDate = datePicker.getValue();
-            Query q = session.createQuery("from Sloty where data=:data and godzina=:godzina");
+            Query q = session.createQuery("from Sloty where data=:data and godzina=:godzina and pracownik=:pracownik");
+            q.setParameter("pracownik", all);
             q.setParameter("data",localDate);
             q.setParameter("godzina",godzina.getGodzina());
             List<Sloty> list = q.list();
