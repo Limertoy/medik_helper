@@ -80,7 +80,7 @@ public class ControllerKalendarz extends ControllerLogin implements Initializabl
         Sloty all;
         all = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
         String info = all.getInformacja();
-        if(info == "wizyta"){
+        if(all.getPacjent() == null){
             edytujButton.setVisible(false);
             edytujButton1.setVisible(false);
         }
@@ -143,8 +143,9 @@ public class ControllerKalendarz extends ControllerLogin implements Initializabl
         q.setParameter("data", localDate);
         List<Sloty> list = q.list();
         for (Sloty s : list){
-            if(s.getInformacja() != "wizyta")
-            s.setInformacja("x");
+            if(s.getPacjent() == null) {
+                s.setInformacja("x");
+            }
         }
         session.save(list.get(0));
         session.getTransaction().commit();
@@ -159,7 +160,7 @@ public class ControllerKalendarz extends ControllerLogin implements Initializabl
         q.setParameter("data", localDate);
         List<Sloty> list = q.list();
         for (Sloty s : list){
-            if(s.getInformacja() != "wizyta")
+            if(s.getPacjent() == null)
             s.setInformacja(" ");
         }
         session.save(list.get(0));
