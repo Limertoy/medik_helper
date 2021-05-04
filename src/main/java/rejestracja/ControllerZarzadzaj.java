@@ -39,6 +39,7 @@ public class ControllerZarzadzaj implements Initializable {
     public TableView<Pracownik> pracownicy;
     public TableColumn infoTable;
     public TableView kalendarz;
+    public Button dodajButton;
     @FXML
     private TableView<Pacjent> pacjenci;
     @FXML
@@ -233,6 +234,14 @@ public class ControllerZarzadzaj implements Initializable {
         }
 
 
+    }
+
+    public void zmianaGodziny(MouseEvent mouseEvent) {
+        Sloty slot = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
+        String info = slot.getInformacja();
+        if(info == "x" || slot.getPacjent()!=null){
+            dodajButton.setVisible(false);
+        }else dodajButton.setVisible(true);
     }
 }
 
