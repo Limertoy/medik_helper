@@ -1,9 +1,9 @@
 package lekarz;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,20 +15,36 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
-import javafx.scene.input.MouseEvent;
+
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import obiekty.Pacjent;
+import obiekty.Sloty;
 import org.hibernate.Session;
+import sample.ControllerLogin;
 import sample.HibernateUtil;
 
+import org.hibernate.query.Query;
 
-public class ControllerKalendarz implements Initializable {
-    public TableColumn godzinaTable, ponTable, wtoTable, sroTable, czwTable, piaTable, sobTable, niedTable;
-    public TableView<Kalen> kalendarz = new TableView<Kalen>();
+
+public class ControllerKalendarz extends ControllerLogin implements Initializable {
+    public TableColumn godzinaTable, infoTable;
+    public TableView kalendarz;
+    public ChoiceBox choiseGodzina;
+    public Text textGodzina;
     @FXML
-    Button buttonLogin, exit_button, minimalize_button, edytujButton, pracaDzienButton;
+    Button buttonLogin, exit_button, minimalize_button, edytujButton, pracaDzienButton, pracaDzienButton1, edytujButton1;
     @FXML
     DatePicker datePicker = new DatePicker(LocalDate.now());
+
+    Session session = HibernateUtil.getSessionFactory().openSession();
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+    }
 
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
@@ -40,167 +56,113 @@ public class ControllerKalendarz implements Initializable {
         stage.setIconified(true);
     }
 
-    public void selectOne(MouseEvent mouseEvent) {
-        edytujButton.setVisible(true);
+    public void reloadDate(){
+        LocalDate localDate = datePicker.getValue();
+        Query q = session.createQuery("from Sloty where data=:data")
+                .setParameter("data", localDate);
+        List<Sloty> list1 = q.list();
+
+        ObservableList<Sloty> data1 = FXCollections.observableArrayList();
+
+        int i = 0;
+        for(Sloty s : list1){
+            if(s.getPracownik().getId_pracownika() == id_sesji) {
+                data1.add(i, s);
+                i++;
+            }
+        }
+        godzinaTable.setCellValueFactory(new PropertyValueFactory("godzina"));
+        infoTable.setCellValueFactory(new PropertyValueFactory("informacja"));
+        kalendarz.getItems().setAll(data1);
+    }
+
+    public void selectOne(Event event) {
+        Sloty all;
+        all = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
+        String info = all.getInformacja();
+        if(info == "x") {
+            edytujButton.setVisible(false);
+            edytujButton1.setVisible(true);
+        } else {
+            edytujButton.setVisible(true);
+            edytujButton1.setVisible(false);
+        }
     }
 
     public void pracaGodzina(ActionEvent actionEvent) {
+        session.beginTransaction();
+        Sloty all;
+        all = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
+        String godzina = all.getGodzina();
+        LocalDate localDate = datePicker.getValue();
+        Query q = session.createQuery("from Sloty where data=:data and godzina=:godzina");
+        q.setParameter("data", localDate);
+        q.setParameter("godzina", godzina);
+        List<Sloty> list = q.list();
+        for (Sloty s : list){
+            s.setInformacja("x");
+        }
+        session.save(list.get(0));
+        session.getTransaction().commit();
+        reloadDate();
+        edytujButton.setVisible(false);
+        edytujButton1.setVisible(true);
+    }
+
+    public void pracaGodzina1(ActionEvent actionEvent) {
+        session.beginTransaction();
+        Sloty all;
+        all = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
+        String godzina = all.getGodzina();
+        LocalDate localDate = datePicker.getValue();
+        Query q = session.createQuery("from Sloty where data=:data and godzina=:godzina");
+        q.setParameter("data", localDate);
+        q.setParameter("godzina", godzina);
+        List<Sloty> list = q.list();
+        for (Sloty s : list){
+            s.setInformacja(" ");
+        }
+        session.save(list.get(0));
+        session.getTransaction().commit();
+        reloadDate();
+        edytujButton.setVisible(true);
+        edytujButton1.setVisible(false);
     }
 
     public void pracaDzien(ActionEvent actionEvent) {
+        session.beginTransaction();
+        LocalDate localDate = datePicker.getValue();
+        Query q = session.createQuery("from Sloty where data=:data");
+        q.setParameter("data", localDate);
+        List<Sloty> list = q.list();
+        for (Sloty s : list){
+            s.setInformacja("x");
+        }
+        session.save(list.get(0));
+        session.getTransaction().commit();
+        reloadDate();
+    }
+
+    public void pracaDzien1(ActionEvent actionEvent) {
+        session.beginTransaction();
+        LocalDate localDate = datePicker.getValue();
+        Query q = session.createQuery("from Sloty where data=:data");
+        q.setParameter("data", localDate);
+        List<Sloty> list = q.list();
+        for (Sloty s : list){
+            s.setInformacja(" ");
+        }
+        session.save(list.get(0));
+        session.getTransaction().commit();
+        reloadDate();
     }
 
     public void zmianaDaty(ActionEvent actionEvent) {
         pracaDzienButton.setVisible(true);
+        pracaDzienButton1.setVisible(true);
+        reloadDate();
     }
 
-
-    public class Kalen {
-        public String getGodzina() {
-            return godzina.get();
-        }
-
-        public SimpleStringProperty godzinaProperty() {
-            return godzina;
-        }
-
-        public void setGodzina(String godzina) {
-            this.godzina.set(godzina);
-        }
-
-
-        public String getPon() {
-            return pon.get();
-        }
-
-
-        public void setPon(String pon) {
-            this.pon.set(pon);
-        }
-
-        public String getWto() {
-            return wto.get();
-        }
-
-        public SimpleStringProperty wtoProperty() {
-            return wto;
-        }
-
-        public void setWto(String wto) {
-            this.wto.set(wto);
-        }
-
-        public String getSro() {
-            return sro.get();
-        }
-
-        public SimpleStringProperty sroProperty() {
-            return sro;
-        }
-
-        public void setSro(String sro) {
-            this.sro.set(sro);
-        }
-
-        public String getCzw() {
-            return czw.get();
-        }
-
-        public SimpleStringProperty czwProperty() {
-            return czw;
-        }
-
-        public void setCzw(String czw) {
-            this.czw.set(czw);
-        }
-
-        public String getPia() {
-            return pia.get();
-        }
-
-        public SimpleStringProperty piaProperty() {
-            return pia;
-        }
-
-        public void setPia(String pia) {
-            this.pia.set(pia);
-        }
-
-        public String getSob() {
-            return sob.get();
-        }
-
-        public SimpleStringProperty sobProperty() {
-            return sob;
-        }
-
-        public void setSob(String sob) {
-            this.sob.set(sob);
-        }
-
-        public String getNied() {
-            return nied.get();
-        }
-
-        public SimpleStringProperty niedProperty() {
-            return nied;
-        }
-
-        public void setNied(String nied) {
-            this.nied.set(nied);
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public SimpleStringProperty ponProperty() {
-            return pon;
-        }
-
-        public int id;
-        public SimpleStringProperty godzina;
-        public SimpleStringProperty pon;
-        public SimpleStringProperty wto;
-        public SimpleStringProperty sro;
-        public SimpleStringProperty czw;
-        public SimpleStringProperty pia;
-        public SimpleStringProperty sob;
-        public SimpleStringProperty nied;
-
-        public Kalen(int id, String godzina, String pon, String wto, String sro, String czw, String pia, String sob, String nied) {
-            this.id = id;
-            this.godzina = new SimpleStringProperty(godzina);
-            this.pon = new SimpleStringProperty(pon);
-            this.wto = new SimpleStringProperty(wto);
-            this.sro = new SimpleStringProperty(sro);
-            this.czw = new SimpleStringProperty(czw);
-            this.pia = new SimpleStringProperty(pia);
-            this.sob = new SimpleStringProperty(sob);
-            this.nied = new SimpleStringProperty(nied);
-        }
-    }
-
-    public final ObservableList<Kalen> data = FXCollections.observableArrayList(
-            new Kalen(1,"8:00", " ", "Andriy Adamovych", " ", "Paweł Kulpiński", " ", " ", " "),
-            new Kalen(2,"8:30", " ", "", "Dominik Filip", "", " ", " ", " "),
-            new Kalen(3,"9:00", "Maciej Dukacz", "", "", "", " ", " ", "Agata Szkup")
-    );
-
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        kalendarz.getItems().setAll(this.data);
-
-        kalendarz.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        kalendarz.getSelectionModel().setCellSelectionEnabled(true);
-    }
 
 
     //PRZYCISKI PRZEŁĄCZENIA NA INNY EKRAN

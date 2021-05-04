@@ -3,15 +3,13 @@ package sample;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.LoadException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import obiekty.Pacjent;
-import obiekty.Pracownik;
-import obiekty.Rola;
-import obiekty.Wyposazenie;
+import obiekty.*;
 import org.hibernate.Session;
 
 import java.net.URL;
@@ -35,13 +33,13 @@ public class Main extends Application {
         Rola pielegniarka = new Rola();
         Rola rejestracja = new Rola();
 
-
         lekarz.setNazwa("Lekarz");
         dyrektor.setNazwa("Dyrektor");
         pielegniarka.setNazwa("Pielęgniarka");
         rejestracja.setNazwa("Rejestracja");
 
         Pracownik pracownik1 = new Pracownik("lekarz@email.com", "12345", lekarz, "Jan", "Kowalski");
+        Pracownik pracownik5 = new Pracownik("lekarz1@email.com", "12345", lekarz, "Janusz", "Nowak");
         Pracownik pracownik2 = new Pracownik("dyrektor@email.com", "12345", dyrektor, "Andriy", "Adamovych");
         Pracownik pracownik3 = new Pracownik("pielegniarka@email.com", "12345", pielegniarka, "Paweł", "Kulpiński");
         Pracownik pracownik4 = new Pracownik("rejestracja@email.com", "12345", rejestracja, "Dominik", "Filip");
@@ -56,6 +54,25 @@ public class Main extends Application {
         Wyposazenie wyposazenie = new Wyposazenie("Spirytus 10ml", "Antyseptyk", date, 52);
         Wyposazenie wyposazenie1 = new Wyposazenie("Szafraceum", "Lek", date, 25);
 
+        LocalDate date2 = LocalDate.parse("2021-05-04");
+        LocalDate date3 = LocalDate.parse("2021-05-05");
+
+        Sloty slot1 = new Sloty(date2, "8:00", " ", pracownik1);
+        Sloty slot2 = new Sloty(date2, "8:30", " ", pracownik1);
+        Sloty slot3 = new Sloty(date2, "9:00", " ", pracownik1);
+        Sloty slot4 = new Sloty(date2, "9:30", " ", pracownik1);
+        Sloty slot5 = new Sloty(date2, "10:00", " ", pracownik1);
+        Sloty slot6 = new Sloty(date2, "10:30", " ", pracownik1);
+        Sloty slot7 = new Sloty(date3, "10:30", " ", pracownik5);
+
+        session.save(slot1);
+        session.save(slot2);
+        session.save(slot3);
+        session.save(slot4);
+        session.save(slot5);
+        session.save(slot6);
+        session.save(slot7);
+        session.save(pracownik5);
         session.save(wyposazenie);
         session.save(wyposazenie1);
         session.save(lekarz);
