@@ -63,8 +63,8 @@ public class ControllerZarzadzaj implements Initializable {
         int i = 0;
         for(Pracownik s : list){
             if(s.getRola().getId_rola()== 1){
-                data1.add(i,s);
-                i++;
+            data1.add(i,s);
+            i++;
             }
         }
 
@@ -73,18 +73,18 @@ public class ControllerZarzadzaj implements Initializable {
 
 
         FilteredList<Pracownik> filteredData1 = new FilteredList<>(data1, b -> true);
-        szukaj.textProperty().addListener((observable, oldValue, newValue) -> {
+            szukaj.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData1.setPredicate(pracownik -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                String lowerCaseFilter = newValue.toLowerCase();
+                        if (newValue == null || newValue.isEmpty()) {
+                            return true;
+                        }
+                        String lowerCaseFilter = newValue.toLowerCase();
                 if (pracownik.getImie_pracownika().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 } else return pracownik.getNazwisko_pracownika().toLowerCase().contains(lowerCaseFilter);
             });
-        });
-        SortedList<Pracownik> sortedData = new SortedList<>(filteredData1);
+            });
+            SortedList<Pracownik> sortedData = new SortedList<>(filteredData1);
         sortedData.comparatorProperty().bind(pracownicy.comparatorProperty());
         pracownicy.setItems(sortedData);
 
@@ -94,9 +94,9 @@ public class ControllerZarzadzaj implements Initializable {
         ObservableList<Pacjent> data2 = FXCollections.observableArrayList();
         int j = 0;
         for(Pacjent s : list1){
-            data2.add(j, s);
-            j++;
-        }
+                data2.add(j, s);
+                j++;
+            }
         imieTable.setCellValueFactory(new PropertyValueFactory("imie_pacjenta"));
         nazwiskoTable.setCellValueFactory(new PropertyValueFactory("nazwisko_pacjenta"));
         peselTable.setCellValueFactory(new PropertyValueFactory("pesel"));
@@ -239,6 +239,9 @@ public class ControllerZarzadzaj implements Initializable {
     public void zmianaGodziny(MouseEvent mouseEvent) {
         Sloty slot = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
         String info = slot.getInformacja();
-        dodajButton.setVisible(!info.equals("x") && slot.getPacjent() == null);
+        if(info.equals("x") || slot.getPacjent()!=null){
+            dodajButton.setVisible(false);
+        }else dodajButton.setVisible(true);
     }
 }
+
