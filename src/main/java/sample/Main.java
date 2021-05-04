@@ -65,6 +65,8 @@ public class Main extends Application {
         Sloty slot6 = new Sloty(date2, "10:30", " ", pracownik1);
         Sloty slot7 = new Sloty(date3, "10:30", " ", pracownik5);
 
+        slot1.setPacjent(pacjent1);
+
         session.save(slot1);
         session.save(slot2);
         session.save(slot3);
