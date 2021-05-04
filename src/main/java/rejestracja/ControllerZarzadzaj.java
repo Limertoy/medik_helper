@@ -14,24 +14,31 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import lekarz.ControllerKalendarz;
 import obiekty.Pacjent;
 import obiekty.Pracownik;
+import obiekty.Sloty;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import sample.ControllerLogin;
 import sample.HibernateUtil;
 
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class ControllerZarzadzaj implements Initializable {
     @FXML
-    public TableColumn godzinaTable, ponTable, wtoTable, sroTable, czwTable, piaTable, sobTable, niedTable;
+    public TableColumn godzinaTable;
     @FXML
     public TableView<Pracownik> pracownicy;
+    public TableColumn infoTable;
+    public TableView kalendarz;
     @FXML
     private TableView<Pacjent> pacjenci;
     @FXML
@@ -40,6 +47,8 @@ public class ControllerZarzadzaj implements Initializable {
     public TextField szukaj, szukaj1;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
+    @FXML
+    DatePicker datePicker = new DatePicker(LocalDate.now());
 
     Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -166,5 +175,72 @@ public class ControllerZarzadzaj implements Initializable {
         window.show();
     }
 
+    public void reloadDate(){
+        LocalDate localDate = datePicker.getValue();
+        Pracownik all = pracownicy.getSelectionModel().getSelectedItem();
+        int lekarz = all.getId_pracownika();
+
+        Query q = session.createQuery("from Sloty where data=:data")
+                .setParameter("data", localDate);
+        List<Sloty> list1 = q.list();
+
+        ObservableList<Sloty> data1 = FXCollections.observableArrayList();
+
+        int i = 0;
+        for(Sloty s : list1){
+            if(s.getPracownik().getId_pracownika() == lekarz) {
+                data1.add(i, s);
+                i++;
+            }
+        }
+        godzinaTable.setCellValueFactory(new PropertyValueFactory("godzina"));
+        infoTable.setCellValueFactory(new PropertyValueFactory("informacja"));
+        kalendarz.getItems().setAll(data1);
+    }
+
+
+    public void dodaj(ActionEvent actionEvent) {
+        Sloty godzina = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
+        Pacjent pacjent = pacjenci.getSelectionModel().getSelectedItem();
+        Pracownik all = pracownicy.getSelectionModel().getSelectedItem();
+        int lekarz = all.getId_pracownika();
+
+        if(godzina!=null && pacjent!=null){
+            session.beginTransaction();
+            LocalDate localDate = datePicker.getValue();
+            Query q = session.createQuery("from Sloty where data=:data and godzina=:godzina");
+            q.setParameter("data",localDate);
+            q.setParameter("godzina",godzina.getGodzina());
+            List<Sloty> list = q.list();
+            for (Sloty s : list){
+                if(s.getPracownik().getId_pracownika()==lekarz){
+                    s.setInformacja("wizyta");
+                    s.setPacjent(pacjent);
+                }
+            }
+            session.save(list.get(0));
+            session.getTransaction().commit();
+            reloadDate();
+        }
+
+    }
+
+    public void selectLekarz(MouseEvent mouseEvent) {
+        reloadDate();
+
+
+    }
+
+    public void selectPacjent(MouseEvent mouseEvent) {
+    }
+
+    public void zmianaDaty2(ActionEvent actionEvent) {
+        Pracownik all = pracownicy.getSelectionModel().getSelectedItem();
+        if(all!=null){
+            reloadDate();
+        }
+
+
+    }
 }
 
