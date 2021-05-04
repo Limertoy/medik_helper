@@ -14,26 +14,31 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import lekarz.ControllerKalendarz;
 import obiekty.Pacjent;
 import obiekty.Pracownik;
+import obiekty.Sloty;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import sample.ControllerLogin;
 import sample.HibernateUtil;
 
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class ControllerZarzadzaj implements Initializable {
     @FXML
-    public TableColumn godzinaTable, ponTable, wtoTable, sroTable, czwTable, piaTable, sobTable, niedTable;
-    @FXML
-    public TableView<ControllerZarzadzaj.Kalen> kalendarz = new TableView<ControllerZarzadzaj.Kalen>();
+    public TableColumn godzinaTable;
     @FXML
     public TableView<Pracownik> pracownicy;
+    public TableColumn infoTable;
+    public TableView kalendarz;
     @FXML
     private TableView<Pacjent> pacjenci;
     @FXML
@@ -42,6 +47,8 @@ public class ControllerZarzadzaj implements Initializable {
     public TextField szukaj, szukaj1;
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
+    @FXML
+    DatePicker datePicker = new DatePicker(LocalDate.now());
 
     Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -117,157 +124,8 @@ public class ControllerZarzadzaj implements Initializable {
         sortedData1.comparatorProperty().bind(pacjenci.comparatorProperty());
         pacjenci.setItems(sortedData1);
 
-
-
-        kalendarz.getItems().setAll(this.data);
-        kalendarz.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        kalendarz.getSelectionModel().setCellSelectionEnabled(true);
     }
 
-    public class Kalen {
-        public String getGodzina() {
-            return godzina.get();
-        }
-
-        public SimpleStringProperty godzinaProperty() {
-            return godzina;
-        }
-
-        public void setGodzina(String godzina) {
-            this.godzina.set(godzina);
-        }
-
-
-        public String getPon() {
-            return pon.get();
-        }
-
-
-        public void setPon(String pon) {
-            this.pon.set(pon);
-        }
-
-        public String getWto() {
-            return wto.get();
-        }
-
-        public SimpleStringProperty wtoProperty() {
-            return wto;
-        }
-
-        public void setWto(String wto) {
-            this.wto.set(wto);
-        }
-
-        public String getSro() {
-            return sro.get();
-        }
-
-        public SimpleStringProperty sroProperty() {
-            return sro;
-        }
-
-        public void setSro(String sro) {
-            this.sro.set(sro);
-        }
-
-        public String getCzw() {
-            return czw.get();
-        }
-
-        public SimpleStringProperty czwProperty() {
-            return czw;
-        }
-
-        public void setCzw(String czw) {
-            this.czw.set(czw);
-        }
-
-        public String getPia() {
-            return pia.get();
-        }
-
-        public SimpleStringProperty piaProperty() {
-            return pia;
-        }
-
-        public void setPia(String pia) {
-            this.pia.set(pia);
-        }
-
-        public String getSob() {
-            return sob.get();
-        }
-
-        public SimpleStringProperty sobProperty() {
-            return sob;
-        }
-
-        public void setSob(String sob) {
-            this.sob.set(sob);
-        }
-
-        public String getNied() {
-            return nied.get();
-        }
-
-        public SimpleStringProperty niedProperty() {
-            return nied;
-        }
-
-        public void setNied(String nied) {
-            this.nied.set(nied);
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public SimpleStringProperty ponProperty() {
-            return pon;
-        }
-
-        public int id;
-        public SimpleStringProperty godzina;
-        public SimpleStringProperty pon;
-        public SimpleStringProperty wto;
-        public SimpleStringProperty sro;
-        public SimpleStringProperty czw;
-        public SimpleStringProperty pia;
-        public SimpleStringProperty sob;
-        public SimpleStringProperty nied;
-
-        public Kalen(int id, String godzina, String pon, String wto, String sro, String czw, String pia, String sob, String nied) {
-            this.id = id;
-            this.godzina = new SimpleStringProperty(godzina);
-            this.pon = new SimpleStringProperty(pon);
-            this.wto = new SimpleStringProperty(wto);
-            this.sro = new SimpleStringProperty(sro);
-            this.czw = new SimpleStringProperty(czw);
-            this.pia = new SimpleStringProperty(pia);
-            this.sob = new SimpleStringProperty(sob);
-            this.nied = new SimpleStringProperty(nied);
-        }
-    }
-
-    public final ObservableList<ControllerZarzadzaj.Kalen> data = FXCollections.observableArrayList(
-            new ControllerZarzadzaj.Kalen(1,"8:00", " ", "Andriy Adamovych", " ", "Paweł Kulpiński", " ", " ", " "),
-            new ControllerZarzadzaj.Kalen(2,"8:30", " ", "", "Dominik Filip", "", " ", " ", " "),
-            new ControllerZarzadzaj.Kalen(3,"9:00", "Maciej Dukacz", "", "", "", " ", " ", "Agata Szkup")
-    );
-
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-//        // TODO
-//        kalendarz.getItems().setAll(this.data);
-//
-//        kalendarz.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-//        kalendarz.getSelectionModel().setCellSelectionEnabled(true);
-//    }
 
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
@@ -317,5 +175,69 @@ public class ControllerZarzadzaj implements Initializable {
         window.show();
     }
 
+    public void reloadDate(){
+        LocalDate localDate = datePicker.getValue();
+        Pracownik all = pracownicy.getSelectionModel().getSelectedItem();
+        int lekarz = all.getId_pracownika();
+
+        Query q = session.createQuery("from Sloty where data=:data")
+                .setParameter("data", localDate);
+        List<Sloty> list1 = q.list();
+
+        ObservableList<Sloty> data1 = FXCollections.observableArrayList();
+
+        int i = 0;
+        for(Sloty s : list1){
+            if(s.getPracownik().getId_pracownika() == lekarz) {
+                data1.add(i, s);
+                i++;
+            }
+        }
+        godzinaTable.setCellValueFactory(new PropertyValueFactory("godzina"));
+        infoTable.setCellValueFactory(new PropertyValueFactory("informacja"));
+        kalendarz.getItems().setAll(data1);
+    }
+
+
+    public void dodaj(ActionEvent actionEvent) {
+        Sloty godzina = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
+        Pacjent pacjent = pacjenci.getSelectionModel().getSelectedItem();
+        Pracownik all = pracownicy.getSelectionModel().getSelectedItem();
+        int lekarz = all.getId_pracownika();
+
+        if(godzina!=null && pacjent!=null){
+            session.beginTransaction();
+            LocalDate localDate = datePicker.getValue();
+            Query q = session.createQuery("from Sloty where data=:data and godzina=:godzina");
+            q.setParameter("data",localDate);
+            q.setParameter("godzina",godzina.getGodzina());
+            List<Sloty> list = q.list();
+            for (Sloty s : list){
+                if(s.getPracownik().getId_pracownika()==lekarz){
+                    s.setInformacja("wizyta");
+                    s.setPacjent(pacjent);
+                }
+            }
+            session.save(list.get(0));
+            session.getTransaction().commit();
+            reloadDate();
+        }
+
+    }
+
+    public void selectLekarz(MouseEvent mouseEvent) {
+        reloadDate();
+
+
+    }
+
+    public void zmianaDaty2(ActionEvent actionEvent) {
+        Pracownik all = pracownicy.getSelectionModel().getSelectedItem();
+        if(all!=null){
+            reloadDate();
+        }
+
+
+    }
 }
 
