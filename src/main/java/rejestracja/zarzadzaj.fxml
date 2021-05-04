@@ -107,7 +107,7 @@
          </children></Pane>
       <Pane layoutX="920.0" layoutY="200.0" prefHeight="550.0" prefWidth="200.0" style="-fx-border-color: #5ca3e5;">
          <children>
-            <TableView fx:id="pacjenci" onMouseClicked="#selectPacjent" prefHeight="550.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5; -fx-background-radius: 8; -fx-border-radius: 8;">
+            <TableView fx:id="pacjenci" prefHeight="550.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5; -fx-background-radius: 8; -fx-border-radius: 8;">
                <columns>
                   <TableColumn fx:id="nazwiskoTable" editable="false" text="Nazwisko" />
                   <TableColumn fx:id="imieTable" editable="false" prefWidth="50.0" text="Imię" />

@@ -231,9 +231,6 @@ public class ControllerZarzadzaj implements Initializable {
 
     }
 
-    public void selectPacjent(MouseEvent mouseEvent) {
-    }
-
     public void zmianaDaty2(ActionEvent actionEvent) {
         Pracownik all = pracownicy.getSelectionModel().getSelectedItem();
         if(all!=null){
