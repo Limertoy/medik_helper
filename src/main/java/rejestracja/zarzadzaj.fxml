@@ -97,7 +97,7 @@
         </Button>
       <Pane layoutX="60.0" layoutY="200.0" prefHeight="550.0" prefWidth="200.0" style="-fx-border-color: #5ca3e5;">
          <children>
-            <TableView fx:id="pracownicy" prefHeight="550.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5; -fx-background-radius: 8; -fx-border-radius: 8;">
+            <TableView fx:id="pracownicy" onMouseClicked="#selectLekarz" prefHeight="550.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5; -fx-background-radius: 8; -fx-border-radius: 8;">
                <columns>
                   <TableColumn fx:id="nazwisko_table" editable="false" prefWidth="100.0" text="Nazwisko" />
                   <TableColumn fx:id="imie_table" editable="false" prefWidth="100.0" text="Imię" />
@@ -107,7 +107,7 @@
          </children></Pane>
       <Pane layoutX="920.0" layoutY="200.0" prefHeight="550.0" prefWidth="200.0" style="-fx-border-color: #5ca3e5;">
          <children>
-            <TableView fx:id="pacjenci" prefHeight="550.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5; -fx-background-radius: 8; -fx-border-radius: 8;">
+            <TableView fx:id="pacjenci" onMouseClicked="#selectPacjent" prefHeight="550.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5; -fx-background-radius: 8; -fx-border-radius: 8;">
                <columns>
                   <TableColumn fx:id="nazwiskoTable" editable="false" text="Nazwisko" />
                   <TableColumn fx:id="imieTable" editable="false" prefWidth="50.0" text="Imię" />
@@ -115,57 +115,50 @@
                </columns>
             </TableView>
          </children></Pane>
-      <Pane layoutX="280.0" layoutY="200.0" prefHeight="550.0" prefWidth="620.0" style="-fx-border-color: #5ca3e5;">
+      <Pane layoutX="332.0" layoutY="275.0" prefHeight="400.0" prefWidth="500.0" style="-fx-border-color: #5ca3e5;">
          <children>
-            <TableView fx:id="kalendarz" prefHeight="550.0" prefWidth="620.0">
-              <columns>
-                <TableColumn fx:id="godzinaTable" prefWidth="75.0" text="Godzina">
-                    <cellValueFactory>
+            <TableView fx:id="kalendarz" editable="true" prefHeight="400.0" prefWidth="500.0" style="-fx-fixed-cell-size: 40px; -fx-border-color: #5ca3e5; -fx-background-radius: 8;">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <columns>
+                  <TableColumn fx:id="godzinaTable" prefWidth="81.0" sortable="false" style="-fx-alignment: CENTER;" text="Godzina">
+                     <cellValueFactory>
                         <PropertyValueFactory property="godzina" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="ponTable" prefWidth="77.5" text="PON">
-                  <cellValueFactory>
-                      <PropertyValueFactory property="pon" />
-                  </cellValueFactory>
-                </TableColumn>
-                  <TableColumn fx:id="wtoTable" prefWidth="77.5" text="WTO">
-                  <cellValueFactory>
-                      <PropertyValueFactory property="wto" />
-                  </cellValueFactory>
+                     </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="sroTable" prefWidth="77.5" text="ŚRO">
-                  <cellValueFactory>
-                      <PropertyValueFactory property="sro" />
-                  </cellValueFactory>
+                  <TableColumn fx:id="infoTable" prefWidth="107.0" sortable="false" style="-fx-alignment: CENTER;" text="Informacja">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="pon" />
+                     </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="czwTable" prefWidth="77.5" text="CZW">
-                  <cellValueFactory>
-                      <PropertyValueFactory property="czw" />
-                  </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn fx:id="piaTable" prefWidth="77.5" text="PIĄ">
-                  <cellValueFactory>
-                      <PropertyValueFactory property="pia" />
-                  </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn fx:id="sobTable" prefWidth="77.5" text="SOB">
-                  <cellValueFactory>
-                      <PropertyValueFactory property="sob" />
-                  </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn fx:id="niedTable" prefWidth="77.5" text="NIED">
-                  <cellValueFactory>
-                      <PropertyValueFactory property="nied" />
-                  </cellValueFactory>
-                  </TableColumn>
-              </columns>
+               </columns>
             </TableView>
-         </children>
-      </Pane>
+         </children></Pane>
       <Text layoutX="120.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista lekarzy" />
       <Text layoutX="969.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista pacjentów" />
       <TextField fx:id="szukaj" layoutX="60.0" layoutY="761.0" prefHeight="25.0" prefWidth="200.0" promptText="nazwisko lub imię" />
       <TextField fx:id="szukaj1" layoutX="920.0" layoutY="761.0" prefHeight="25.0" prefWidth="200.0" promptText="PESEL, nazwisko lub imię" />
+      <Text fill="#5ca3e5" layoutX="530.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wybierz datę:" textAlignment="CENTER">
+         <font>
+            <Font name="Corbel" size="18.0" />
+         </font>
+      </Text>
+      <DatePicker fx:id="datePicker" layoutX="481.0" layoutY="230.0" onAction="#zmianaDaty2" showWeekNumbers="true" />
+      <Button fx:id="dodajButton" layoutX="477.0" layoutY="723.0" mnemonicParsing="false" onAction="#dodaj" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Dodaj" textFill="limegreen">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+               <color>
+                  <Color opacity="0.12826086580753326" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
     </children>
 </AnchorPane>
