@@ -103,77 +103,88 @@ public class ControllerRejestracja implements Initializable {
     }
 
     public void zarejestruj(ActionEvent actionEvent) throws SQLException, IOException {
-        String imieDodaj, nazwiskoDodaj, peselDodaj,miejscowoscDodaj,adresDodaj,kodPocztowyDodaj,telefonDodaj,emailDodaj,drugieImieDodaj;
-        String plecDodaj, wojewodztwoDodaj;
-        LocalDate dataUrodzeniaDodaj;
-        plecDodaj =(String) wybierzPlec.getValue();
-        wojewodztwoDodaj = (String) wybierzWojewodztwo.getValue();
-        dataUrodzeniaDodaj = dataUrodzenia.getValue();
+        
 
         if (nazwisko.getText().isEmpty()) {
             alert.setTitle("Medik Helper");
             alert.setHeaderText("Wprowadzono nieprawidłowe dane");
             alert.setContentText("Proszę podać nazwisko");
             alert.showAndWait();
+            return;
         }
         if (imie.getText().isEmpty()) {
             alert.setTitle("Medik Helper");
             alert.setHeaderText("Wprowadzono nieprawidłowe dane");
             alert.setContentText("Proszę podać imię");
             alert.showAndWait();
+            return;
         }
         if (pesel.getText().isEmpty()) {
             alert.setTitle("Medik Helper");
             alert.setHeaderText("Wprowadzono nieprawidłowe dane");
             alert.setContentText("Proszę podać pesel");
             alert.showAndWait();
+            return;
         }
         if (wybierzPlec.getValue() == null) {
             alert.setTitle("Medik Helper");
             alert.setHeaderText("Wprowadzono nieprawidłowe dane");
             alert.setContentText("Proszę wybrać płeć");
             alert.showAndWait();
+            return;
         }
         if (dataUrodzenia.getValue() == null) {
             alert.setTitle("Medik Helper");
             alert.setHeaderText("Wprowadzono nieprawidłowe dane");
             alert.setContentText("Proszę wybrać datę urodzenia");
             alert.showAndWait();
+            return;
         }
         if (wybierzWojewodztwo.getValue()==null) {
             alert.setTitle("Medik Helper");
             alert.setHeaderText("Wprowadzono nieprawidłowe dane");
             alert.setContentText("Proszę wybrać województwo");
             alert.showAndWait();
+            return;
         }
         if (miejscowosc.getText().isEmpty()) {
             alert.setTitle("Medik Helper");
             alert.setHeaderText("Wprowadzono nieprawidłowe dane");
             alert.setContentText("Proszę podać miejscowość");
             alert.showAndWait();
+            return;
         }
         if (adres.getText().isEmpty()) {
             alert.setTitle("Medik Helper");
             alert.setHeaderText("Wprowadzono nieprawidłowe dane");
             alert.setContentText("Proszę podać adres");
             alert.showAndWait();
+            return;
         }
         if (kodPocztowy.getText().isEmpty()) {
             alert.setTitle("Medik Helper");
             alert.setHeaderText("Wprowadzono nieprawidłowe dane");
             alert.setContentText("Proszę podać kod pocztowy");
             alert.showAndWait();
+            return;
         }
         if (telefon.getText().isEmpty()) {
             alert.setTitle("Medik Helper");
             alert.setHeaderText("Wprowadzono nieprawidłowe dane");
             alert.setContentText("Proszę podać telefon");
             alert.showAndWait();
+            return;
         }
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
+        String imieDodaj, nazwiskoDodaj, peselDodaj,miejscowoscDodaj,adresDodaj,kodPocztowyDodaj,telefonDodaj,emailDodaj,drugieImieDodaj;
+        String plecDodaj, wojewodztwoDodaj;
+        LocalDate dataUrodzeniaDodaj;
+        plecDodaj =(String) wybierzPlec.getValue();
+        wojewodztwoDodaj = (String) wybierzWojewodztwo.getValue();
+        dataUrodzeniaDodaj = dataUrodzenia.getValue();
         imieDodaj = imie.getText();
         nazwiskoDodaj = nazwisko.getText();
         peselDodaj = pesel.getText();
