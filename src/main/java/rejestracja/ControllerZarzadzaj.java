@@ -210,8 +210,8 @@ public class ControllerZarzadzaj implements Initializable {
             List<Sloty> list = q.list();
             for (Sloty s : list){
                 if(s.getPracownik().getId_pracownika()==lekarz){
-                    s.setInformacja("wizyta");
                     s.setPacjent(pacjent);
+                    s.setInformacja(s.getPacjent().getImie_pacjenta() + " " + s.getPacjent().getNazwisko_pacjenta());
                 }
             }
             session.save(list.get(0));
