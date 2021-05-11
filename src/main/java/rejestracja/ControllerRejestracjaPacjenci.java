@@ -3,6 +3,8 @@ package rejestracja;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,10 +22,12 @@ import java.util.ResourceBundle;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import obiekty.Pacjent;
+import obiekty.Pracownik;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import sample.HibernateUtil;
@@ -36,6 +40,8 @@ public class ControllerRejestracjaPacjenci implements Initializable {
     private TableView<Pacjent> table;
     @FXML
     private TableColumn nazwisko_table, imie_table, pesel_table, ulica_table, miejscowosc_table;
+    @FXML
+    public TextField szukaj;
 
     Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -117,6 +123,24 @@ public class ControllerRejestracjaPacjenci implements Initializable {
         miejscowosc_table.setCellValueFactory(new PropertyValueFactory("miejscowosc"));
 
         table.getItems().setAll(data1);
+
+        FilteredList<Pacjent> filteredData = new FilteredList<>(data1, b -> true);
+        szukaj.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(pacjent -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (pacjent.getImie_pacjenta().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (pacjent.getNazwisko_pacjenta().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else return pacjent.getPesel().toLowerCase().contains(lowerCaseFilter);
+            });
+        });
+        SortedList<Pacjent> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedData);
     }
 
 }
