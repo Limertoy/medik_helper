@@ -1,5 +1,6 @@
 package DAO;
 
+import DAO.impl.PacjentDAOJpa;
 import DAO.impl.WyposazenieDAOJpa;
 
 import javax.persistence.EntityManagerFactory;
@@ -11,7 +12,7 @@ public class DaoFactory {
     public static WyposazenieDAO createWyposazenieDao() {
         return new WyposazenieDAOJpa(emf.createEntityManager());
     }
-
+    public static PacjentDAO createPacjentDao() { return new PacjentDAOJpa(emf.createEntityManager()); }
     public static EntityManagerFactory getEntityManagerFactory() {
         return emf;
     }
