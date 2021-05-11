@@ -80,11 +80,10 @@ public class ControllerKalendarz extends ControllerLogin implements Initializabl
         Sloty all;
         all = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
         String info = all.getInformacja();
-        if(all.getPacjent() == null){
+        if(all.getPacjent() != null){
             edytujButton.setVisible(false);
             edytujButton1.setVisible(false);
-        }
-        if(info == "x") {
+        } else if(info.equals("x")) {
             edytujButton.setVisible(false);
             edytujButton1.setVisible(true);
         } else {
@@ -161,7 +160,7 @@ public class ControllerKalendarz extends ControllerLogin implements Initializabl
         List<Sloty> list = q.list();
         for (Sloty s : list){
             if(s.getPacjent() == null)
-            s.setInformacja(" ");
+                s.setInformacja(" ");
         }
         session.save(list.get(0));
         session.getTransaction().commit();

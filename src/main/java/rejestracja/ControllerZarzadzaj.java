@@ -223,8 +223,6 @@ public class ControllerZarzadzaj implements Initializable {
 
     public void selectLekarz(MouseEvent mouseEvent) {
         reloadDate();
-
-
     }
 
     public void zmianaDaty2(ActionEvent actionEvent) {
@@ -232,16 +230,12 @@ public class ControllerZarzadzaj implements Initializable {
         if(all!=null){
             reloadDate();
         }
-
-
     }
 
     public void zmianaGodziny(MouseEvent mouseEvent) {
         Sloty slot = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
         String info = slot.getInformacja();
-        if(info.equals("x") || slot.getPacjent()!=null){
-            dodajButton.setVisible(false);
-        }else dodajButton.setVisible(true);
+        dodajButton.setVisible(!info.equals("x") && slot.getPacjent() == null);
     }
 }
 
