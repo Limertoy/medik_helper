@@ -39,7 +39,7 @@ public class Seeder {
         this.service5 = service5;
     }
 
-    public void generateWyp() {
+    public void generateWyp() { //1
         this.setService(new WyposazenieService());
 
         for (int i = 1; i < 100; i++) {
@@ -59,7 +59,7 @@ public class Seeder {
 
     }
 
-    public void generatePracownik() {
+    public void generatePracownik() {  //2
 
         setService3(new PracownikService());
         setService4(new RolaService());
@@ -70,7 +70,7 @@ public class Seeder {
             String password = faker.internet().password();
             String imie = faker.name().firstName();
             String nazwisko = faker.name().lastName();
-            Rola rola = service4.finById(faker.number().numberBetween(1, 4));
+            Rola rola = service4.findById(faker.number().numberBetween(1, 4));
             Pracownik pracownik = new Pracownik(email, password, rola, imie, nazwisko);
             service3.saveOrUpdate(pracownik);
 
@@ -96,7 +96,7 @@ public class Seeder {
 
     }
 
-    public void generateSloty() {
+    public void generateSloty() {  //3
         this.setService2(new SlotyService());
 
         List<Pracownik> list = service3.znajdzLekarza();
@@ -116,7 +116,7 @@ public class Seeder {
             godzinySloty("13:00");
         }
     }
-    public void generateChoroby() {
+    public void generateChoroby() {  //4
         this.setService5(new Lista_ChorobService());
 
         for (int i = 1; i < 100; i++) {
@@ -132,5 +132,7 @@ public class Seeder {
 
         }
     }
+
+
 
 }

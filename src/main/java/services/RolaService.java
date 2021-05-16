@@ -18,7 +18,7 @@ public class RolaService {
         dao.remove(obj);
     }
 
-    public Rola finById(int id) {
+    public Rola findById(int id) {
         return dao.findById(id);
     }
 
