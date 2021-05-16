@@ -28,15 +28,15 @@ public class ControllerDyrektorZamawianie implements Initializable {
     @FXML
     Button buttonLogin, exit_button, minimalize_button;
     @FXML
-    private TableView wyposazenia;
+    private TableView wyposazenia, tablelLeki;
     @FXML
-    private TableColumn nazwaWyposazenie, iloscWyposazenie;
+    private TableColumn nazwaWyposazenie, iloscWyposazenie, tableLekiNazwa, tableLekiIlosc;
     @FXML
     private ChoiceBox selectList;
 
     private WyposazenieService service;
 
-    private ObservableList<Wyposazenie> obsList;
+    private ObservableList<Wyposazenie> obsList, obsList2;
 
 
 
@@ -107,10 +107,14 @@ public class ControllerDyrektorZamawianie implements Initializable {
 
         this.setService(new WyposazenieService());
         obsList = FXCollections.observableArrayList(service.findAll());
+        obsList2 = FXCollections.observableArrayList(service.findLeki());
         wyposazenia.setItems(obsList);
+        tablelLeki.setItems(obsList2);
 
         nazwaWyposazenie.setCellValueFactory(new PropertyValueFactory<>("nazwa_wyposazenia"));
         iloscWyposazenie.setCellValueFactory(new PropertyValueFactory<>("ilosc_pozostalych"));
+        tableLekiNazwa.setCellValueFactory(new PropertyValueFactory<>("nazwa_wyposazenia"));
+        tableLekiIlosc.setCellValueFactory(new PropertyValueFactory<>("ilosc_pozostalych"));
 
         selectList.setItems(obsList);
 
@@ -128,9 +132,17 @@ public class ControllerDyrektorZamawianie implements Initializable {
     public void zamow(ActionEvent actionEvent) {
 
        int ile = Integer.parseInt(how_many.getText());
-       Wyposazenie obiekt = (Wyposazenie) selectList.getValue();
-       obiekt.setIlosc_pozostalych(ile+obiekt.getIlosc_pozostalych());
-       service.saveOrUpdate(obiekt);
+        if(ile<0) {
+            System.out.println("Tak nie wolno, pobite gary!");
+        } else {
+            Wyposazenie obiekt = (Wyposazenie) selectList.getValue();
+            obiekt.setIlosc_pozostalych(ile+obiekt.getIlosc_pozostalych());
+            service.saveOrUpdate(obiekt);
+        }
+
+        initializeTableColumnCell();
+
+
 
     }
 }

@@ -24,4 +24,8 @@ public class WyposazenieService {
     public List<Wyposazenie> findAll() {
         return dao.findAll();
     }
+
+    public List<Wyposazenie> findLeki() {
+        return dao.findLeki();
+    }
 }
