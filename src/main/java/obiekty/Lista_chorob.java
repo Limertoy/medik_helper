@@ -17,6 +17,10 @@ public class Lista_chorob {
     private String kod_choroby;
     private String nazwa_choroby;
 
+    public Lista_chorob() {
+
+    }
+
     public int getId_choroby() {
         return id_choroby;
     }
@@ -38,6 +42,11 @@ public class Lista_chorob {
     }
 
     public void setNazwa_choroby(String nazwa_choroby) {
+        this.nazwa_choroby = nazwa_choroby;
+    }
+
+    public Lista_chorob(String kod_choroby, String nazwa_choroby) {
+        this.kod_choroby = kod_choroby;
         this.nazwa_choroby = nazwa_choroby;
     }
 }

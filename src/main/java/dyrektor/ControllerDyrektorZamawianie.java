@@ -131,5 +131,6 @@ public class ControllerDyrektorZamawianie implements Initializable {
        Wyposazenie obiekt = (Wyposazenie) selectList.getValue();
        obiekt.setIlosc_pozostalych(ile+obiekt.getIlosc_pozostalych());
        service.saveOrUpdate(obiekt);
+
     }
 }

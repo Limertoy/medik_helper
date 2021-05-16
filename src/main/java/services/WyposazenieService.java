@@ -21,8 +21,6 @@ public class WyposazenieService {
         return dao.findById(id);
     }
 
-
-
     public List<Wyposazenie> findAll() {
         return dao.findAll();
     }
