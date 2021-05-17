@@ -97,8 +97,8 @@ public class ControllerKartaPacjentaEdycja extends ControllerKartaPacjenta imple
     kodPocztowye.setText(pacjentZPoprzedniegoEkranu.getKod_pocztowy());
     telefone.setText(pacjentZPoprzedniegoEkranu.getTelefon());
     emaile.setText(pacjentZPoprzedniegoEkranu.getEmail());
-    narodzinye.setValue(pacjentZPoprzedniegoEkranu.getData_urodzenia().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        System.out.println(pacjentZPoprzedniegoEkranu.getData_urodzenia().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
+    narodzinye.setValue(pacjentZPoprzedniegoEkranu.getData_urodzenia());
+
     }
 //getData_urodzenia().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
     public void zapiszZmiany(ActionEvent actionEvent) {
@@ -108,8 +108,7 @@ public class ControllerKartaPacjentaEdycja extends ControllerKartaPacjenta imple
         pacjentZPoprzedniegoEkranu.setNazwisko_pacjenta(nazwiskoe.getText());
         pacjentZPoprzedniegoEkranu.setPesel(pesele.getText());
         pacjentZPoprzedniegoEkranu.setPlec(plece.getText());
-        Date date = Date.from(narodzinye.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        pacjentZPoprzedniegoEkranu.setData_urodzenia(date);
+        pacjentZPoprzedniegoEkranu.setData_urodzenia(narodzinye.getValue());
         pacjentZPoprzedniegoEkranu.setWojewodztwo(wojewodztwoe.getText());
         pacjentZPoprzedniegoEkranu.setMiejscowosc(miejscowosce.getText());
         pacjentZPoprzedniegoEkranu.setAdres(adrese.getText());

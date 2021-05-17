@@ -155,7 +155,7 @@ public class ControllerKartaPacjenta extends ControllerPacjenci implements Initi
         nazwisko.setText(pacjent.getNazwisko_pacjenta());
         pesel.setText(pacjent.getPesel());
         plec.setText(pacjent.getPlec());
-        narodziny.setText(pacjent.getData_urodzenia().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
+        narodziny.setText(pacjent.getData_urodzenia().toString());
         wojewodztwo.setText(pacjent.getWojewodztwo());
         miejscowosc.setText(pacjent.getMiejscowosc());
         adres.setText(pacjent.getAdres());
