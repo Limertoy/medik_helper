@@ -45,6 +45,11 @@ public class WyposazenieDAOJpa implements WyposazenieDAO {
         return em.createNativeQuery("SELECT * FROM wyposazenie ", Wyposazenie.class).getResultList();
     }
 
+    @Override
+    public List<Wyposazenie> findLeki() {
+        return em.createNativeQuery("SELECT * FROM wyposazenie WHERE typ_wyposazenia = 'lek'", Wyposazenie.class).getResultList();
+    }
+
     public EntityManager getPersistenceContext() {
         return this.em;
     }

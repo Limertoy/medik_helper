@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity(name = "Pacjent")
@@ -20,7 +21,7 @@ public class Pacjent {
     private String drugie_imie;
     private String pesel;
     private String plec;
-    private Date data_urodzenia;
+    private LocalDate data_urodzenia;
     private String wojewodztwo;
     private String miejscowosc;
     private String adres;
@@ -76,11 +77,11 @@ public class Pacjent {
         this.plec = plec;
     }
 
-    public Date getData_urodzenia() {
+    public LocalDate getData_urodzenia() {
         return data_urodzenia;
     }
 
-    public void setData_urodzenia(Date data_urodzenia) {
+    public void setData_urodzenia(LocalDate data_urodzenia) {
         this.data_urodzenia = data_urodzenia;
     }
 
@@ -132,7 +133,7 @@ public class Pacjent {
         this.email = email;
     }
 
-    public Pacjent(String nazwisko_pacjenta, String imie_pacjenta, String drugie_imie, String pesel, String plec, Date data_urodzenia, String wojewodztwo, String miejscowosc, String adres, String kod_pocztowy, String telefon, String email) {
+    public Pacjent(String nazwisko_pacjenta, String imie_pacjenta, String drugie_imie, String pesel, String plec, LocalDate data_urodzenia, String wojewodztwo, String miejscowosc, String adres, String kod_pocztowy, String telefon, String email) {
         this.nazwisko_pacjenta = nazwisko_pacjenta;
         this.imie_pacjenta = imie_pacjenta;
         this.drugie_imie = drugie_imie;

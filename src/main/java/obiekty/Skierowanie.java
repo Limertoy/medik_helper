@@ -17,4 +17,56 @@ public class Skierowanie {
     @OneToOne
     @JoinColumn(name="id_pacjenta")
     private Pacjent pacjent;
+
+    public Skierowanie() {
+
+    }
+
+    public int getId_skierowania() {
+        return id_skierowania;
+    }
+
+    public void setId_skierowania(int id_skierowania) {
+        this.id_skierowania = id_skierowania;
+    }
+
+    public String getPoradnia() {
+        return poradnia;
+    }
+
+    public void setPoradnia(String poradnia) {
+        this.poradnia = poradnia;
+    }
+
+    public String getRozpoznanie() {
+        return rozpoznanie;
+    }
+
+    public void setRozpoznanie(String rozpoznanie) {
+        this.rozpoznanie = rozpoznanie;
+    }
+
+    public String getInformacje() {
+        return informacje;
+    }
+
+    public void setInformacje(String informacje) {
+        this.informacje = informacje;
+    }
+
+    public Pacjent getPacjent() {
+        return pacjent;
+    }
+
+    public void setPacjent(Pacjent pacjent) {
+        this.pacjent = pacjent;
+    }
+
+    public Skierowanie(int id_skierowania, String poradnia, String rozpoznanie, String informacje, Pacjent pacjent) {
+        this.id_skierowania = id_skierowania;
+        this.poradnia = poradnia;
+        this.rozpoznanie = rozpoznanie;
+        this.informacje = informacje;
+        this.pacjent = pacjent;
+    }
 }

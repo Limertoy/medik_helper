@@ -28,7 +28,7 @@ public class App {
 //        Query<Student> q = session.createQuery("From Student", Student.class);
 //
 //        List<Student> resultList = q.list();
-//        System.out.println("total sudents:" + resultList.size());
+//        System.out.println("total students:" + resultList.size());
 //
 //        for (Student s : resultList) {
 //            System.out.println("student : " + s);
