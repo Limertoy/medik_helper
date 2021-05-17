@@ -107,44 +107,14 @@
         </Text>
         <TableView fx:id="kalendarz" editable="true" layoutX="337.0" layoutY="174.0" onMouseClicked="#selectOne" prefHeight="596.0" prefWidth="816.0" style="-fx-fixed-cell-size: 40px; -fx-border-color: #5ca3e5; -fx-background-radius: 8;">
             <columns>
-                <TableColumn fx:id="godzinaTable" prefWidth="81.0" sortable="false" text="Godzina">
+                <TableColumn fx:id="godzinaTable" prefWidth="81.0" sortable="false" style="-fx-alignment: CENTER;" text="Godzina">
                     <cellValueFactory>
                         <PropertyValueFactory property="godzina" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="ponTable" prefWidth="107.0" sortable="false" text="PON">
+                <TableColumn fx:id="infoTable" prefWidth="107.0" sortable="false" style="-fx-alignment: CENTER;" text="Informacja">
                     <cellValueFactory>
                         <PropertyValueFactory property="pon" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="wtoTable" prefWidth="102.0" sortable="false" text="WTO">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="wto" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="sroTable" editable="true" prefWidth="103.0" sortable="false" text="ŚRO">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="sro" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="czwTable" prefWidth="102.0" sortable="false" text="CZW">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="czw" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="piaTable" prefWidth="105.0" sortable="false" text="PIĄ">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="pia" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="sobTable" minWidth="0.0" prefWidth="116.0" sortable="false" text="SOB">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="sob" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="niedTable" prefWidth="101.0" sortable="false" text="NIED">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="nied" />
                     </cellValueFactory>
                 </TableColumn>
             </columns>
@@ -167,7 +137,43 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="pracaDzienButton" layoutX="62.0" layoutY="307.0" mnemonicParsing="false" onAction="#pracaDzien" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Pracuję w ten dzień" textFill="limegreen" visible="false">
+      <Button fx:id="pracaDzienButton" layoutX="62.0" layoutY="307.0" mnemonicParsing="false" onAction="#pracaDzien" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Nie pracuję w ten dzień" textFill="#e35d72" visible="false">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+               <color>
+                  <Color opacity="0.12826086580753326" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <ChoiceBox fx:id="choiseGodzina" layoutX="80.0" layoutY="617.0" onMouseClicked="#selectOne" prefHeight="28.0" prefWidth="174.0" visible="false" />
+      <Text fx:id="textGodzina" fill="#5ca3e5" layoutX="134.0" layoutY="586.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Godzina:" textAlignment="CENTER" visible="false">
+         <font>
+            <Font name="Corbel" size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="pracaDzienButton1" layoutX="62.0" layoutY="383.0" mnemonicParsing="false" onAction="#pracaDzien1" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Pracuję w ten dzień" textFill="limegreen" visible="false">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+               <color>
+                  <Color opacity="0.12826086580753326" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="edytujButton1" layoutX="62.0" layoutY="680.0" mnemonicParsing="false" onAction="#pracaGodzina1" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Pracuję w tą godzinę" textFill="LIMEGREEN" visible="false">
          <effect>
             <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
                <color>

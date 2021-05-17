@@ -14,16 +14,24 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import obiekty.Pacjent;
+import obiekty.Sloty;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
+import sample.ControllerLogin;
 import sample.HibernateUtil;
 
-public class ControllerWizyty implements Initializable {
+public class ControllerWizyty extends ControllerLogin implements Initializable {
     Stage primaryStage;
     @FXML
     Button buttonLogin, exit_button, minimalize_button, zobaczKarte;
@@ -32,6 +40,11 @@ public class ControllerWizyty implements Initializable {
 
     @FXML
     private TableColumn nazwiskoTable, imieTable, peselTable, dataTable, godzinaTable;
+
+    @FXML
+    DatePicker datePicker = new DatePicker(LocalDate.now());
+
+    Session session = HibernateUtil.getSessionFactory().openSession();
 
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
@@ -45,16 +58,44 @@ public class ControllerWizyty implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        nazwiskoTable.setCellValueFactory(new PropertyValueFactory("nazwiskoTable"));
-        imieTable.setCellValueFactory(new PropertyValueFactory("imieTable"));
-        peselTable.setCellValueFactory(new PropertyValueFactory("peselTable"));
-        dataTable.setCellValueFactory(new PropertyValueFactory("dataTable"));
-        godzinaTable.setCellValueFactory(new PropertyValueFactory("godzinaTable"));
-        table.getItems().setAll(this.dane);
+
+    }
+    public void reloadDate(){
+        LocalDate localDate = datePicker.getValue();
+        Query q = session.createQuery("from Sloty where data=:data")
+                .setParameter("data", localDate);
+        List<Sloty> list1 = q.list();
+
+        ObservableList<ListaWizyt> data1 = FXCollections.observableArrayList();
+
+        int i = 0;
+        for(Sloty s : list1){
+            if(s.getPracownik().getId_pracownika() == id_sesji && s.getPacjent() != null) {
+                data1.add(i, new ListaWizyt(s.getId_slota(), s.getPacjent().getNazwisko_pacjenta(), s.getPacjent().getImie_pacjenta(), s.getPacjent().getPesel(), s.getGodzina(), s.getData()));
+                i++;
+            }
+        }
+        nazwiskoTable.setCellValueFactory(new PropertyValueFactory("nazwisko"));
+        imieTable.setCellValueFactory(new PropertyValueFactory("imie"));
+        peselTable.setCellValueFactory(new PropertyValueFactory("pesel"));
+        dataTable.setCellValueFactory(new PropertyValueFactory("date"));
+        godzinaTable.setCellValueFactory(new PropertyValueFactory("godzina"));
+        table.getItems().setAll(data1);
     }
 
     public class ListaWizyt{
         public int id;
+        public SimpleStringProperty nazwisko, imie, pesel, godzina;
+        public LocalDate date;
+
+        public ListaWizyt(int id, String nazwisko, String imie, String pesel, String godzina, LocalDate date) {
+            this.id = id;
+            this.nazwisko = new SimpleStringProperty(nazwisko);
+            this.imie = new SimpleStringProperty(imie);
+            this.pesel = new SimpleStringProperty(pesel);
+            this.godzina = new SimpleStringProperty(godzina);
+            this.date = date;
+        }
 
         public int getId() {
             return id;
@@ -64,86 +105,63 @@ public class ControllerWizyty implements Initializable {
             this.id = id;
         }
 
-        public String getNazwiskoTable() {
-            return nazwiskoTable.get();
+        public String getNazwisko() {
+            return nazwisko.get();
         }
 
-        public SimpleStringProperty nazwiskoTableProperty() {
-            return nazwiskoTable;
+        public SimpleStringProperty nazwiskoProperty() {
+            return nazwisko;
         }
 
-        public void setNazwiskoTable(String nazwisko_table) {
-            this.nazwiskoTable.set(nazwisko_table);
+        public void setNazwisko(String nazwisko) {
+            this.nazwisko.set(nazwisko);
         }
 
-        public String getImieTable() {
-            return imieTable.get();
+        public String getImie() {
+            return imie.get();
         }
 
-        public SimpleStringProperty imieTableProperty() {
-            return imieTable;
+        public SimpleStringProperty imieProperty() {
+            return imie;
         }
 
-        public void setImieTable(String imie_table) {
-            this.imieTable.set(imie_table);
+        public void setImie(String imie) {
+            this.imie.set(imie);
         }
 
-        public String getPeselTable() {
-            return peselTable.get();
+        public String getPesel() {
+            return pesel.get();
         }
 
-        public SimpleStringProperty peselTableProperty() {
-            return peselTable;
+        public SimpleStringProperty peselProperty() {
+            return pesel;
         }
 
-        public void setPeselTable(String pesel_table) {
-            this.peselTable.set(pesel_table);
+        public void setPesel(String pesel) {
+            this.pesel.set(pesel);
         }
 
-        public String getDataTable() {
-            return dataTable.get();
+        public String getGodzina() {
+            return godzina.get();
         }
 
-        public SimpleStringProperty dataTableProperty() {
-            return dataTable;
+        public SimpleStringProperty godzinaProperty() {
+            return godzina;
         }
 
-        public void setDataTable(String data_table) {
-            this.dataTable.set(data_table);
+        public void setGodzina(String godzina) {
+            this.godzina.set(godzina);
         }
 
-        public String getGodzinaTable() {
-            return godzinaTable.get();
+        public LocalDate getDate() {
+            return date;
         }
 
-        public SimpleStringProperty godzinaTableProperty() {
-            return godzinaTable;
-        }
-
-        public void setGodzinaTable(String godzina_table) {
-            this.godzinaTable.set(godzina_table);
-        }
-
-        public SimpleStringProperty nazwiskoTable, imieTable, peselTable, dataTable,godzinaTable;
-
-        public ListaWizyt(int id, String nazwiskoTable, String imieTable, String peselTable, String dataTable, String godzinaTable) {
-            this.id = id;
-            this.nazwiskoTable = new SimpleStringProperty(nazwiskoTable);
-            this.imieTable = new SimpleStringProperty(imieTable);
-            this.peselTable = new SimpleStringProperty(peselTable);
-            this.dataTable = new SimpleStringProperty(dataTable);
-            this.godzinaTable = new SimpleStringProperty(godzinaTable);
+        public void setDate(LocalDate date) {
+            this.date = date;
         }
     }
 
-    public final ObservableList<ListaWizyt> dane = FXCollections.observableArrayList(
-            new ListaWizyt(1,"Adamovych", "Andriy", "482748274", "03.05.2021", "6:00"),
-            new ListaWizyt(2,"Dukacz", "Maciej", "482654322", "03.05.2021", "6:30"),
-            new ListaWizyt(3,"Filip", "Dominik", "953857394", "03.05.2021", "7:00"),
-            new ListaWizyt(4,"Szkup", "Agata", "593759374", "03.05.2021", "7:30"),
-            new ListaWizyt(5,"Kulpiński", "Paweł", "395785638", "03.05.2021", "8:00")
-
-    );
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wybierz(MouseEvent mouseEvent) { zobaczKarte.setVisible(true); }
@@ -200,5 +218,9 @@ public class ControllerWizyty implements Initializable {
 
         window.setScene(kartaPacjentaScene);
         window.show();
+    }
+
+    public void zmianaDaty(ActionEvent actionEvent) {
+        reloadDate();
     }
 }

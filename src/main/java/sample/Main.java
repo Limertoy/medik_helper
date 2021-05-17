@@ -8,11 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import obiekty.Pacjent;
-import obiekty.Pracownik;
-import obiekty.Rola;
-import obiekty.Wyposazenie;
+import obiekty.*;
+import org.dom4j.DocumentException;
 import org.hibernate.Session;
+//import com.mycompany.PDFGenerator.PDF;
 
 import java.net.URL;
 import java.nio.file.Paths;
@@ -20,13 +19,16 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
+//import static com.mycompany.PDFGenerator.PDF.generateChoroby;
+
 public class Main extends Application {
 
     private double xOffset = 0;
     private double yOffset = 0;
+    Seeder seeder = new Seeder();
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
@@ -35,18 +37,18 @@ public class Main extends Application {
         Rola pielegniarka = new Rola();
         Rola rejestracja = new Rola();
 
-
         lekarz.setNazwa("Lekarz");
         dyrektor.setNazwa("Dyrektor");
         pielegniarka.setNazwa("Pielęgniarka");
         rejestracja.setNazwa("Rejestracja");
 
         Pracownik pracownik1 = new Pracownik("lekarz@email.com", "12345", lekarz, "Jan", "Kowalski");
+        Pracownik pracownik5 = new Pracownik("lekarz1@email.com", "12345", lekarz, "Janusz", "Nowak");
         Pracownik pracownik2 = new Pracownik("dyrektor@email.com", "12345", dyrektor, "Andriy", "Adamovych");
         Pracownik pracownik3 = new Pracownik("pielegniarka@email.com", "12345", pielegniarka, "Paweł", "Kulpiński");
         Pracownik pracownik4 = new Pracownik("rejestracja@email.com", "12345", rejestracja, "Dominik", "Filip");
 
-        Date date1 = new SimpleDateFormat("y-M-d").parse("1998-10-10");
+        LocalDate date1 = LocalDate.parse("1998-10-10");
         Pacjent pacjent1 = new Pacjent("Nowak", "Janusz", "Jan", "98101013413", "mezczyzna", date1, "Podkarpackie", "Rzeszów", "Pigonia 12", "35-600", "123123123", "janusz@gmail.com");
         Pacjent pacjent2 = new Pacjent("Nowakowski", "Jan", "Janusz", "98101013414", "mezczyzna", date1, "Podkarpackie", "Rzeszów", "Pigonia 12", "35-600", "999999999", "jan@gmail.com");
 
@@ -56,6 +58,25 @@ public class Main extends Application {
         Wyposazenie wyposazenie = new Wyposazenie("Spirytus 10ml", "Antyseptyk", date, 52);
         Wyposazenie wyposazenie1 = new Wyposazenie("Szafraceum", "Lek", date, 25);
 
+        LocalDate date2 = LocalDate.parse("2021-05-04");
+        LocalDate date3 = LocalDate.parse("2021-05-05");
+
+        Sloty slot1 = new Sloty(date2, "8:00", " ", pracownik1);
+        Sloty slot2 = new Sloty(date2, "8:30", " ", pracownik1);
+        Sloty slot3 = new Sloty(date2, "9:00", " ", pracownik1);
+        Sloty slot4 = new Sloty(date2, "9:30", " ", pracownik1);
+        Sloty slot5 = new Sloty(date2, "10:00", " ", pracownik1);
+        Sloty slot6 = new Sloty(date2, "10:30", " ", pracownik1);
+        Sloty slot7 = new Sloty(date3, "10:30", " ", pracownik5);
+
+        session.save(slot1);
+        session.save(slot2);
+        session.save(slot3);
+        session.save(slot4);
+        session.save(slot5);
+        session.save(slot6);
+        session.save(slot7);
+        session.save(pracownik5);
         session.save(wyposazenie);
         session.save(wyposazenie1);
         session.save(lekarz);
@@ -69,8 +90,14 @@ public class Main extends Application {
         session.save(pacjent1);
         session.save(pacjent2);
         session.getTransaction().commit();
+        seeder.generateWyp();
+        seeder.generatePracownik();
+        seeder.generateSloty();
+        seeder.generateChoroby();
 
 
+//        generateChoroby("Pawel zjeb");
+        
 
         URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
         Parent root = FXMLLoader.load(url);
