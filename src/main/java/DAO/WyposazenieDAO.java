@@ -9,4 +9,5 @@ public interface WyposazenieDAO {
     void remove(Wyposazenie entity);
     Wyposazenie findById(int id);
     List<Wyposazenie> findAll();
+    List<Wyposazenie> findLeki();
 }

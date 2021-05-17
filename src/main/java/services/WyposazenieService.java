@@ -17,13 +17,15 @@ public class WyposazenieService {
         dao.remove(obj);
     }
 
-    public Wyposazenie finById(int id) {
+    public Wyposazenie findById(int id) {
         return dao.findById(id);
     }
 
-
-
     public List<Wyposazenie> findAll() {
         return dao.findAll();
+    }
+
+    public List<Wyposazenie> findLeki() {
+        return dao.findLeki();
     }
 }

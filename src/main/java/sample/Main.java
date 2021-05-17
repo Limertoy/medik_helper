@@ -11,7 +11,7 @@ import javafx.stage.StageStyle;
 import obiekty.*;
 import org.dom4j.DocumentException;
 import org.hibernate.Session;
-import com.mycompany.PDFGenerator.PDF;
+//import com.mycompany.PDFGenerator.PDF;
 
 import java.net.URL;
 import java.nio.file.Paths;
@@ -19,12 +19,13 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
-import static com.mycompany.PDFGenerator.PDF.generateChoroby;
+//import static com.mycompany.PDFGenerator.PDF.generateChoroby;
 
 public class Main extends Application {
 
     private double xOffset = 0;
     private double yOffset = 0;
+    Seeder seeder = new Seeder();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -89,8 +90,13 @@ public class Main extends Application {
         session.save(pacjent1);
         session.save(pacjent2);
         session.getTransaction().commit();
+        seeder.generateWyp();
+        seeder.generatePracownik();
+        seeder.generateSloty();
+        seeder.generateChoroby();
 
-        generateChoroby("Pawel zjeb");
+
+//        generateChoroby("Pawel zjeb");
         
 
         URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
