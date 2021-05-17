@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.TextArea;
@@ -36,11 +37,11 @@ public class ControllerKartaPacjenta extends ControllerPacjenci implements Initi
     @FXML
     private TextArea obserwacje, przepisanie;
 
-    private PacjentService service;
+    public PacjentService service;
 
     private ObservableList<Pacjent> obsList;
 
-    private Pacjent pacjent;
+    public Pacjent pacjent;
 
     int id = id_zmien;
     public static Pacjent pacjentID;
@@ -154,7 +155,7 @@ public class ControllerKartaPacjenta extends ControllerPacjenci implements Initi
         nazwisko.setText(pacjent.getNazwisko_pacjenta());
         pesel.setText(pacjent.getPesel());
         plec.setText(pacjent.getPlec());
-        //narodziny.setText(pacjent.getData_urodzenia()).toString();
+        narodziny.setText(pacjent.getData_urodzenia().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
         wojewodztwo.setText(pacjent.getWojewodztwo());
         miejscowosc.setText(pacjent.getMiejscowosc());
         adres.setText(pacjent.getAdres());

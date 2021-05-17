@@ -18,7 +18,7 @@ public class PacjentDAOJpa implements PacjentDAO {
     @Override
     public Pacjent save(Pacjent entity) {
         em.getTransaction().begin();
-        if (entity.getId_pacjenta() == 1) {
+        if (entity.getId_pacjenta() == 0) {
             em.persist(entity);
         } else {
             entity = em.merge(entity);

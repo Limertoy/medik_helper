@@ -20,6 +20,9 @@ import services.PacjentService;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ControllerKartaPacjentaEdycja extends ControllerKartaPacjenta implements Initializable {
@@ -28,10 +31,17 @@ public class ControllerKartaPacjentaEdycja extends ControllerKartaPacjenta imple
 
     @FXML
     TextArea imiee, drugieImiee, nazwiskoe, pesele, plece, wojewodztwoe, miejscowosce, adrese, kodPocztowye, telefone, emaile;
+    @FXML
     DatePicker narodzinye;
     Pacjent pacjentZPoprzedniegoEkranu = pacjentID;
 
     private PacjentService service2;
+
+    public void setService2(PacjentService service2) {
+        this.service2 = service2;
+    }
+
+
 
     public void exit(ActionEvent actionEvent) {
         Stage stage = (Stage) exit_button.getScene().getWindow();
@@ -71,7 +81,7 @@ public class ControllerKartaPacjentaEdycja extends ControllerKartaPacjenta imple
 
     @Override
     public void setService(PacjentService service) {
-        this.service2 = service;
+        this.service = service;
     }
 
     @Override
@@ -87,12 +97,27 @@ public class ControllerKartaPacjentaEdycja extends ControllerKartaPacjenta imple
     kodPocztowye.setText(pacjentZPoprzedniegoEkranu.getKod_pocztowy());
     telefone.setText(pacjentZPoprzedniegoEkranu.getTelefon());
     emaile.setText(pacjentZPoprzedniegoEkranu.getEmail());
-    //brak daty
+    narodzinye.setValue(pacjentZPoprzedniegoEkranu.getData_urodzenia().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        System.out.println(pacjentZPoprzedniegoEkranu.getData_urodzenia().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
     }
-
+//getData_urodzenia().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
     public void zapiszZmiany(ActionEvent actionEvent) {
-        //setService();
-        pacjentZPoprzedniegoEkranu.setImie_pacjenta(imiee.toString());
+    this.setService2(new PacjentService());
+        pacjentZPoprzedniegoEkranu.setImie_pacjenta(imiee.getText());
+        pacjentZPoprzedniegoEkranu.setDrugie_imie(drugieImiee.getText());
+        pacjentZPoprzedniegoEkranu.setNazwisko_pacjenta(nazwiskoe.getText());
+        pacjentZPoprzedniegoEkranu.setPesel(pesele.getText());
+        pacjentZPoprzedniegoEkranu.setPlec(plece.getText());
+        Date date = Date.from(narodzinye.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        pacjentZPoprzedniegoEkranu.setData_urodzenia(date);
+        pacjentZPoprzedniegoEkranu.setWojewodztwo(wojewodztwoe.getText());
+        pacjentZPoprzedniegoEkranu.setMiejscowosc(miejscowosce.getText());
+        pacjentZPoprzedniegoEkranu.setAdres(adrese.getText());
+        pacjentZPoprzedniegoEkranu.setKod_pocztowy(kodPocztowye.getText());
+        pacjentZPoprzedniegoEkranu.setTelefon(telefone.getText());
+        pacjentZPoprzedniegoEkranu.setEmail(emaile.getText());
+
+        System.out.println(pacjentZPoprzedniegoEkranu.toString());
         service2.saveOrUpdate(pacjentZPoprzedniegoEkranu);
     }
 
