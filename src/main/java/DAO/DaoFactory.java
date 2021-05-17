@@ -3,6 +3,8 @@ package DAO;
 import DAO.impl.*;
 import obiekty.Lista_chorob;
 import obiekty.Obserwacja;
+import DAO.impl.PacjentDAOJpa;
+import DAO.impl.WyposazenieDAOJpa;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -32,6 +34,7 @@ public class DaoFactory {
     }
     public static ReceptyDAO createReceptyDao() { return new ReceptyDAOJpa(emf.createEntityManager());
     }
+    public static PacjentDAO createPacjentDao() { return new PacjentDAOJpa(emf.createEntityManager()); }
     public static EntityManagerFactory getEntityManagerFactory() {
         return emf;
     }

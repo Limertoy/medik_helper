@@ -38,6 +38,8 @@ public class ControllerPacjenci implements Initializable {
     @FXML
     private TableColumn nazwisko_table, imie_table, pesel_table, ulica_table, miejscowosc_table;
 
+    public static int id_zmien;
+
     Session session = HibernateUtil.getSessionFactory().openSession();
 
     public void wybierz(MouseEvent mouseEvent) { zobaczKarte.setVisible(true); }
@@ -98,6 +100,8 @@ public class ControllerPacjenci implements Initializable {
         window.show();
     }
     public void kartaPacjenta(ActionEvent actionEvent) throws IOException {
+        Pacjent pacjent = table.getSelectionModel().getSelectedItem();
+        id_zmien = pacjent.getId_pacjenta();
         URL url = Paths.get("./src/main/java/lekarz/kartaPacjenta.fxml").toUri().toURL();
         Parent kartaPacjentaParent = FXMLLoader.load(url);
         Scene kartaPacjentaScene = new Scene(kartaPacjentaParent);
