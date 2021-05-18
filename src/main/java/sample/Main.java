@@ -32,9 +32,6 @@ public class Main extends Application {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
 
-//        generateChoroby("Pawel zjeb");
-        
-
         URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
         Parent root = FXMLLoader.load(url);
         Scene scene = new Scene(root);

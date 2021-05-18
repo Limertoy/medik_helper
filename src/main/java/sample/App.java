@@ -78,31 +78,9 @@ public class App {
 //        seeder.generatePracownik();
 //        seeder.generateSloty();
 //        seeder.generateChoroby();
+//        seeder.generatePacjent();
 
 
-
-
-
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        session.beginTransaction();
-//
-//
-//        Student student = new Student();
-//        student.setFirstName("John");
-//        student.setLastName("Bloch");
-//        student.setContactNo("+1-408-575-1317");
-//
-//        session.save(student);
-//        session.getTransaction().commit();
-//
-//        Query<Student> q = session.createQuery("From Student", Student.class);
-//
-//        List<Student> resultList = q.list();
-//        System.out.println("total students:" + resultList.size());
-//
-//        for (Student s : resultList) {
-//            System.out.println("student : " + s);
-//        }
 
          WyposazenieService service = new WyposazenieService();
 
