@@ -116,10 +116,10 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView prefHeight="602.0" prefWidth="772.0">
+                              <TableView fx:id="tablelLeki" prefHeight="602.0" prefWidth="772.0">
                                  <columns>
-                                    <TableColumn prefWidth="311.0" text="Nazwa" />
-                                    <TableColumn prefWidth="261.0" text="Ilość na stanie" />
+                                    <TableColumn fx:id="tableLekiNazwa" prefWidth="311.0" text="Nazwa" />
+                                    <TableColumn fx:id="tableLekiIlosc" prefWidth="261.0" text="Ilość na stanie" />
                                     <TableColumn prefWidth="199.0" text="Cena" />
                                  </columns>
                               </TableView>

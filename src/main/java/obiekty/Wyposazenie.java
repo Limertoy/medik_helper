@@ -70,13 +70,7 @@ public class Wyposazenie implements Serializable {
 
     @Override
     public String toString() {
-        return "Wyposazenie{" +
-                "id_wyposazenia=" + id_wyposazenia +
-                ", nazwa_wyposazenia='" + nazwa_wyposazenia + '\'' +
-                ", typ_wyposazenia='" + typ_wyposazenia + '\'' +
-                ", data_waznosci=" + data_waznosci +
-                ", ilosc_pozostalych=" + ilosc_pozostalych +
-                '}';
+        return this.nazwa_wyposazenia;
     }
 
 

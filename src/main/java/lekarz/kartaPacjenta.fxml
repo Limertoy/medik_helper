@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.text.FontPosture?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lekarz.ControllerKartaPacjenta">
     <children>
@@ -97,7 +96,6 @@
         </Button>
       <Pane layoutX="337.0" layoutY="169.0" prefHeight="602.0" prefWidth="772.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #5CA3E5;">
          <children>
-            <Slider layoutX="744.0" layoutY="10.0" orientation="VERTICAL" prefHeight="583.0" prefWidth="14.0" />
             <Label layoutX="280.0" layoutY="41.0" prefHeight="30.0" prefWidth="40.0" text="Imię:" />
             <Label layoutX="20.0" layoutY="47.0" text="Nazwisko:" />
             <Label layoutX="27.0" layoutY="141.0" text="PESEL:" />
@@ -111,12 +109,24 @@
             <Label layoutX="279.0" layoutY="330.0" text="Telefon:" />
             <Label layoutX="491.0" layoutY="330.0" text="E-mail:" />
             <Label layoutX="279.0" layoutY="231.0" text="Miejscowość:" />
-            <TextArea layoutX="34.0" layoutY="436.0" prefHeight="111.0" prefWidth="305.0" />
+            <TextArea fx:id="obserwacje" layoutX="34.0" layoutY="436.0" prefHeight="111.0" prefWidth="305.0" />
             <Label layoutX="34.0" layoutY="413.0" text="Obserwacje:" />
             <Button layoutX="289.0" layoutY="557.0" mnemonicParsing="false" text="Zapisz" />
             <Button layoutX="679.0" layoutY="557.0" mnemonicParsing="false" text="Zapisz" />
             <Label layoutX="424.0" layoutY="413.0" text="Przepisywanie leków:" />
-            <TextArea layoutX="424.0" layoutY="436.0" prefHeight="111.0" prefWidth="305.0" />
+            <TextArea fx:id="przepisanie" layoutX="424.0" layoutY="436.0" prefHeight="111.0" prefWidth="305.0" />
+            <TextField fx:id="nazwisko" layoutX="14.0" layoutY="80.0" />
+            <TextField fx:id="imie" layoutX="280.0" layoutY="80.0" />
+            <TextField fx:id="drugieImie" layoutX="493.0" layoutY="80.0" />
+            <TextField fx:id="plec" layoutX="280.0" layoutY="178.0" />
+            <TextField fx:id="narodziny" layoutX="493.0" layoutY="178.0" />
+            <TextField fx:id="pesel" layoutX="14.0" layoutY="178.0" />
+            <TextField fx:id="wojewodztwo" layoutX="14.0" layoutY="270.0" />
+            <TextField fx:id="miejscowosc" layoutX="280.0" layoutY="270.0" />
+            <TextField fx:id="adres" layoutX="493.0" layoutY="270.0" />
+            <TextField fx:id="kodPocztowy" layoutX="14.0" layoutY="370.0" />
+            <TextField fx:id="telefon" layoutX="280.0" layoutY="370.0" />
+            <TextField fx:id="email" layoutX="493.0" layoutY="370.0" />
          </children></Pane>
       <Button fx:id="buttonLogin21" layoutX="62.0" layoutY="716.0" mnemonicParsing="false" onAction="#skierowanie" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wypisz skierowanie" textFill="#5ca3e5">
          <font>
