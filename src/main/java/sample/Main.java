@@ -1,5 +1,6 @@
 package sample;
 
+import static com.mycompany.PDFGenerator.PDF.generateChoroby;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -9,17 +10,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import obiekty.*;
-import org.dom4j.DocumentException;
 import org.hibernate.Session;
-import com.mycompany.PDFGenerator.PDF;
 
 import java.net.URL;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
-
-import static com.mycompany.PDFGenerator.PDF.generateChoroby;
 
 public class Main extends Application {
 
@@ -90,7 +87,7 @@ public class Main extends Application {
         session.save(pacjent2);
         session.getTransaction().commit();
 
-        generateChoroby("Pawel zjeb");
+        generateChoroby("Przykładowy pdf");
         
 
         URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
