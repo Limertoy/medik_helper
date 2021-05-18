@@ -49,4 +49,9 @@ public class Lista_chorob {
         this.kod_choroby = kod_choroby;
         this.nazwa_choroby = nazwa_choroby;
     }
+
+    @Override
+    public String toString() {
+        return nazwa_choroby;
+    }
 }

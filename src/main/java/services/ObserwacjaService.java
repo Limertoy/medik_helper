@@ -8,7 +8,7 @@ import obiekty.Obserwacja;
 import java.util.List;
 
 public class ObserwacjaService {
-    private ObserwacjaDAO dao = DaoFactory.createObserwacjaDao();
+    private final ObserwacjaDAO dao = DaoFactory.createObserwacjaDao();
 
     public Obserwacja saveOrUpdate(Obserwacja obj) {
         return dao.save(obj);
@@ -25,4 +25,6 @@ public class ObserwacjaService {
     public List<Obserwacja> findAll() {
         return dao.findAll();
     }
+
+    public List<Obserwacja> findAllPacjent(int id) {return dao.findAllPacjent(id);}
 }

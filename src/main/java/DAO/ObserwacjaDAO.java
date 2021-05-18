@@ -10,5 +10,6 @@ public interface ObserwacjaDAO {
     void remove(Obserwacja entity);
     Obserwacja findById(int id);
     List<Obserwacja> findAll();
+    List<Obserwacja> findAllPacjent(int id);
 
 }

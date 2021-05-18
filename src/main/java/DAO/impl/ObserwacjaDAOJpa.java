@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ObserwacjaDAOJpa implements ObserwacjaDAO {
 
-    private EntityManager em;
+    private final EntityManager em;
 
     public ObserwacjaDAOJpa(EntityManager em) {
         this.em = em;
@@ -43,8 +43,14 @@ public class ObserwacjaDAOJpa implements ObserwacjaDAO {
 
     @Override
     public List<Obserwacja> findAll() {
-        return em.createNativeQuery("SELECT * FROM obserwacje ", Rola.class).getResultList();
+        return em.createNativeQuery("SELECT * FROM obserwacje ", Obserwacja.class).getResultList();
     }
+
+    @Override
+    public List<Obserwacja> findAllPacjent(int id) {
+        return  em.createNativeQuery("SELECT * FROM obserwacje WHERE id_pacjenta="+id+" ", Obserwacja.class).getResultList();
+    }
+
 
     public EntityManager getPersistenceContext() {
         return this.em;
