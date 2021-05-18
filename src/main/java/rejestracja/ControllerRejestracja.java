@@ -207,7 +207,5 @@ public class ControllerRejestracja implements Initializable {
         alert2.showAndWait();
     }
 
-    public void zmianaDaty(ActionEvent actionEvent) {
-    }
 }
 

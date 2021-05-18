@@ -42,10 +42,14 @@ public class ControllerRejestracjaPacjenci implements Initializable {
     private TableColumn nazwisko_table, imie_table, pesel_table, ulica_table, miejscowosc_table;
     @FXML
     public TextField szukaj;
-
+    public static int id_zmien;
+    public Pacjent pacjent;
     Session session = HibernateUtil.getSessionFactory().openSession();
 
-    public void wybierz(MouseEvent mouseEvent) { zobaczKarte.setVisible(true); }
+    public void wybierz(MouseEvent mouseEvent) {
+        zobaczKarte.setVisible(true);
+        id_zmien = table.getSelectionModel().getSelectedItem().getId_pacjenta();
+    }
 
     public void pokaz(ActionEvent actionEvent) throws IOException{
         URL url = Paths.get("./src/main/java/rejestracja/kartaPacjentaRejestracja.fxml").toUri().toURL();
