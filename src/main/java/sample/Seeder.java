@@ -73,8 +73,6 @@ public class Seeder {
             Rola rola = service4.findById(faker.number().numberBetween(1, 4));
             Pracownik pracownik = new Pracownik(email, password, rola, imie, nazwisko);
             service3.saveOrUpdate(pracownik);
-
-
         }
 
 
@@ -129,7 +127,6 @@ public class Seeder {
             Lista_chorob newLista = new Lista_chorob(kod,nazwa);
 
             service5.saveOrUpdate(newLista);
-
         }
     }
 
