@@ -128,7 +128,7 @@ public class ControllerKartaPacjenta extends ControllerPacjenci implements Initi
     }
     public void kartaPacjentaEdycja(ActionEvent actionEvent) throws IOException {
         this.setService(new PacjentService());
-        pacjent = service.findById(1);   // 1 nalezy zmienic na id kiedy widok wizyt zostanie podloczaony do bazy danych
+        pacjent = service.findById(id_zmien);
         pacjentID = pacjent;
 
         URL url = Paths.get("./src/main/java/lekarz/kartaPacjentaEdycja.fxml").toUri().toURL();
@@ -148,7 +148,7 @@ public class ControllerKartaPacjenta extends ControllerPacjenci implements Initi
     public void initializeTextFieldCell() {
 
         this.setService(new PacjentService());
-        pacjent = service.findById(1);   // 1 nalezy zmienic na id kiedy widok wizyt zostanie podloczaony do bazy danych
+        pacjent = service.findById(id_zmien);
 
         imie.setText(pacjent.getImie_pacjenta());
         drugieImie.setText(pacjent.getDrugie_imie());
@@ -162,9 +162,6 @@ public class ControllerKartaPacjenta extends ControllerPacjenci implements Initi
         kodPocztowy.setText(pacjent.getKod_pocztowy());
         telefon.setText(pacjent.getTelefon());
         email.setText(pacjent.getEmail());
-
-
-
     }
 
     @Override
