@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SkierowanieDAOJpa implements SkierowanieDAO {
 
-    private EntityManager em;
+    private final EntityManager em;
 
     public SkierowanieDAOJpa(EntityManager em) {
         this.em = em;
@@ -43,7 +43,7 @@ public class SkierowanieDAOJpa implements SkierowanieDAO {
 
     @Override
     public List<Skierowanie> findAll() {
-        return em.createNativeQuery("SELECT * FROM skierowanie ", Rola.class).getResultList();
+        return em.createNativeQuery("SELECT * FROM skierowanie ", Skierowanie.class).getResultList();
     }
 
     public EntityManager getPersistenceContext() {

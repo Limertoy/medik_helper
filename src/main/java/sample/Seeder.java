@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import obiekty.*;
 import services.*;
 
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +19,7 @@ public class Seeder {
     private PracownikService service3;
     private RolaService service4;
     private Lista_ChorobService service5;
+    private PacjentService service6;
 
     public void setService(WyposazenieService service) {
         this.service = service;
@@ -38,6 +40,8 @@ public class Seeder {
     public void setService5(Lista_ChorobService service5) {
         this.service5 = service5;
     }
+
+    public void setService6(PacjentService service6) {this.service6 = service6; }
 
     public void generateWyp() { //1
         this.setService(new WyposazenieService());
@@ -130,6 +134,36 @@ public class Seeder {
         }
     }
 
+    public void generatePacjent() { //6
+        this.setService6(new PacjentService());
+        final String[] proper_noun = {"mężczyzna", "kobieta"};
+        final String[] woj = {"podlaskie", "warmińsko", "mazurskie", "pomorskie", "zachodniopomorskie", "lubuskie",
+                "wielkopolskie", "łódzkie", "kujawskopomorskie", "mazowieckie", "lubelskie", "świętokrzyskie",
+                "podkarpackie", "małopolskie", "śląskie", "opolskie", "dolnośląskie" };
+        Random random = new Random();
+        for (int i = 1; i < 30; i++){
+            int index = random.nextInt(proper_noun.length);
+            int index2 = random.nextInt(woj.length);
 
+            Faker faker = new Faker();
 
+            String nazwisko_pacjenta = faker.name().lastName();
+            String imie_pacjenta = faker.name().firstName();
+            String drugie_imie = faker.name().name();
+            String pesel = faker.numerify("###########");
+            String plec = proper_noun[index];
+            LocalDate data_urodzenia =  faker.date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            String wojewodztwo = woj[index2];
+            String miejscowosc = faker.address().city();
+            String adres = faker.address().streetAddress();
+            String kod_pocztowy = faker.address().zipCode();
+            String telefon = faker.numerify("###-###-###");
+            String email = faker.internet().emailAddress();
+
+            Pacjent newLista = new Pacjent(nazwisko_pacjenta, imie_pacjenta, drugie_imie, pesel, plec, data_urodzenia,
+                    wojewodztwo, miejscowosc, adres, kod_pocztowy, telefon, email);
+
+            service6.saveOrUpdate(newLista);
+        }
+    }
 }

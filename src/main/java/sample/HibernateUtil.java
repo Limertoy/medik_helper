@@ -9,7 +9,7 @@ public class HibernateUtil {
 
     private static SessionFactory buildSessionFactory() {
         try {
-            return (SessionFactory) new Configuration().configure().buildSessionFactory();
+            return new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("build SeesionFactory failed :" + ex);
             throw new ExceptionInInitializerError(ex);
@@ -21,7 +21,6 @@ public class HibernateUtil {
     }
 
     public static void close() {
-        // Close all cached and active connection pools
         getSessionFactory().close();
     }
 

@@ -18,6 +18,19 @@ public class Obserwacja {
     @OneToOne
     @JoinColumn(name="id_pracownika")
     private Pracownik pracownik;
+    @OneToOne
+    @JoinColumn(name="id_pacjenta")
+    private Pacjent pacjent;
+
+    public Obserwacja(String tekst, Lista_chorob choroba, Pracownik pracownik, Pacjent pacjent) {
+        this.tekst = tekst;
+        this.choroba = choroba;
+        this.pracownik = pracownik;
+        this.pacjent = pacjent;
+    }
+
+    public Obserwacja() {
+    }
 
     public int getId_obserwacji() {
         return id_obserwacji;
@@ -58,8 +71,4 @@ public class Obserwacja {
     public void setPacjent(Pacjent pacjent) {
         this.pacjent = pacjent;
     }
-
-    @OneToOne
-    @JoinColumn(name="id_pacjenta")
-    private Pacjent pacjent;
 }

@@ -25,11 +25,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import obiekty.Pacjent;
 import org.hibernate.Session;
+import sample.ControllerLogin;
 import sample.HibernateUtil;
 
 import org.hibernate.query.Query;
 
-public class ControllerPacjenci implements Initializable {
+public class ControllerPacjenci extends ControllerLogin implements Initializable {
     Stage primaryStage;
     @FXML
     Button buttonLogin, exit_button, minimalize_button, zobaczKarte;
@@ -38,14 +39,17 @@ public class ControllerPacjenci implements Initializable {
     @FXML
     private TableColumn nazwisko_table, imie_table, pesel_table, ulica_table, miejscowosc_table;
 
-    public static int id_zmien;
+    public static int id_zmien = 0;
 
     Session session = HibernateUtil.getSessionFactory().openSession();
 
     public void wybierz(MouseEvent mouseEvent) { zobaczKarte.setVisible(true); }
 
     public void pokaz(ActionEvent actionEvent) throws IOException{
-        Parent pokazParent = FXMLLoader.load(getClass().getResource("kartaPacjenta.fxml"));
+        Pacjent pacjent = table.getSelectionModel().getSelectedItem();
+        id_zmien = pacjent.getId_pacjenta();
+        URL url = Paths.get("./src/main/java/lekarz/kartaPacjenta.fxml").toUri().toURL();
+        Parent pokazParent = FXMLLoader.load(url);
         Scene pokazScene = new Scene(pokazParent);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
