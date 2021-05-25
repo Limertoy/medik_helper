@@ -76,7 +76,15 @@
                 <Insets />
             </opaqueInsets>
         </Button>
-      <Pane layoutX="337.0" layoutY="169.0" prefHeight="602.0" prefWidth="772.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #5CA3E5;" />
+      <Pane layoutX="337.0" layoutY="169.0" prefHeight="602.0" prefWidth="772.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #5CA3E5;">
+         <children>
+            <TableView fx:id="raportyTable" prefHeight="602.0" prefWidth="772.0">
+              <columns>
+                <TableColumn fx:id="nazwaColumn" prefWidth="438.0" text="Nazwa raportu" />
+                <TableColumn fx:id="dataColumn" prefWidth="333.0" text="Data generowania" />
+              </columns>
+            </TableView>
+         </children></Pane>
       <Button fx:id="buttonLogin3" layoutX="899.0" layoutY="73.0" mnemonicParsing="false" onAction="#wyposazenie" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wyposażenie" textFill="#5ca3e5">
          <effect>
             <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
@@ -92,7 +100,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="buttonLogin4" layoutX="62.0" layoutY="665.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Praca lekarzy (recepty)" textAlignment="CENTER" textFill="#5ca3e5">
+      <Button fx:id="buttonLogin4" layoutX="62.0" layoutY="665.0" mnemonicParsing="false" onAction="#generatePraca" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Praca lekarzy (recepty)" textAlignment="CENTER" textFill="#5ca3e5">
          <effect>
             <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
                <color>

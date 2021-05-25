@@ -51,7 +51,6 @@ public class ObserwacjaDAOJpa implements ObserwacjaDAO {
         return  em.createNativeQuery("SELECT * FROM obserwacje WHERE id_pacjenta="+id+" ", Obserwacja.class).getResultList();
     }
 
-
     public EntityManager getPersistenceContext() {
         return this.em;
     }

@@ -10,7 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class DaoFactory {
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("appJavaFXUnit");
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("appJavaFXUnit");
 
     public static WyposazenieDAO createWyposazenieDao() {
         return new WyposazenieDAOJpa(emf.createEntityManager());
@@ -35,6 +35,7 @@ public class DaoFactory {
     public static ReceptyDAO createReceptyDao() { return new ReceptyDAOJpa(emf.createEntityManager());
     }
     public static PacjentDAO createPacjentDao() { return new PacjentDAOJpa(emf.createEntityManager()); }
+    public static PdfDAO createPdfDao() { return new PdfDAOJpa(emf.createEntityManager()); }
     public static EntityManagerFactory getEntityManagerFactory() {
         return emf;
     }

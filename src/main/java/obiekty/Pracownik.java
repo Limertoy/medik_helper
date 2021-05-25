@@ -79,13 +79,6 @@ public class Pracownik {
 
     @Override
     public String toString() {
-        return "Pracownik{" +
-                "id_pracownika=" + id_pracownika +
-                ", email='" + email + '\'' +
-                ", haslo='" + haslo + '\'' +
-                ", rola=" + rola.getNazwa() +
-                ", imie_pracownika='" + imie_pracownika + '\'' +
-                ", nazwisko_pracownika='" + nazwisko_pracownika + '\'' +
-                '}';
+        return imie_pracownika + " " + nazwisko_pracownika;
     }
 }
