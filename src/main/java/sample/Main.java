@@ -27,6 +27,8 @@ public class Main extends Application {
     private double yOffset = 0;
     Seeder seeder = new Seeder();
 
+    public static final String PDF_DEST = System.getProperty("user.home") + "/Desktop/PDFy";
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Session session = HibernateUtil.getSessionFactory().openSession();
