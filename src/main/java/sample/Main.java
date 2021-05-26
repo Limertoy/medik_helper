@@ -34,7 +34,7 @@ public class Main extends Application {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
 
-        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("sample.fxml");
         Parent root = FXMLLoader.load(url);
         Scene scene = new Scene(root);
         //grab your root here
