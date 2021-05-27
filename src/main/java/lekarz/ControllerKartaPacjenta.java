@@ -66,7 +66,7 @@ public class ControllerKartaPacjenta extends ControllerPacjenci implements Initi
     }
 
     public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
-        URL url = Paths.get(s1).toUri().toURL();
+        URL url = getClass().getClassLoader().getResource(s1);
         Parent parent = FXMLLoader.load(url);
         Scene scene = new Scene(parent);
 
@@ -80,23 +80,23 @@ public class ControllerKartaPacjenta extends ControllerPacjenci implements Initi
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         session.close();
-        przejdz(actionEvent, "./src/main/java/sample/sample.fxml");
+        przejdz(actionEvent, "sample.fxml");
     }
 
-    public void wizyty(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "./src/main/java/lekarz/wizyty.fxml"); }
+    public void wizyty(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "lekarz/wizyty.fxml"); }
 
     public void kalendarz(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/lekarz/kalendarz.fxml");
+        przejdz(actionEvent,"lekarz/kalendarz.fxml");
     }
 
-    public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"./src/main/java/lekarz/pacjenci.fxml"); }
+    public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"lekarz/pacjenci.fxml"); }
 
     public void skierowanie(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/lekarz/skierowanie.fxml");
+        przejdz(actionEvent,"lekarz/skierowanie.fxml");
     }
 
     public void choroby(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/lekarz/choroby.fxml");
+        przejdz(actionEvent,"lekarz/choroby.fxml");
     }
 
     public void kartaPacjentaEdycja(ActionEvent actionEvent) throws IOException {
@@ -104,7 +104,7 @@ public class ControllerKartaPacjenta extends ControllerPacjenci implements Initi
         pacjent = service.findById(id_zmien);
         pacjentID = pacjent;
 
-        przejdz(actionEvent,"./src/main/java/lekarz/kartaPacjentaEdycja.fxml");
+        przejdz(actionEvent,"lekarz/kartaPacjentaEdycja.fxml");
     }
 
     public void setService(PacjentService service) {
@@ -146,7 +146,7 @@ public class ControllerKartaPacjenta extends ControllerPacjenci implements Initi
     }
 
     public void obserwacje(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent, "./src/main/java/lekarz/obserwacje.fxml");
+        przejdz(actionEvent, "lekarz/obserwacje.fxml");
     }
 
     public void zapiszObserwacje(ActionEvent actionEvent) throws IOException {
@@ -158,6 +158,6 @@ public class ControllerKartaPacjenta extends ControllerPacjenci implements Initi
         Obserwacja ob = new Obserwacja(s1, s2, pr, pacjent);
         session.save(ob);
         session.getTransaction().commit();
-        przejdz(actionEvent, "./src/main/java/lekarz/kartaPacjenta.fxml");
+        przejdz(actionEvent, "lekarz/kartaPacjenta.fxml");
     }
 }

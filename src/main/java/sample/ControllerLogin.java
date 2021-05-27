@@ -53,7 +53,7 @@ public class ControllerLogin {
     }
 
     public void przejdz(ActionEvent a, String s1) throws IOException {
-        URL url = Paths.get(s1).toUri().toURL();
+        URL url = getClass().getClassLoader().getResource(s1);
         Parent parent = FXMLLoader.load(url);
         Scene scene = new Scene(parent);
 
@@ -81,16 +81,20 @@ public class ControllerLogin {
         for (Pracownik s : resultList) {
             if (s.getRola().getId_rola() == 1) {
                 id_sesji = s.getId_pracownika();
-                przejdz(actionEvent, "./src/main/java/lekarz/wizyty.fxml");
+                textLadowanie.setVisible(true);
+                przejdz(actionEvent, "lekarz/wizyty.fxml");
             } else if (s.getRola().getId_rola() == 2) {
                 id_sesji = s.getId_pracownika();
-                przejdz(actionEvent, "./src/main/java/pielegniarka/pielegniarkaPacjenci.fxml");
+                textLadowanie.setVisible(true);
+                przejdz(actionEvent, "pielegniarka/pielegniarkaPacjenci.fxml");
             } else if (s.getRola().getId_rola() == 3) {
                 id_sesji = s.getId_pracownika();
-                przejdz(actionEvent, "./src/main/java/dyrektor/dyrektorZamawianie.fxml");
+                textLadowanie.setVisible(true);
+                przejdz(actionEvent, "dyrektor/dyrektorZamawianie.fxml");
             } else if (s.getRola().getId_rola() == 4) {
                 id_sesji = s.getId_pracownika();
-                przejdz(actionEvent, "./src/main/java/rejestracja/rejestracja.fxml");
+                textLadowanie.setVisible(true);
+                przejdz(actionEvent, "rejestracja/rejestracja.fxml");
             }
         }
         textLadowanie.setVisible(false);

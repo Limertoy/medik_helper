@@ -54,7 +54,7 @@ public class ControllerRaporty implements Initializable {
     }
     
     public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
-        URL url = Paths.get(s1).toUri().toURL();
+        URL url = getClass().getClassLoader().getResource(s1);
         Parent parent = FXMLLoader.load(url);
         Scene scene = new Scene(parent);
 
@@ -68,19 +68,19 @@ public class ControllerRaporty implements Initializable {
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.close();
-        przejdz(actionEvent,"./src/main/java/sample/sample.fxml");
+        przejdz(actionEvent,"sample.fxml");
     }
 
     public void zamowienie(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/dyrektor/dyrektorZamawianie.fxml");
+        przejdz(actionEvent,"dyrektor/dyrektorZamawianie.fxml");
     }
 
     public void personel(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/dyrektor/pracownicy.fxml");
+        przejdz(actionEvent,"dyrektor/pracownicy.fxml");
     }
 
     public void wyposazenie(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/dyrektor/dyrektorZarzadzanie.fxml");
+        przejdz(actionEvent,"dyrektor/dyrektorZarzadzanie.fxml");
     }
 
     public void generatePraca(ActionEvent actionEvent) throws IOException {
@@ -89,7 +89,7 @@ public class ControllerRaporty implements Initializable {
         List<Pracownik> list = q.list();
         reporty.createPdf(list.get(0).getImie_pracownika() + " " + list.get(0).getNazwisko_pracownika());
 
-        przejdz(actionEvent, "./src/main/java/dyrektor/raporty.fxml");
+        przejdz(actionEvent, "dyrektor/raporty.fxml");
     }
 
     @Override

@@ -41,7 +41,7 @@ public class ControllerPielegniarkaPacjenci implements Initializable {
     public void wybierz(MouseEvent mouseEvent) { buttonGenerujRecepte.setVisible(true); }
 
     public void pokaz(ActionEvent actionEvent) throws IOException{
-        URL url = Paths.get("./src/main/java/pielegniarka/generujRecepte.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("pielegniarka/generujRecepte.fxml");
         Parent pokazParent = FXMLLoader.load(url);
         Scene pokazScene = new Scene(pokazParent);
 
@@ -65,7 +65,7 @@ public class ControllerPielegniarkaPacjenci implements Initializable {
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.close();
-        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("sample.fxml");
         Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
 
@@ -77,7 +77,7 @@ public class ControllerPielegniarkaPacjenci implements Initializable {
     }
 
     public void rejestracja(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/pielegniarka/wydawanieLekow.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("pielegniarka/wydawanieLekow.fxml");
         Parent rejestracjaParent = FXMLLoader.load(url);
         Scene rejestracjaScene = new Scene(rejestracjaParent);
 

@@ -1,4 +1,5 @@
-/lib/
-/out/
-/target/
-/target/classes/
+lib/
+!lib/moja_biblioteka-1.0-SNAPSHOT.jar
+out/
+target/
+target/classes/

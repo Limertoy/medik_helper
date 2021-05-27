@@ -52,7 +52,7 @@ public class ControllerChoroby implements Initializable {
     //PRZYCISKI PRZEŁĄCZENIA NA INNY EKRAN
 
     public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
-        URL url = Paths.get(s1).toUri().toURL();
+        URL url = getClass().getClassLoader().getResource(s1);
         Parent parent = FXMLLoader.load(url);
         Scene scene = new Scene(parent);
 
@@ -66,16 +66,16 @@ public class ControllerChoroby implements Initializable {
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.close();
-        przejdz(actionEvent,"./src/main/java/sample/sample.fxml");
+        przejdz(actionEvent,"sample.fxml");
     }
 
-    public void wizyty(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "./src/main/java/lekarz/wizyty.fxml"); }
+    public void wizyty(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "lekarz/wizyty.fxml"); }
 
-    public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"./src/main/java/lekarz/pacjenci.fxml"); }
+    public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"lekarz/pacjenci.fxml"); }
 
-    public void kartaPacjenta(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"./src/main/java/lekarz/kartaPacjenta.fxml"); }
+    public void kartaPacjenta(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"lekarz/kartaPacjenta.fxml"); }
 
-    public void kalendarz(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "./src/main/java/lekarz/kalendarz.fxml");}
+    public void kalendarz(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "lekarz/kalendarz.fxml");}
 
     public void setService(Lista_ChorobService service) {
         this.service = service;

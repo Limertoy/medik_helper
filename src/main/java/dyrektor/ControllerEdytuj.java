@@ -62,7 +62,7 @@ public class ControllerEdytuj extends ControllerPracownicy implements Initializa
     }
 
     public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
-        URL url = Paths.get(s1).toUri().toURL();
+        URL url = getClass().getClassLoader().getResource(s1);
         Parent parent = FXMLLoader.load(url);
         Scene scene = new Scene(parent);
 
@@ -74,11 +74,11 @@ public class ControllerEdytuj extends ControllerPracownicy implements Initializa
 
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         session.close();
-        przejdz(actionEvent,"./src/main/java/sample/sample.fxml");
+        przejdz(actionEvent,"sample.fxml");
     }
 
     public void wroc(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/dyrektor/pracownicy.fxml");
+        przejdz(actionEvent,"dyrektor/pracownicy.fxml");
     }
 
     public void zmien(ActionEvent actionEvent) throws IOException {
@@ -104,6 +104,6 @@ public class ControllerEdytuj extends ControllerPracownicy implements Initializa
 
         session.save(pracownik);
         session.getTransaction().commit();
-        przejdz(actionEvent,"./src/main/java/dyrektor/pracownicy.fxml");
+        przejdz(actionEvent,"dyrektor/pracownicy.fxml");
     }
 }

@@ -167,7 +167,7 @@ public class ControllerWizyty extends ControllerLogin implements Initializable {
     public void wybierz(MouseEvent mouseEvent) { zobaczKarte.setVisible(true); }
 
     public void pokaz(ActionEvent actionEvent) throws IOException{
-        URL url = Paths.get("./src/main/java/lekarz/kartaPacjenta.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("lekarz/kartaPacjenta.fxml");
         Parent pokazParent = FXMLLoader.load(url);
         Scene pokazScene = new Scene(pokazParent);
 
@@ -180,7 +180,7 @@ public class ControllerWizyty extends ControllerLogin implements Initializable {
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.close();
-        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("sample.fxml");
         Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
 
@@ -190,7 +190,7 @@ public class ControllerWizyty extends ControllerLogin implements Initializable {
         window.show();
     }
     public void kalendarz(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/lekarz/kalendarz.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("lekarz/kalendarz.fxml");
         Parent kalendarzParent = FXMLLoader.load(url);
         Scene kalendarzScene = new Scene(kalendarzParent);
 
@@ -200,7 +200,7 @@ public class ControllerWizyty extends ControllerLogin implements Initializable {
         window.show();
     }
     public void pacjenci(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/lekarz/pacjenci.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("lekarz/pacjenci.fxml");
         Parent pacjenciParent = FXMLLoader.load(url);
         Scene pacjenciScene = new Scene(pacjenciParent);
 
@@ -210,7 +210,7 @@ public class ControllerWizyty extends ControllerLogin implements Initializable {
         window.show();
     }
     public void kartaPacjenta(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/lekarz/kartaPacjenta.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("lekarz/kartaPacjenta.fxml");
         Parent kartaPacjentaParent = FXMLLoader.load(url);
         Scene kartaPacjentaScene = new Scene(kartaPacjentaParent);
 

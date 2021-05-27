@@ -137,7 +137,7 @@ public class ControllerZarzadzaj implements Initializable {
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.close();
-        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("sample.fxml");
         Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
 
@@ -148,7 +148,7 @@ public class ControllerZarzadzaj implements Initializable {
     }
 
     public void pacjenci(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/rejestracja/rejestracjaPacjenci.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("rejestracja/rejestracjaPacjenci.fxml");
         Parent pacjenciParent = FXMLLoader.load(url);
         Scene pacjenciScene = new Scene(pacjenciParent);
 
@@ -160,7 +160,7 @@ public class ControllerZarzadzaj implements Initializable {
 
 
     public void rejestracja(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/rejestracja/rejestracja.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("rejestracja/rejestracja.fxml");
         Parent rejestracjaParent = FXMLLoader.load(url);
         Scene rejestracjaScene = new Scene(rejestracjaParent);
 

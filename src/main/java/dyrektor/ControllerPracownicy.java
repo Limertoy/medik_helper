@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,11 +19,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import obiekty.Pracownik;
 import obiekty.Rola;
+import obiekty.Sloty;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import sample.HibernateUtil;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Serializable;
+import java.io.StringWriter;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.List;
@@ -146,7 +151,7 @@ public class ControllerPracownicy implements Initializable {
     }
 
     public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
-        URL url = Paths.get(s1).toUri().toURL();
+        URL url = getClass().getClassLoader().getResource(s1);
         Parent parent = FXMLLoader.load(url);
         Scene scene = new Scene(parent);
 
@@ -159,19 +164,19 @@ public class ControllerPracownicy implements Initializable {
 
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         session.close();
-        przejdz(actionEvent,"./src/main/java/sample/sample.fxml");
+        przejdz(actionEvent,"sample.fxml");
     }
 
     public void zamowienie(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/dyrektor/dyrektorZamawianie.fxml");
+        przejdz(actionEvent,"dyrektor/dyrektorZamawianie.fxml");
     }
 
     public void wydruki(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/dyrektor/raporty.fxml");
+        przejdz(actionEvent,"dyrektor/raporty.fxml");
     }
 
     public void wyposazenie(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/dyrektor/dyrektorZarzadzanie.fxml");
+        przejdz(actionEvent,"dyrektor/dyrektorZarzadzanie.fxml");
     }
 
     public void pokazButtony(MouseEvent mouseEvent) {
@@ -182,19 +187,30 @@ public class ControllerPracownicy implements Initializable {
     public void edytuj(ActionEvent actionEvent) throws IOException {
         ListaPracownikow selected = pracownicy.getSelectionModel().getSelectedItem();
         id_zmien = selected.id;
-        przejdz(actionEvent,"./src/main/java/dyrektor/edytuj.fxml");
+        przejdz(actionEvent,"dyrektor/edytuj.fxml");
     }
 
     public void usun(ActionEvent actionEvent) throws IOException {
-        session.beginTransaction();
         ListaPracownikow selected = pracownicy.getSelectionModel().getSelectedItem();
-        Pracownik pracownik = session.get(Pracownik.class, selected.id);
-        session.delete(pracownik);
-        session.getTransaction().commit();
-        przejdz(actionEvent,"./src/main/java/dyrektor/pracownicy.fxml");
+        try {
+            session.beginTransaction();
+            Pracownik pracownik = session.get(Pracownik.class, selected.id);
+            session.delete(pracownik);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Wystąpił błąd");
+            alert.setHeaderText("Nie udało się usunąć tego pracownika!");
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            alert.setContentText(sw.toString());
+        }
+
+        przejdz(actionEvent,"dyrektor/pracownicy.fxml");
     }
 
     public void dodaj(ActionEvent actionEvent) throws IOException {
-        przejdz(actionEvent,"./src/main/java/dyrektor/dodaj.fxml");
+        przejdz(actionEvent,"dyrektor/dodaj.fxml");
     }
 }

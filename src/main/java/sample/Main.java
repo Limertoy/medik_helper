@@ -31,10 +31,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-
-
-        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("sample.fxml");
         Parent root = FXMLLoader.load(url);
         Scene scene = new Scene(root);
         //grab your root here
@@ -49,7 +46,7 @@ public class Main extends Application {
         //move around here
         root.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
-            public void handle(MouseEvent event) {
+            public void handle(MouseEvent event){
                 primaryStage.setX(event.getScreenX() - xOffset);
                 primaryStage.setY(event.getScreenY() - yOffset);
             }

@@ -53,7 +53,7 @@ public class ControllerDyrektorZamawianie implements Initializable {
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.close();
-        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("sample.fxml");
         Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
 
@@ -66,7 +66,7 @@ public class ControllerDyrektorZamawianie implements Initializable {
 
 
     public void personel(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/dyrektor/pracownicy.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("dyrektor/pracownicy.fxml");
         Parent kalendarzParent = FXMLLoader.load(url);
         Scene kalendarzScene = new Scene(kalendarzParent);
 
@@ -77,7 +77,7 @@ public class ControllerDyrektorZamawianie implements Initializable {
     }
 
     public void wydruki(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/dyrektor/raporty.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("dyrektor/raporty.fxml");
         Parent pacjenciParent = FXMLLoader.load(url);
         Scene pacjenciScene = new Scene(pacjenciParent);
 
@@ -88,7 +88,7 @@ public class ControllerDyrektorZamawianie implements Initializable {
     }
 
     public void wyposazenie(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/dyrektor/dyrektorZarzadzanie.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("dyrektor/dyrektorZarzadzanie.fxml");
         Parent pacjenciParent = FXMLLoader.load(url);
         Scene pacjenciScene = new Scene(pacjenciParent);
 

@@ -27,7 +27,7 @@ public class ControllerObserwacje extends ControllerPacjenci implements Initiali
     public TableColumn tekstTable, chorobaTable;
 
     public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
-        URL url = Paths.get(s1).toUri().toURL();
+        URL url = getClass().getClassLoader().getResource(s1);
         Parent parent = FXMLLoader.load(url);
         Scene scene = new Scene(parent);
 
@@ -40,15 +40,15 @@ public class ControllerObserwacje extends ControllerPacjenci implements Initiali
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.close();
-        przejdz(actionEvent,"./src/main/java/sample/sample.fxml");
+        przejdz(actionEvent,"sample.fxml");
     }
 
     @Override
     public void wizyty(ActionEvent actionEvent) throws IOException { super.wizyty(actionEvent); }
 
-    public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "./src/main/java/lekarz/pacjenci.fxml"); }
+    public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "lekarz/pacjenci.fxml"); }
 
-     public void kartaPacjenta(ActionEvent actionEvent) throws IOException {przejdz(actionEvent, "./src/main/java/lekarz/kartaPacjenta.fxml");}
+     public void kartaPacjenta(ActionEvent actionEvent) throws IOException {przejdz(actionEvent, "lekarz/kartaPacjenta.fxml");}
 
     @Override
     public void kalendarz(ActionEvent actionEvent) throws IOException {
