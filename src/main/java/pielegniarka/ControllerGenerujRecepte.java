@@ -34,9 +34,7 @@ public class ControllerGenerujRecepte {
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.close();
-        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("sample.fxml");
         Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
 
@@ -47,7 +45,7 @@ public class ControllerGenerujRecepte {
     }
 
     public void pacjenci(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/pielegniarka/pielegniarkaPacjenci.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("pielegniarka/pielegniarkaPacjenci.fxml");
         Parent pacjenciParent = FXMLLoader.load(url);
         Scene pacjenciScene = new Scene(pacjenciParent);
 

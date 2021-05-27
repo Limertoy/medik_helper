@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dyrektor.ControllerPracownicy">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dyrektor.ControllerRaporty">
     <children>
         <Pane prefHeight="30.0" prefWidth="1180.0" style="-fx-background-color: #5CA3E5;">
             <children>
@@ -35,6 +34,17 @@
                 <Button fx:id="wyloguj" layoutX="978.0" layoutY="2.0" mnemonicParsing="false" onAction="#wyloguj" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #5CA3E5; -fx-border-color: #FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8;" text="wyloguj" textFill="WHITE" />
             </children>
         </Pane>
+        <Button layoutX="337.0" layoutY="73.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #5CA3E5; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wydruki" textFill="WHITE">
+            <font>
+                <Font name="Tahoma" size="16.0" />
+            </font>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+         <effect>
+            <InnerShadow choke="0.44" color="#0000001c" height="12.63" offsetY="4.0" radius="5.907500000000001" width="13.0" />
+         </effect>
+        </Button>
         <Button fx:id="buttonLogin2" layoutX="622.0" layoutY="73.0" mnemonicParsing="false" onAction="#zamowienie" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Złóż zamówienie" textFill="#5ca3e5">
             <font>
                 <Font name="Tahoma" size="16.0" />
@@ -50,7 +60,7 @@
                 <Insets />
             </opaqueInsets>
         </Button>
-        <Button fx:id="buttonLogin" layoutX="337.0" layoutY="73.0" mnemonicParsing="false" onAction="#wydruki" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wydruki" textFill="#5ca3e5">
+        <Button fx:id="buttonLogin" layoutX="62.0" layoutY="73.0" mnemonicParsing="false" onAction="#personel" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Zarządzaj personelem" textFill="#5ca3e5">
             <font>
                 <Font name="Tahoma" size="16.0" />
             </font>
@@ -67,12 +77,10 @@
         </Button>
       <Pane layoutX="337.0" layoutY="169.0" prefHeight="602.0" prefWidth="772.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #5CA3E5;">
          <children>
-            <TableView fx:id="pracownicy" onMouseClicked="#pokazButtony" prefHeight="602.0" prefWidth="772.0">
+            <TableView fx:id="raportyTable" prefHeight="602.0" prefWidth="772.0">
               <columns>
-                <TableColumn fx:id="imie_table" prefWidth="140.0" text="Imię" />
-                <TableColumn fx:id="nazwisko_table" prefWidth="182.0" text="Nazwisko" />
-                  <TableColumn fx:id="rola_table" prefWidth="193.0" text="Rola" />
-                  <TableColumn fx:id="email_table" prefWidth="256.0" text="email" />
+                <TableColumn fx:id="nazwaColumn" prefWidth="438.0" text="Nazwa raportu" />
+                <TableColumn fx:id="dataColumn" prefWidth="333.0" text="Data generowania" />
               </columns>
             </TableView>
          </children></Pane>
@@ -91,7 +99,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="buttonLogin4" layoutX="62.0" layoutY="539.0" mnemonicParsing="false" onAction="#edytuj" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Edytuj pracownika" textAlignment="CENTER" textFill="#5ca3e5" visible="false">
+      <Button fx:id="buttonLogin4" layoutX="62.0" layoutY="665.0" mnemonicParsing="false" onAction="#generatePraca" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Praca lekarzy (recepty)" textAlignment="CENTER" textFill="#5ca3e5">
          <effect>
             <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
                <color>
@@ -106,7 +114,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="buttonLogin5" layoutX="62.0" layoutY="704.0" mnemonicParsing="false" onAction="#dodaj" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Dodaj pracownika" textFill="#5ca3e5">
+      <Button fx:id="buttonLogin5" layoutX="62.0" layoutY="470.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Choroby pacjentów" textFill="#5ca3e5">
          <effect>
             <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
                <color>
@@ -121,24 +129,13 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="buttonLogin6" layoutX="62.0" layoutY="623.0" mnemonicParsing="false" onAction="#usun" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Usuń pracownika" textFill="#5ca3e5" visible="false">
+      <Button fx:id="buttonLogin6" layoutX="62.0" layoutY="566.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wydane zasoby medyczne" textFill="#5ca3e5">
          <effect>
             <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
                <color>
                   <Color opacity="0.12826086580753326" />
                </color>
             </DropShadow>
-         </effect>
-         <font>
-            <Font name="Tahoma" size="16.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Button>
-      <Button layoutX="62.0" layoutY="73.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #5CA3E5; -fx-border-radius: 8; -fx-background-radius: 8;" text="Zarządzaj personelem" textFill="WHITE">
-         <effect>
-            <InnerShadow choke="0.44" color="#0000001c" height="12.63" offsetY="4.0" radius="5.907500000000001" width="13.0" />
          </effect>
          <font>
             <Font name="Tahoma" size="16.0" />

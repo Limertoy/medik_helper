@@ -53,42 +53,19 @@ public class ControllerRejestracja implements Initializable {
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.close();
-        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
-        Parent loginParent = FXMLLoader.load(url);
-        Scene loginScene = new Scene(loginParent);
-
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(loginScene);
-        window.show();
+        przejdz(actionEvent, "sample.fxml");
     }
 
     public void pacjenci(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/rejestracja/rejestracjaPacjenci.fxml").toUri().toURL();
-        Parent pacjenciParent = FXMLLoader.load(url);
-        Scene pacjenciScene = new Scene(pacjenciParent);
-
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(pacjenciScene);
-        window.show();
+        przejdz(actionEvent, "rejestracja/rejestracjaPacjenci.fxml");
     }
 
     public void zarzadzaj(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/rejestracja/zarzadzaj.fxml").toUri().toURL();
-        Parent zarzadzajParent = FXMLLoader.load(url);
-        Scene zarzadzajScene = new Scene(zarzadzajParent);
-
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(zarzadzajScene);
-        window.show();
+        przejdz(actionEvent, "rejestracja/zarzadzaj.fxml");
     }
 
     public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
-        URL url = Paths.get(s1).toUri().toURL();
+        URL url = getClass().getClassLoader().getResource(s1);
         Parent parent = FXMLLoader.load(url);
         Scene scene = new Scene(parent);
 
@@ -203,7 +180,7 @@ public class ControllerRejestracja implements Initializable {
 
         alert2.setTitle("Medik Helper");
         alert2.setHeaderText("Pomyślnie dodano nowego pacjenta");
-        przejdz(actionEvent,"./src/main/java/rejestracja/rejestracja.fxml");
+        przejdz(actionEvent,"rejestracja/rejestracja.fxml");
         alert2.showAndWait();
     }
 

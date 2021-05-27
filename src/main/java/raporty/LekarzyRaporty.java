@@ -3,13 +3,11 @@ package raporty;
 import com.mycompany.PDFGenerator.PDF;
 import obiekty.Obserwacja;
 import obiekty.Pdf;
-import org.codehaus.jackson.map.ObjectMapper;
 import sample.Main;
 import services.ObserwacjaService;
 import services.PdfService;
 
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

@@ -68,16 +68,16 @@ public class ControllerKartaPacjentaEdycja extends ControllerKartaPacjenta imple
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.close();
-        przejdz(actionEvent,"./src/main/java/sample/sample.fxml");
+        przejdz(actionEvent,"sample.fxml");
     }
 
-    public void wizyty(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "./src/main/java/lekarz/wizyty.fxml"); }
+    public void wizyty(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "lekarz/wizyty.fxml"); }
 
-    public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"./src/main/java/lekarz/pacjenci.fxml"); }
+    public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"lekarz/pacjenci.fxml"); }
 
-    public void kartaPacjenta(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"./src/main/java/lekarz/kartaPacjenta.fxml"); }
+    public void kartaPacjenta(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"lekarz/kartaPacjenta.fxml"); }
 
-    public void kalendarz(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "./src/main/java/lekarz/kalendarz.fxml");}
+    public void kalendarz(ActionEvent actionEvent) throws IOException { przejdz(actionEvent, "lekarz/kalendarz.fxml");}
 
     @Override
     public void setService(PacjentService service) {

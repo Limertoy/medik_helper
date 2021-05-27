@@ -52,7 +52,7 @@ public class ControllerRejestracjaPacjenci implements Initializable {
     }
 
     public void pokaz(ActionEvent actionEvent) throws IOException{
-        URL url = Paths.get("./src/main/java/rejestracja/kartaPacjentaRejestracja.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("rejestracja/kartaPacjentaRejestracja.fxml");
         Parent pokazParent = FXMLLoader.load(url);
         Scene pokazScene = new Scene(pokazParent);
 
@@ -74,9 +74,7 @@ public class ControllerRejestracjaPacjenci implements Initializable {
 
     //metoda na przycisk wyloguj ktora otwiera scene sample.fxml
     public void wyloguj(ActionEvent actionEvent) throws IOException {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.close();
-        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("sample.fxml");
         Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
 
@@ -88,7 +86,7 @@ public class ControllerRejestracjaPacjenci implements Initializable {
     }
 
     public void rejestracja(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/rejestracja/rejestracja.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("rejestracja/rejestracja.fxml");
         Parent rejestracjaParent = FXMLLoader.load(url);
         Scene rejestracjaScene = new Scene(rejestracjaParent);
 
@@ -98,7 +96,7 @@ public class ControllerRejestracjaPacjenci implements Initializable {
         window.show();
     }
     public void zarzadzaj(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/rejestracja/zarzadzaj.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("rejestracja/zarzadzaj.fxml");
         Parent zarzadzajParent = FXMLLoader.load(url);
         Scene zarzadzajScene = new Scene(zarzadzajParent);
 

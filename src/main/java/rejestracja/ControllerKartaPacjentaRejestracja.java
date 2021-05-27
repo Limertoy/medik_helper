@@ -55,7 +55,7 @@ public class ControllerKartaPacjentaRejestracja implements Initializable {
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.close();
-        URL url = Paths.get("./src/main/java/sample/sample.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("sample.fxml");
         Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
 
@@ -66,7 +66,7 @@ public class ControllerKartaPacjentaRejestracja implements Initializable {
     }
 
     public void kartaPacjenta(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("./src/main/java/rejestracja/rejestracjaPacjenci.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("rejestracja/rejestracjaPacjenci.fxml");
         Parent pacjenciParent = FXMLLoader.load(url);
         Scene pacjenciScene = new Scene(pacjenciParent);
 
@@ -77,7 +77,7 @@ public class ControllerKartaPacjentaRejestracja implements Initializable {
     }
 
     public void przejdz(ActionEvent actionEvent, String s1) throws IOException {
-        URL url = Paths.get(s1).toUri().toURL();
+        URL url = getClass().getClassLoader().getResource(s1);
         Parent parent = FXMLLoader.load(url);
         Scene scene = new Scene(parent);
 
@@ -131,7 +131,7 @@ public class ControllerKartaPacjentaRejestracja implements Initializable {
         service.saveOrUpdate(pacjent);
         alert2.setTitle("Medik Helper");
         alert2.setHeaderText("Pomyślnie edytowano pacjenta");
-        przejdz(actionEvent,"./src/main/java/rejestracja/rejestracjaPacjenci.fxml");
+        przejdz(actionEvent,"rejestracja/rejestracjaPacjenci.fxml");
         alert2.showAndWait();
     }
 }
