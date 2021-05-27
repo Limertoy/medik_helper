@@ -47,7 +47,7 @@
                 <version>2.2-beta-5</version>
                 <configuration>
                     <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                        <descriptorRef>exe</descriptorRef>
                     </descriptorRefs>
                     <archive>
                         <manifest>
