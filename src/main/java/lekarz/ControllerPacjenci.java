@@ -48,7 +48,7 @@ public class ControllerPacjenci extends ControllerLogin implements Initializable
     public void pokaz(ActionEvent actionEvent) throws IOException{
         Pacjent pacjent = table.getSelectionModel().getSelectedItem();
         id_zmien = pacjent.getId_pacjenta();
-        URL url = Paths.get("lekarz/kartaPacjenta.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("lekarz/kartaPacjenta.fxml");
         Parent pokazParent = FXMLLoader.load(url);
         Scene pokazScene = new Scene(pokazParent);
 
@@ -72,7 +72,7 @@ public class ControllerPacjenci extends ControllerLogin implements Initializable
     public void wyloguj(ActionEvent actionEvent) throws IOException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.close();
-        URL url = Paths.get("sample.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("sample.fxml");
         Parent loginParent = FXMLLoader.load(url);
         Scene loginScene = new Scene(loginParent);
 
@@ -84,7 +84,7 @@ public class ControllerPacjenci extends ControllerLogin implements Initializable
     }
 
     public void wizyty(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("lekarz/wizyty.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("lekarz/wizyty.fxml");
         Parent wizytyParent = FXMLLoader.load(url);
         Scene wizytyScene = new Scene(wizytyParent);
 
@@ -94,7 +94,7 @@ public class ControllerPacjenci extends ControllerLogin implements Initializable
         window.show();
     }
     public void kalendarz(ActionEvent actionEvent) throws IOException {
-        URL url = Paths.get("lekarz/kalendarz.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("lekarz/kalendarz.fxml");
         Parent kalendarzParent = FXMLLoader.load(url);
         Scene kalendarzScene = new Scene(kalendarzParent);
 
@@ -106,7 +106,7 @@ public class ControllerPacjenci extends ControllerLogin implements Initializable
     public void kartaPacjenta(ActionEvent actionEvent) throws IOException {
         Pacjent pacjent = table.getSelectionModel().getSelectedItem();
         id_zmien = pacjent.getId_pacjenta();
-        URL url = Paths.get("lekarz/kartaPacjenta.fxml").toUri().toURL();
+        URL url = getClass().getClassLoader().getResource("lekarz/kartaPacjenta.fxml");
         Parent kartaPacjentaParent = FXMLLoader.load(url);
         Scene kartaPacjentaScene = new Scene(kartaPacjentaParent);
 
