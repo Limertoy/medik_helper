@@ -2,3 +2,4 @@
 /out/
 /target/
 /target/classes/
+!/lib/moja_biblioteka-1.0-SNAPSHOT.jar
