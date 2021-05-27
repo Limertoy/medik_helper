@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pielegniarka.ControllerGenerujRecepte">
+    <children>
+        <Pane prefHeight="30.0" prefWidth="1180.0" style="-fx-background-color: #5CA3E5;">
+            <children>
+                <Text fill="WHITE" layoutX="25.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medik Helper">
+                    <font>
+                        <Font name="Corbel" size="18.0" />
+                    </font>
+                </Text>
+                <Button fx:id="exit_button" cancelButton="true" layoutX="1143.0" layoutY="2.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: transparent;" text="X" textFill="WHITE">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+                <Button fx:id="minimalize_button" layoutX="1092.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" style="-fx-background-color: transparent;" text="—" textFill="WHITE">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+                <Button fx:id="wyloguj" layoutX="978.0" layoutY="2.0" mnemonicParsing="false" onAction="#wyloguj" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #5CA3E5; -fx-border-color: #FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8;" text="wyloguj" textFill="WHITE" />
+            </children>
+        </Pane>
+        <Button fx:id="buttonLogin3" layoutX="899.0" layoutY="73.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #5CA3E5; -fx-border-radius: 8; -fx-background-radius: 8;" text="Generowanie recept" textFill="WHITE">
+            <font>
+                <Font name="Tahoma" size="16.0" />
+            </font>
+            <effect>
+                <InnerShadow choke="0.44" height="11.5" offsetY="4.0" radius="5.625" width="13.0">
+                    <color>
+                        <Color opacity="0.10869564861059189" />
+                    </color>
+                </InnerShadow>
+            </effect>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </Button>
+        <Button fx:id="buttonLogin2" layoutX="337.0" layoutY="73.0" mnemonicParsing="false" onAction="#pacjenci" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Pacjenci" textFill="#5ca3e5">
+            <font>
+                <Font name="Tahoma" size="16.0" />
+            </font>
+            <effect>
+                <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+                    <color>
+                        <Color opacity="0.12826086580753326" />
+                    </color>
+                </DropShadow>
+            </effect>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </Button>
+        <Pane layoutX="337.0" layoutY="169.0" prefHeight="602.0" prefWidth="772.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #5CA3E5;">
+            <children>
+                <TextArea layoutX="39.0" layoutY="167.0" prefHeight="40.0" prefWidth="690.0" style="-fx-border-color: #5CA3E5;" />
+                <TextArea layoutX="39.0" layoutY="74.0" prefHeight="40.0" prefWidth="690.0" style="-fx-border-color: #5CA3E5;" />
+                <Text fill="#5ca3e5" layoutX="39.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pacjent:" wrappingWidth="149.615234375">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+                <Text fill="#5ca3e5" layoutX="39.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wydawca:" wrappingWidth="149.615234375">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+                <Button fx:id="buttonLogin21" layoutX="519.0" layoutY="509.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: F1FBFF; -fx-border-radius: 8; -fx-background-radius: 8;" text="Generuj receptę" textFill="#5ca3e5">
+                    <font>
+                        <Font name="Tahoma" size="16.0" />
+                    </font>
+                    <effect>
+                        <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+                            <color>
+                                <Color opacity="0.12826086580753326" />
+                            </color>
+                        </DropShadow>
+                    </effect>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </Button>
+                <TextArea layoutX="39.0" layoutY="266.0" prefHeight="125.0" prefWidth="690.0" style="-fx-border-color: #5CA3E5;" />
+                <Text fill="#5ca3e5" layoutX="39.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recepta:" wrappingWidth="149.615234375">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+            </children></Pane>
+    </children>
+</AnchorPane>

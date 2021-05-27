@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lekarz.ControllerObserwacje">
+    <children>
+        <Pane prefHeight="30.0" prefWidth="1180.0" style="-fx-background-color: #5CA3E5;">
+            <children>
+                <Text fill="WHITE" layoutX="25.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medik Helper">
+                    <font>
+                        <Font name="Corbel" size="18.0" />
+                    </font>
+                </Text>
+                <Button fx:id="exit_button" cancelButton="true" layoutX="1143.0" layoutY="2.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: transparent;" text="X" textFill="WHITE">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+                <Button fx:id="minimalize_button" layoutX="1092.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" style="-fx-background-color: transparent;" text="—" textFill="WHITE">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+                <Button fx:id="wyloguj" layoutX="978.0" layoutY="2.0" mnemonicParsing="false" onAction="#wyloguj" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #5CA3E5; -fx-border-color: #FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8;" text="wyloguj" textFill="WHITE" />
+            </children>
+        </Pane>
+      <Button fx:id="buttonLogin4" layoutX="72.0" layoutY="694.0" mnemonicParsing="false" onAction="#kartaPacjenta" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wróć" textAlignment="CENTER" textFill="#5ca3e5">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+               <color>
+                  <Color opacity="0.12826086580753326" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="buttonLogin" layoutX="72.0" layoutY="73.0" mnemonicParsing="false" onAction="#wizyty" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wizyty" textFill="#5ca3e5">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+               <color>
+                  <Color opacity="0.12826086580753326" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="buttonLogin2" layoutX="632.0" layoutY="73.0" mnemonicParsing="false" onAction="#pacjenci" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Pacjenci" textFill="#5ca3e5">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+               <color>
+                  <Color opacity="0.12826086580753326" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="buttonLogin1" layoutX="347.0" layoutY="73.0" mnemonicParsing="false" onAction="#kalendarz" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Kalendarz" textFill="#5ca3e5">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+               <color>
+                  <Color opacity="0.12826086580753326" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="buttonLogin3" layoutX="909.0" layoutY="73.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #5CA3E5; -fx-border-radius: 8; -fx-background-radius: 8;" text="Karta pacjenta" textFill="WHITE">
+         <effect>
+            <InnerShadow choke="0.44" height="11.5" offsetY="4.0" radius="5.625" width="13.0">
+               <color>
+                  <Color opacity="0.10869564861059189" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <TableView fx:id="obserwacjeTable" layoutX="346.0" layoutY="210.0" prefHeight="568.0" prefWidth="800.0">
+        <columns>
+          <TableColumn fx:id="tekstTable" prefWidth="603.0" text="Tekst" />
+          <TableColumn fx:id="chorobaTable" prefWidth="196.0" text="Choroba" />
+        </columns>
+      </TableView>
+    </children>
+</AnchorPane>

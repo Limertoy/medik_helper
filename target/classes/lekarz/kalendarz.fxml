@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lekarz.ControllerKalendarz">
+    <children>
+        <Pane prefHeight="30.0" prefWidth="1180.0" style="-fx-background-color: #5CA3E5;">
+            <children>
+                <Text fill="WHITE" layoutX="25.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medik Helper">
+                    <font>
+                        <Font name="Corbel" size="18.0" />
+                    </font>
+                </Text>
+                <Button fx:id="exit_button" cancelButton="true" layoutX="1143.0" layoutY="2.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: transparent;" text="X" textFill="WHITE">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="minimalize_button" layoutX="1092.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" style="-fx-background-color: transparent;" text="—" textFill="WHITE">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="wyloguj" layoutX="978.0" layoutY="2.0" mnemonicParsing="false" onAction="#wyloguj" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #5CA3E5; -fx-border-color: #FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8;" text="wyloguj" textFill="WHITE" />
+            </children>
+        </Pane>
+        <Button fx:id="buttonLogin1" layoutX="337.0" layoutY="73.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #5CA3E5; -fx-border-radius: 8; -fx-background-radius: 8;" text="Kalendarz" textFill="WHITE">
+            <font>
+                <Font name="Tahoma" size="16.0" />
+            </font>
+            <effect>
+                <InnerShadow choke="0.44" height="11.5" offsetY="4.0" radius="5.625" width="13.0">
+                    <color>
+                        <Color opacity="0.10869564861059189" />
+                    </color>
+                </InnerShadow>
+            </effect>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </Button>
+        <Button fx:id="buttonLogin3" layoutX="899.0" layoutY="73.0" mnemonicParsing="false" onAction="#kartaPacjenta" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Karta pacjenta" textFill="#5ca3e5">
+            <font>
+                <Font name="Tahoma" size="16.0" />
+            </font>
+            <effect>
+                <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+                    <color>
+                        <Color opacity="0.12826086580753326" />
+                    </color>
+                </DropShadow>
+            </effect>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </Button>
+        <Button fx:id="buttonLogin2" layoutX="622.0" layoutY="73.0" mnemonicParsing="false" onAction="#pacjenci" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Pacjenci" textFill="#5ca3e5">
+            <font>
+                <Font name="Tahoma" size="16.0" />
+            </font>
+            <effect>
+                <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+                    <color>
+                        <Color opacity="0.12826086580753326" />
+                    </color>
+                </DropShadow>
+            </effect>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </Button>
+        <Button fx:id="buttonLogin" layoutX="62.0" layoutY="73.0" mnemonicParsing="false" onAction="#wizyty" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wizyty" textFill="#5ca3e5">
+            <font>
+                <Font name="Tahoma" size="16.0" />
+            </font>
+            <effect>
+                <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+                    <color>
+                        <Color opacity="0.12826086580753326" />
+                    </color>
+                </DropShadow>
+            </effect>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </Button>
+        <DatePicker fx:id="datePicker" layoutX="80.0" layoutY="249.0" onAction="#zmianaDaty" showWeekNumbers="true" />
+        <Text fill="#5ca3e5" layoutX="115.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wybierz datę:" textAlignment="CENTER">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+        </Text>
+        <TableView fx:id="kalendarz" editable="true" layoutX="337.0" layoutY="174.0" onMouseClicked="#selectOne" prefHeight="596.0" prefWidth="816.0" style="-fx-fixed-cell-size: 40px; -fx-border-color: #5ca3e5; -fx-background-radius: 8;">
+            <columns>
+                <TableColumn fx:id="godzinaTable" prefWidth="81.0" sortable="false" style="-fx-alignment: CENTER;" text="Godzina">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="godzina" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="infoTable" prefWidth="107.0" sortable="false" style="-fx-alignment: CENTER;" text="Informacja">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="pon" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+      <Button fx:id="edytujButton" layoutX="62.0" layoutY="680.0" mnemonicParsing="false" onAction="#pracaGodzina" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Nie pracuję w tą godzinę" textFill="#e35d72" visible="false">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+               <color>
+                  <Color opacity="0.12826086580753326" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="pracaDzienButton" layoutX="62.0" layoutY="307.0" mnemonicParsing="false" onAction="#pracaDzien" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Nie pracuję w ten dzień" textFill="#e35d72" visible="false">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+               <color>
+                  <Color opacity="0.12826086580753326" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <ChoiceBox fx:id="choiseGodzina" layoutX="80.0" layoutY="617.0" onMouseClicked="#selectOne" prefHeight="28.0" prefWidth="174.0" visible="false" />
+      <Text fx:id="textGodzina" fill="#5ca3e5" layoutX="134.0" layoutY="586.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Godzina:" textAlignment="CENTER" visible="false">
+         <font>
+            <Font name="Corbel" size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="pracaDzienButton1" layoutX="62.0" layoutY="383.0" mnemonicParsing="false" onAction="#pracaDzien1" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Pracuję w ten dzień" textFill="limegreen" visible="false">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+               <color>
+                  <Color opacity="0.12826086580753326" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="edytujButton1" layoutX="62.0" layoutY="680.0" mnemonicParsing="false" onAction="#pracaGodzina1" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Pracuję w tą godzinę" textFill="LIMEGREEN" visible="false">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+               <color>
+                  <Color opacity="0.12826086580753326" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+    </children>
+</AnchorPane>
