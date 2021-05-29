@@ -89,11 +89,15 @@ public class Seeder {
         for (int i = 1; i < list.size(); i++) {
 
             Faker faker = new Faker();
-            Date data = faker.date().future(3, DAYS);
-            String informacja = "";
-            Pracownik pracownik = list.get(i);
-            Sloty slot = new Sloty(data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), godzina, informacja, pracownik);
-            service2.saveOrUpdate(slot);
+
+            for (int j = 1; j < 30; j++) {
+
+                Date data = faker.date().future(j, j-1, DAYS);
+                String informacja = "";
+                Pracownik pracownik = list.get(i);
+                Sloty slot = new Sloty(data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), godzina, informacja, pracownik);
+                service2.saveOrUpdate(slot);
+            }
         }
 
     }
@@ -104,7 +108,6 @@ public class Seeder {
         List<Pracownik> list = service3.znajdzLekarza();
 
 
-        for (int i = 1; i < list.size(); i++) {
 
             godzinySloty("8:30");
             godzinySloty("9:00");
@@ -116,7 +119,7 @@ public class Seeder {
             godzinySloty("12:00");
             godzinySloty("12:30");
             godzinySloty("13:00");
-        }
+
     }
     public void generateChoroby() {  //4
         this.setService5(new Lista_ChorobService());

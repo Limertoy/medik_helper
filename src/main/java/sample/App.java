@@ -21,6 +21,8 @@ public class App {
         Rola pielegniarka = new Rola();
         Rola rejestracja = new Rola();
 
+        Seeder seeder = new Seeder();
+
         lekarz.setNazwa("Lekarz");
         dyrektor.setNazwa("Dyrektor");
         pielegniarka.setNazwa("Pielęgniarka");
@@ -74,11 +76,11 @@ public class App {
         session.save(pacjent1);
         session.save(pacjent2);
         session.getTransaction().commit();
-//        seeder.generateWyp();
-//        seeder.generatePracownik();
-//        seeder.generateSloty();
-//        seeder.generateChoroby();
-//        seeder.generatePacjent();
+        seeder.generateWyp();
+        seeder.generatePracownik();
+        seeder.generateSloty();
+        seeder.generateChoroby();
+        seeder.generatePacjent();
 
 
 
