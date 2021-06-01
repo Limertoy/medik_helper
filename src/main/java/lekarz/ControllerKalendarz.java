@@ -199,5 +199,5 @@ public class ControllerKalendarz extends ControllerLogin implements Initializabl
 
     public void pacjenci(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"lekarz/pacjenci.fxml"); }
 
-    public void kartaPacjenta(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"slekarz/kartaPacjenta.fxml"); }
+    public void kartaPacjenta(ActionEvent actionEvent) throws IOException { przejdz(actionEvent,"lekarz/kartaPacjenta.fxml"); }
 }

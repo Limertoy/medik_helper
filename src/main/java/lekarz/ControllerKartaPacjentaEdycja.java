@@ -101,7 +101,7 @@ public class ControllerKartaPacjentaEdycja extends ControllerKartaPacjenta imple
 
     }
 //getData_urodzenia().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
-    public void zapiszZmiany(ActionEvent actionEvent) {
+    public void zapiszZmiany(ActionEvent actionEvent) throws IOException {
     this.setService2(new PacjentService());
         pacjentZPoprzedniegoEkranu.setImie_pacjenta(imiee.getText());
         pacjentZPoprzedniegoEkranu.setDrugie_imie(drugieImiee.getText());
@@ -118,7 +118,6 @@ public class ControllerKartaPacjentaEdycja extends ControllerKartaPacjenta imple
 
         System.out.println(pacjentZPoprzedniegoEkranu.toString());
         service2.saveOrUpdate(pacjentZPoprzedniegoEkranu);
+        przejdz(actionEvent, "lekarz/kartaPacjenta.fxml7");
     }
-
-
 }

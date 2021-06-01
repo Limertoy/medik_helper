@@ -12,14 +12,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Paths;
-import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import obiekty.*;
 import org.hibernate.Session;
@@ -27,9 +24,7 @@ import sample.HibernateUtil;
 import services.Lista_ChorobService;
 import services.PacjentService;
 import services.PracownikService;
-import services.WyposazenieService;
 
-import javax.swing.*;
 
 public class ControllerKartaPacjenta extends ControllerPacjenci implements Initializable {
     public ChoiceBox chorobyChoice;
@@ -101,7 +96,11 @@ public class ControllerKartaPacjenta extends ControllerPacjenci implements Initi
 
     public void kartaPacjentaEdycja(ActionEvent actionEvent) throws IOException {
         this.setService(new PacjentService());
-        pacjent = service.findById(id_zmien);
+        if(id_zmien == 0) {
+            pacjent = service.findById(1);
+        } else {
+            pacjent = service.findById(id_zmien);
+        }
         pacjentID = pacjent;
 
         przejdz(actionEvent,"lekarz/kartaPacjentaEdycja.fxml");

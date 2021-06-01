@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
@@ -8,7 +11,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lekarz.ControllerSkierowanie">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lekarz.ControllerSkierowanie">
     <children>
         <Pane prefHeight="30.0" prefWidth="1180.0" style="-fx-background-color: #5CA3E5;">
             <children>
@@ -96,8 +100,8 @@
         </Button>
         <Pane layoutX="337.0" layoutY="169.0" prefHeight="602.0" prefWidth="772.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #5CA3E5;">
          <children>
-            <TextArea layoutX="39.0" layoutY="167.0" prefHeight="125.0" prefWidth="690.0" style="-fx-border-color: #5CA3E5;" />
-            <TextArea layoutX="39.0" layoutY="74.0" prefHeight="40.0" prefWidth="690.0" style="-fx-border-color: #5CA3E5;" />
+            <TextArea fx:id="rozpoznanie" layoutX="39.0" layoutY="167.0" prefHeight="125.0" prefWidth="690.0" style="-fx-border-color: #5CA3E5;" />
+            <TextArea fx:id="poradnia" layoutX="39.0" layoutY="74.0" prefHeight="40.0" prefWidth="690.0" style="-fx-border-color: #5CA3E5;" />
             <Text fill="#5ca3e5" layoutX="39.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Skierowanie do poradni:" wrappingWidth="149.615234375">
                <font>
                   <Font size="14.0" />
@@ -108,7 +112,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Button fx:id="buttonLogin21" layoutX="519.0" layoutY="509.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: F1FBFF; -fx-border-radius: 8; -fx-background-radius: 8;" text="Drukuj skierowanie" textFill="#5ca3e5">
+            <Button fx:id="buttonSkierowania" layoutX="519.0" layoutY="509.0" mnemonicParsing="false" onAction="#wypiszSkierowanie" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: F1FBFF; -fx-border-radius: 8; -fx-background-radius: 8;" text="Drukuj skierowanie" textFill="#5ca3e5">
                <font>
                   <Font name="Tahoma" size="16.0" />
                </font>
@@ -123,7 +127,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <TextArea layoutX="39.0" layoutY="347.0" prefHeight="125.0" prefWidth="690.0" style="-fx-border-color: #5CA3E5;" />
+            <TextArea fx:id="info" layoutX="39.0" layoutY="347.0" prefHeight="125.0" prefWidth="690.0" style="-fx-border-color: #5CA3E5;" />
             <Text fill="#5ca3e5" layoutX="39.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inne informacje:" wrappingWidth="149.615234375">
                <font>
                   <Font size="14.0" />
