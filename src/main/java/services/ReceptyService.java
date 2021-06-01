@@ -26,4 +26,8 @@ public class ReceptyService {
     public List<Recepty> findAll() {
         return dao.findAll();
     }
+
+    public List<Recepty> findNiewydanePacjenta(int id) {
+        return dao.findNiewydanePacjenta(id);
+    }
 }

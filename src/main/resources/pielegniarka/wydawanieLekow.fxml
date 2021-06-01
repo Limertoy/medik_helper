@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pielegniarka.ControllerWydawanieLekow">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pielegniarka.ControllerWydawanieLekow">
     <children>
         <Pane prefHeight="30.0" prefWidth="1180.0" style="-fx-background-color: #5CA3E5;">
             <children>
@@ -66,27 +66,27 @@
         </Button>
       <Pane layoutX="60.0" layoutY="200.0" prefHeight="550.0" prefWidth="300.0" style="-fx-border-color: #5ca3e5;">
          <children>
-            <TableView fx:id="table" onMouseClicked="#wybierz" prefHeight="550.0" prefWidth="300.0" style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5; -fx-background-radius: 8; -fx-border-radius: 8;">
+            <TableView fx:id="tablePacjenci" onMouseClicked="#wybierz" prefHeight="550.0" prefWidth="300.0" style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5; -fx-background-radius: 8; -fx-border-radius: 8;">
                <columns>
-                  <TableColumn fx:id="nazwiskoTable" editable="false" prefWidth="100.0" text="Nazwisko" />
-                  <TableColumn fx:id="imieTable" editable="false" prefWidth="100.0" text="Imię" />
-                  <TableColumn fx:id="peselTable" editable="false" prefWidth="100.0" text="Pesel" />
+                  <TableColumn fx:id="nazwiskoPacjent" editable="false" prefWidth="100.0" text="Nazwisko" />
+                  <TableColumn fx:id="imiePacjent" editable="false" prefWidth="100.0" text="Imię" />
+                  <TableColumn fx:id="peselPacjent" editable="false" prefWidth="100.0" text="Pesel" />
                </columns>
             </TableView>
          </children></Pane>
       <Pane layoutX="410.0" layoutY="200.0" prefHeight="550.0" prefWidth="300.0" style="-fx-border-color: #5ca3e5;">
          <children>
-            <TableView fx:id="table1" onMouseClicked="#wybierz" prefHeight="550.0" prefWidth="300.0" style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5; -fx-background-radius: 8; -fx-border-radius: 8;">
+            <TableView fx:id="tableRecepty" onMouseClicked="#wybierzRecepte" prefHeight="550.0" prefWidth="300.0" style="-fx-background-color: FFFFFF; -fx-border-color: #5CA3E5; -fx-background-radius: 8; -fx-border-radius: 8;">
                <columns>
-                  <TableColumn fx:id="nazwiskoTable1" editable="false" prefWidth="200.0" text="Nazwa leku" />
-                  <TableColumn fx:id="imieTable1" editable="false" prefWidth="100.0" text="Ilość" />
+                  <TableColumn fx:id="nzawaRecepta" editable="false" prefWidth="200.0" text="Nazwa leku" />
+                  <TableColumn fx:id="iloscRecepta" editable="false" prefWidth="100.0" text="Ilość" />
                </columns>
             </TableView>
          </children></Pane>
       <Text layoutX="159.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista pacjentów" />
       <Text layoutX="533.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recepta" />
       <TextField fx:id="szukaj" layoutX="60.0" layoutY="761.0" prefHeight="31.0" prefWidth="300.0" promptText="PESEL, nazwisko lub imię" />
-      <Button fx:id="buttonLogin211" layoutX="832.0" layoutY="200.0" mnemonicParsing="false" onAction="#kartaPacjentaEdycja" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wydaj lek" textFill="#5ca3e5">
+      <Button fx:id="buttonLogin211" layoutX="832.0" layoutY="200.0" mnemonicParsing="false" onAction="#wydajLeki" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Wydaj lek" textFill="#5ca3e5">
          <effect>
             <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
                <color>

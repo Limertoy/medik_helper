@@ -30,17 +30,24 @@ import sample.HibernateUtil;
 public class ControllerPielegniarkaPacjenci implements Initializable {
     Stage primaryStage;
     @FXML
-    Button buttonLogin, exit_button, minimalize_button, buttonGenerujRecepte;
+    Button buttonLogin, exit_button, minimalize_button, buttonGenerujRecepte, buttonGenerujRecepte1;
     @FXML
     private TableView<Pacjent> table;
     @FXML
     private TableColumn nazwisko_table, imie_table, pesel_table, ulica_table, miejscowosc_table;
 
+    public static int id_zmien = 0;
+
     Session session = HibernateUtil.getSessionFactory().openSession();
 
-    public void wybierz(MouseEvent mouseEvent) { buttonGenerujRecepte.setVisible(true); }
+    public void wybierz(MouseEvent mouseEvent) { buttonGenerujRecepte.setVisible(true); buttonGenerujRecepte1.setVisible(true); }
+
 
     public void pokaz(ActionEvent actionEvent) throws IOException{
+
+        Pacjent pacjent = table.getSelectionModel().getSelectedItem();
+        id_zmien = pacjent.getId_pacjenta();
+
         URL url = getClass().getClassLoader().getResource("pielegniarka/generujRecepte.fxml");
         Parent pokazParent = FXMLLoader.load(url);
         Scene pokazScene = new Scene(pokazParent);
@@ -106,5 +113,20 @@ public class ControllerPielegniarkaPacjenci implements Initializable {
         miejscowosc_table.setCellValueFactory(new PropertyValueFactory("miejscowosc"));
 
         table.getItems().setAll(data1);
+    }
+
+    public void pokaz2(ActionEvent actionEvent) throws IOException {
+
+        Pacjent pacjent = table.getSelectionModel().getSelectedItem();
+        id_zmien = pacjent.getId_pacjenta();
+
+        URL url = getClass().getClassLoader().getResource("pielegniarka/wydawanieLekow.fxml");
+        Parent rejestracjaParent = FXMLLoader.load(url);
+        Scene rejestracjaScene = new Scene(rejestracjaParent);
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(rejestracjaScene);
+        window.show();
     }
 }

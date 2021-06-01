@@ -20,6 +20,7 @@ public class Wyposazenie implements Serializable {
     private String typ_wyposazenia;
     private Date data_waznosci;
     private int ilosc_pozostalych;
+    private int ilosc_wydanych;
 
     public int getId_wyposazenia() {
         return id_wyposazenia;
@@ -66,6 +67,14 @@ public class Wyposazenie implements Serializable {
         this.typ_wyposazenia = typ_wyposazenia;
         this.data_waznosci = data_waznosci;
         this.ilosc_pozostalych = ilosc_pozostalych;
+    }
+
+    public int getIlosc_wydanych() {
+        return ilosc_wydanych;
+    }
+
+    public void setIlosc_wydanych(int ilosc_wydanych) {
+        this.ilosc_wydanych = ilosc_wydanych;
     }
 
     @Override

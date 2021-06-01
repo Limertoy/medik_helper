@@ -19,7 +19,7 @@ public class ReceptyDAOJpa implements ReceptyDAO {
     @Override
     public Recepty save(Recepty entity) {
         em.getTransaction().begin();
-        if (entity.getId_recepty() == 1) {
+        if (entity.getId_recepty() == 0) {
             em.persist(entity);
         } else {
             entity = em.merge(entity);
@@ -45,6 +45,11 @@ public class ReceptyDAOJpa implements ReceptyDAO {
     @Override
     public List<Recepty> findAll() {
         return em.createNativeQuery("SELECT * FROM recepty ", Recepty.class).getResultList();
+    }
+
+    @Override
+    public List<Recepty> findNiewydanePacjenta(int id) {
+        return em.createNativeQuery("SELECT * FROM recepty where wydane = 0 AND id_pacjenta = "+id+"", Recepty.class).getResultList();
     }
 
     public EntityManager getPersistenceContext() {

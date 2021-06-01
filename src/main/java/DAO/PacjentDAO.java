@@ -9,6 +9,7 @@ public interface PacjentDAO {
     void remove(Pacjent entity);
     Pacjent findById(int id);
     List<Pacjent> findAll();
+    List<Pacjent> findRecepta();
 }
 
 
