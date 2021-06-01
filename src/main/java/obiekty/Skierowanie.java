@@ -62,8 +62,7 @@ public class Skierowanie {
         this.pacjent = pacjent;
     }
 
-    public Skierowanie(int id_skierowania, String poradnia, String rozpoznanie, String informacje, Pacjent pacjent) {
-        this.id_skierowania = id_skierowania;
+    public Skierowanie (String poradnia, String rozpoznanie, String informacje, Pacjent pacjent) {
         this.poradnia = poradnia;
         this.rozpoznanie = rozpoznanie;
         this.informacje = informacje;

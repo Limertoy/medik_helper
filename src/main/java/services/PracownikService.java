@@ -7,7 +7,7 @@ import obiekty.Pracownik;
 import java.util.List;
 
 public class PracownikService {
-    private PracownikDAO dao = DaoFactory.createPracownikDao();
+    private final PracownikDAO dao = DaoFactory.createPracownikDao();
 
     public Pracownik saveOrUpdate(Pracownik obj) {
         return dao.save(obj);
@@ -26,5 +26,4 @@ public class PracownikService {
     }
 
     public List<Pracownik> znajdzLekarza(){return dao.znajdzLekarza();}
-
 }

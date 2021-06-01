@@ -104,8 +104,12 @@ public class ControllerPacjenci extends ControllerLogin implements Initializable
         window.show();
     }
     public void kartaPacjenta(ActionEvent actionEvent) throws IOException {
-        Pacjent pacjent = table.getSelectionModel().getSelectedItem();
-        id_zmien = pacjent.getId_pacjenta();
+        if(table.getSelectionModel().getSelectedItem() != null) {
+            Pacjent pacjent = table.getSelectionModel().getSelectedItem();
+            id_zmien = pacjent.getId_pacjenta();
+        } else {
+            id_zmien = 0;
+        }
         URL url = getClass().getClassLoader().getResource("lekarz/kartaPacjenta.fxml");
         Parent kartaPacjentaParent = FXMLLoader.load(url);
         Scene kartaPacjentaScene = new Scene(kartaPacjentaParent);
