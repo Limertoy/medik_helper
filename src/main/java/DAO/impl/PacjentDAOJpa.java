@@ -46,6 +46,11 @@ public class PacjentDAOJpa implements PacjentDAO {
         return em.createNativeQuery("SELECT * FROM pacjent ", Pacjent.class).getResultList();
     }
 
+    @Override
+    public List<Pacjent> findRecepta() {
+        return em.createNativeQuery("SELECT * FROM pacjent ", Pacjent.class).getResultList();
+    }
+
     public EntityManager getPersistenceContext() {
         return this.em;
     }

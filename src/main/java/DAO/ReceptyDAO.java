@@ -10,4 +10,5 @@ public interface ReceptyDAO {
     void remove(Recepty entity);
     Recepty findById(int id);
     List<Recepty> findAll();
+    List<Recepty> findNiewydanePacjenta(int id);
 }

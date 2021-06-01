@@ -30,6 +30,70 @@ public class Recepty {
     private Wyposazenie wyp5;
 
 
+    private boolean wydane;
+
+    public int ilosc1;
+    public int ilosc2;
+    public int ilosc3;
+    public int ilosc4;
+    public int ilosc5;
+
+    public int getIlosc1() {
+        return ilosc1;
+    }
+
+    public void setIlosc1(int ilosc1) {
+        this.ilosc1 = ilosc1;
+    }
+
+    public int getIlosc2() {
+        return ilosc2;
+    }
+
+    public void setIlosc2(int ilosc2) {
+        this.ilosc2 = ilosc2;
+    }
+
+    public int getIlosc3() {
+        return ilosc3;
+    }
+
+    public void setIlosc3(int ilosc3) {
+        this.ilosc3 = ilosc3;
+    }
+
+    public int getIlosc4() {
+        return ilosc4;
+    }
+
+    public void setIlosc4(int ilosc4) {
+        this.ilosc4 = ilosc4;
+    }
+
+    public int getIlosc5() {
+        return ilosc5;
+    }
+
+    public void setIlosc5(int ilosc5) {
+        this.ilosc5 = ilosc5;
+    }
+
+    public Recepty(String opis, Wyposazenie wyp1, Wyposazenie wyp2, Wyposazenie wyp3, Wyposazenie wyp4, Wyposazenie wyp5, int ilosc1, int ilosc2, int ilosc3, int ilosc4, int ilosc5, Pracownik pracownik, Pacjent pacjent) {
+        this.opis = opis;
+        this.wyp1 = wyp1;
+        this.wyp2 = wyp2;
+        this.wyp3 = wyp3;
+        this.wyp4 = wyp4;
+        this.wyp5 = wyp5;
+        this.ilosc1 = ilosc1;
+        this.ilosc2 = ilosc2;
+        this.ilosc3 = ilosc3;
+        this.ilosc4 = ilosc4;
+        this.ilosc5 = ilosc5;
+        this.pracownik = pracownik;
+        this.pacjent = pacjent;
+    }
+
     @OneToOne
     @JoinColumn(name="id_pracownika")
     private Pracownik pracownik;
@@ -110,8 +174,7 @@ public class Recepty {
         this.wyp5 = wyp5;
     }
 
-    public Recepty(int id_recepty, String opis, Wyposazenie wyp1, Wyposazenie wyp2, Wyposazenie wyp3, Wyposazenie wyp4, Wyposazenie wyp5, Pracownik pracownik, Pacjent pacjent) {
-        this.id_recepty = id_recepty;
+    public Recepty(String opis, Wyposazenie wyp1, Wyposazenie wyp2, Wyposazenie wyp3, Wyposazenie wyp4, Wyposazenie wyp5, Pracownik pracownik, Pacjent pacjent) {
         this.opis = opis;
         this.wyp1 = wyp1;
         this.wyp2 = wyp2;
@@ -120,6 +183,15 @@ public class Recepty {
         this.wyp5 = wyp5;
         this.pracownik = pracownik;
         this.pacjent = pacjent;
+        this.wydane = false;
+    }
+
+    public boolean isWydane() {
+        return wydane;
+    }
+
+    public void setWydane(boolean wydane) {
+        this.wydane = wydane;
     }
 
     public Recepty() {

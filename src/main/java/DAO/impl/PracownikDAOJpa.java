@@ -17,7 +17,7 @@ public class PracownikDAOJpa implements PracownikDAO {
     @Override
     public Pracownik save(Pracownik entity) {
         em.getTransaction().begin();
-        if (entity.getId_pracownika() == 1) {
+        if (entity.getId_pracownika() == 0) {
             em.persist(entity);
         } else {
             entity = em.merge(entity);

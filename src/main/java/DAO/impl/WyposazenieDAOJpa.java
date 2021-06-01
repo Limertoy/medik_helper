@@ -17,7 +17,7 @@ public class WyposazenieDAOJpa implements WyposazenieDAO {
     @Override
     public Wyposazenie save(Wyposazenie entity) {
         em.getTransaction().begin();
-        if (entity.getId_wyposazenia() == 1) {
+        if (entity.getId_wyposazenia() == 0) {
             em.persist(entity);
         } else {
             entity = em.merge(entity);
