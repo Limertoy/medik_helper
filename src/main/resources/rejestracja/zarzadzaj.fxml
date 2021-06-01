@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
@@ -10,6 +15,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.*?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-background-color: F1FBFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rejestracja.ControllerZarzadzaj">
     <children>
         <Pane prefHeight="30.0" prefWidth="1180.0" style="-fx-background-color: #5CA3E5;">
@@ -131,7 +137,22 @@
          </font>
       </Text>
       <DatePicker fx:id="datePicker" layoutX="495.0" layoutY="229.0" onAction="#zmianaDaty2" showWeekNumbers="true" />
-      <Button fx:id="dodajButton" layoutX="477.0" layoutY="723.0" mnemonicParsing="false" onAction="#dodaj" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Dodaj" textFill="limegreen" visible="false">
+      <Button fx:id="dodajButton" layoutX="332.0" layoutY="706.0" mnemonicParsing="false" onAction="#dodaj" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Dodaj" textFill="limegreen" visible="false">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
+               <color>
+                  <Color opacity="0.12826086580753326" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="usunButton" layoutX="633.0" layoutY="706.0" mnemonicParsing="false" onAction="#usun" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;" text="Usuń" textFill="#cc3333" visible="false">
          <effect>
             <DropShadow blurType="TWO_PASS_BOX" height="8.75" offsetY="4.0" radius="4.9375" width="13.0">
                <color>
