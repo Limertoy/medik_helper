@@ -39,7 +39,7 @@ public class ControllerZarzadzaj implements Initializable {
     public TableView<Pracownik> pracownicy;
     public TableColumn infoTable;
     public TableView kalendarz;
-    public Button dodajButton;
+    public Button dodajButton, usunButton;
     @FXML
     private TableView<Pacjent> pacjenci;
     @FXML
@@ -236,6 +236,20 @@ public class ControllerZarzadzaj implements Initializable {
         Sloty slot = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
         String info = slot.getInformacja();
         dodajButton.setVisible(!info.equals("x") && slot.getPacjent() == null);
+        if(slot.getPacjent() != null){
+            usunButton.setVisible(true);
+        }else{
+            usunButton.setVisible(false);
+        }
+    }
+
+    public void usun(ActionEvent actionEvent) {
+        Sloty godzina = (Sloty) kalendarz.getSelectionModel().getSelectedItem();
+        session.beginTransaction();
+        godzina.setInformacja(" ");
+        godzina.setPacjent(null);
+        session.getTransaction().commit();
+        reloadDate();
     }
 }
 
